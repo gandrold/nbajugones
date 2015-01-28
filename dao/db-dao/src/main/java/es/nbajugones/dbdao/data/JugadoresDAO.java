@@ -8,7 +8,7 @@ import es.nbajugones.dto.entities.Jugadores;
 import es.nbajugones.dto.search.SearchCriteria;
 import es.nbajugones.dto.search.SearchCriteria.FilterCriterion;
 import es.nbajugones.dto.search.SearchCriteria.FilterCriterion.FilterType;
-import es.nbajugones.interfaces.dbdao.exception.dbdao.DaoException;
+import es.nbajugones.exception.dbdao.DaoException;
 
 public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 

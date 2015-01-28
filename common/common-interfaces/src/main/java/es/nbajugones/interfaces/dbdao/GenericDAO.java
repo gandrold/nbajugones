@@ -3,7 +3,7 @@ package es.nbajugones.interfaces.dbdao;
 import java.util.List;
 
 import es.nbajugones.dto.search.SearchCriteria;
-import es.nbajugones.interfaces.dbdao.exception.dbdao.DaoException;
+import es.nbajugones.exception.dbdao.DaoException;
 
 
 public interface GenericDAO<T> {

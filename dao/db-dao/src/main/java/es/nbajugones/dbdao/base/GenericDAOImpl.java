@@ -11,8 +11,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.core.GenericTypeResolver;
 
 import es.nbajugones.dto.search.SearchCriteria;
+import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.interfaces.dbdao.GenericDAO;
-import es.nbajugones.interfaces.dbdao.exception.dbdao.DaoException;
 
 
 import javax.persistence.EntityManager;

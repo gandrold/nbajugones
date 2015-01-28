@@ -54,7 +54,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>fisheye-webservices</finalName>
+		<finalName>jugonesws</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>

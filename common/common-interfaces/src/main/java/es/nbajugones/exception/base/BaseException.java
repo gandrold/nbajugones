@@ -1,4 +1,4 @@
-package es.nbajugones.interfaces.dbdao.exception.base;
+package es.nbajugones.exception.base;
 
 @SuppressWarnings("serial")
 public class BaseException extends Exception {

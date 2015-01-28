@@ -11,41 +11,9 @@
 	default-autowire="byName">
 	<import resource="classpath:dao-context.xml" />
 	
-	<bean name="smtpSender" class="com.planfisheye.services.communications.smtp.DefaultSMTPSender">
-		<property name="mailSender" ref="mailSender" />
-	</bean>
-	
-	<!-- Configuration of the mail sender -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="iggy@planfisheye.com" />
-		<property name="password" value="jander123" />
-		<property name="javaMailProperties">
-			<props>
-				<!-- Use SMTP-AUTH to authenticate to SMTP server -->
-				<prop key="mail.smtp.auth">true</prop>
-				<!-- Use TLS to encrypt communication with SMTP server -->
-				<prop key="mail.smtp.starttls.enable">true</prop>
-			</props>
-		</property>
-	</bean>
 	
 	
-	<bean id="userService" class="com.planfisheye.services.user.UserServiceImpl" />
-	<bean id="sessionTrackingService" class="com.planfisheye.services.session.SessionTrackingServiceImpl" />
-	<bean id="relationsService" class="com.planfisheye.services.relations.RelationsServiceImpl"/>
-	<bean id="meetMeService" class="com.planfisheye.services.session.MeetMeService"/>
 	
-	<beans profile="local">	
-		<bean id="emailService" class="com.planfisheye.services.communications.EmailService" />
-	</beans>
-	<beans profile="work">	
-		<bean id="emailService" class="com.planfisheye.services.communications.EmailService" />
-	</beans>
-	<beans profile="staging">	
-		<bean id="emailService" class="com.planfisheye.services.communications.EmailService">
-			<property name="sendMail" value="true" />
-		</bean>
-	</beans> 
+	<bean id="equipoService" class="es.nbajugones.services.EquipoService" />
+	
 </beans> 
