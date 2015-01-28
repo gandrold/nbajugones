@@ -15,6 +15,7 @@ public class DerechoPK implements Serializable {
 	@Column(name="ID_EQUIPO")
 	private String idEquipo;
 
+	@Column(name="JUGADOR")
 	private String jugador;
 
 	public DerechoPK() {

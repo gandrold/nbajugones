@@ -18,6 +18,7 @@ public class RondasDraft implements Serializable {
 	@EmbeddedId
 	private RondasDraftPK id;
 
+	@Column(name="duracion")
 	private String duracion;
 
 	@Column(name="ID_EQUIPO_PROP")
@@ -26,10 +27,13 @@ public class RondasDraft implements Serializable {
 	@Column(name="ID_JUGADOR")
 	private String idJugador;
 
+	@Column(name="jugador")
 	private String jugador;
 
+	@Column(name="letra")
 	private String letra;
 
+	@Column(name="salario")
 	private String salario;
 
 	public RondasDraft() {
@@ -90,5 +94,15 @@ public class RondasDraft implements Serializable {
 	public void setSalario(String salario) {
 		this.salario = salario;
 	}
+
+	@Override
+	public String toString() {
+		return "RondasDraft [id=" + id + ", duracion=" + duracion
+				+ ", idEquipoProp=" + idEquipoProp + ", idJugador=" + idJugador
+				+ ", jugador=" + jugador + ", letra=" + letra + ", salario="
+				+ salario + "]";
+	}
+	
+	
 
 }

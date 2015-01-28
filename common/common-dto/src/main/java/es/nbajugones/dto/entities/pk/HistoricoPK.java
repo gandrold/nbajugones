@@ -15,6 +15,7 @@ public class HistoricoPK implements Serializable {
 	@Column(name="ID_EQUIPO")
 	private String idEquipo;
 
+	@Column(name="temporada")
 	private String temporada;
 
 	public HistoricoPK() {

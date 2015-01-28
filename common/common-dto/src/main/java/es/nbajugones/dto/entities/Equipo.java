@@ -55,7 +55,23 @@ public class Equipo implements Serializable {
 	//bi-directional many-to-one association to CalendarioLiga
 	@OneToMany(mappedBy="equipo2")
 	private List<CalendarioLiga> calendarioLigas2;
+	
+		@OneToMany(mappedBy="id.idEquipo")
+		private List<Plantilla> plantilla;
 
+		@OneToMany(mappedBy="id.idEquipo")
+		private List<Derecho> derechos;	
+		
+		@OneToMany(mappedBy="idEquipoProp")
+		private List<RondasDraft> rondas;	
+		
+		@OneToMany(mappedBy="id.idEquipo")
+		private List<Historico> historico;	
+		
+		@OneToMany(mappedBy="idEquipo")
+		private List<Log> log;	
+		
+	
 	public Equipo() {
 	}
 
@@ -190,5 +206,50 @@ public class Equipo implements Serializable {
 
 		return calendarioLigas2;
 	}
+
+	public List<Plantilla> getPlantilla() {
+		return plantilla;
+	}
+
+	public void setPlantilla(List<Plantilla> plantilla) {
+		this.plantilla = plantilla;
+	}
+
+	public List<Derecho> getDerechos() {
+		return derechos;
+	}
+
+	public void setDerechos(List<Derecho> derechos) {
+		this.derechos = derechos;
+	}
+
+	public List<RondasDraft> getRondas() {
+		return rondas;
+	}
+
+	public void setRondas(List<RondasDraft> rondas) {
+		this.rondas = rondas;
+	}
+
+	public List<Historico> getHistorico() {
+		return historico;
+	}
+
+	public void setHistorico(List<Historico> historico) {
+		this.historico = historico;
+	}
+
+	public List<Log> getLog() {
+		return log;
+	}
+
+	public void setLog(List<Log> log) {
+		this.log = log;
+	}
+	
+	
+	
+	
+	
 
 }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import es.nbajugones.dbdao.data.EquipoDAO;
 import es.nbajugones.dto.entities.Equipo;
+import es.nbajugones.interfaces.dbdao.exception.dbdao.DaoException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dao-context.xml" })
@@ -25,7 +26,17 @@ public class EquipoDAOTest {
 	
 	@Test
 	public void test(){
-		Equipo equipo = equipoDAO.getById("BRO");
+		Equipo equipo = equipoDAO.getById("BOS");
 		Assert.assertTrue(equipo.getCalendarioLigas1().size()>0);
+		Assert.assertTrue(equipo.getDerechos().size()>0);
+		Assert.assertTrue(equipo.getHistorico().size()>0);
+		Assert.assertTrue(equipo.getRondas().size()>0);
+		Assert.assertTrue(equipo.getLog().size()>0);
+		try {
+			Assert.assertTrue(equipoDAO.getJugadores("BRO").size()>0);
+		} catch (DaoException e) {			
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
 }

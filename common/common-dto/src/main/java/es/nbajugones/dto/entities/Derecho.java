@@ -19,13 +19,16 @@ public class Derecho implements Serializable {
 	private DerechoPK id;
 
 	@Column(name="ano_eleccion")
-	private int anoEleccion;
+	private Integer anoEleccion;
 
-	private int anos;
+	@Column(name="anos")
+	private Integer anos;
 
+	@Column(name="posicion")
 	private String posicion;
 
-	private double salario;
+	@Column(name="salario")
+	private Double salario;
 
 	public Derecho() {
 	}
@@ -38,19 +41,19 @@ public class Derecho implements Serializable {
 		this.id = id;
 	}
 
-	public int getAnoEleccion() {
+	public Integer getAnoEleccion() {
 		return this.anoEleccion;
 	}
 
-	public void setAnoEleccion(int anoEleccion) {
+	public void setAnoEleccion(Integer anoEleccion) {
 		this.anoEleccion = anoEleccion;
 	}
 
-	public int getAnos() {
+	public Integer getAnos() {
 		return this.anos;
 	}
 
-	public void setAnos(int anos) {
+	public void setAnos(Integer anos) {
 		this.anos = anos;
 	}
 
@@ -62,11 +65,11 @@ public class Derecho implements Serializable {
 		this.posicion = posicion;
 	}
 
-	public double getSalario() {
+	public Double getSalario() {
 		return this.salario;
 	}
 
-	public void setSalario(double salario) {
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 

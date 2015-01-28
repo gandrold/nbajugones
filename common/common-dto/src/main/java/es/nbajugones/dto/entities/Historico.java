@@ -17,16 +17,22 @@ public class Historico implements Serializable {
 	@EmbeddedId
 	private HistoricoPK id;
 
+	@Column(name="conferencia")
 	private int conferencia;
 
+	@Column(name="division")
 	private int division;
 
+	@Column(name="ganados")
 	private int ganados;
 
+	@Column(name="logros")
 	private String logros;
 
+	@Column(name="media")
 	private double media;
 
+	@Column(name="perdidos")
 	private int perdidos;
 
 	public Historico() {
