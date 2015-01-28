@@ -1,1 +1,4 @@
- common/common-dto/.settings/
+.settings
+.classpath
+.project
+target
