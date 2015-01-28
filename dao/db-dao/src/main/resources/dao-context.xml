@@ -50,37 +50,15 @@
 		</property>
 	</bean>
 
-	<bean id="entityCustomScanner" class="com.planfisheye.dbdao.dao.base.EntityCustomScanner">
+	<bean id="entityCustomScanner" class="es.nbajugones.dbdao.base.EntityCustomScanner">
 		<property name="packagesToScan">
 			<list>
-				<value>com.planfisheye.dbdao.entities</value>
-				<value>com.planfisheye.dbdao.entities.session</value>
+				<value>es.nbajugones.dto.entities</value>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="userDAO" class="com.planfisheye.dbdao.dao.users.impl.UserDAOImpl" />
-	<bean id="emailDAO" class="com.planfisheye.dbdao.dao.users.impl.EmailDAOImpl" />
-	<bean id="phoneDAO" class="com.planfisheye.dbdao.dao.users.impl.PhoneDAOImpl" />
-	<bean id="personAddressDAO" class="com.planfisheye.dbdao.dao.users.impl.PersonAddressDAOImpl" />
-	<bean id="personDAO" class="com.planfisheye.dbdao.dao.users.impl.PersonDAOImpl" />
-	<bean id="addressDAO" class="com.planfisheye.dbdao.dao.users.impl.AddressDAOImpl"/>
-	<bean id="userStateDAO" class="com.planfisheye.dbdao.dao.users.impl.UserStateDAOImpl"/>
-	<bean id="countryDAO" class="com.planfisheye.dbdao.dao.users.impl.CountryDAOImpl"/>
-	<bean id="addressTypeDAO" class="com.planfisheye.dbdao.dao.users.impl.AddressTypeDAOImpl"/>
-	<bean id="phoneTypeDAO" class="com.planfisheye.dbdao.dao.users.impl.PhoneTypeDAOImpl"/>
-	<bean id="emailTemplateDAO" class="com.planfisheye.dbdao.dao.communications.impl.EmailTemplateDAOImpl"/>	
-	<bean id="relationsDAO" class="com.planfisheye.dbdao.dao.users.impl.RelationsDAOImpl"/>
-	<bean id="relationTypeDAO" class="com.planfisheye.dbdao.dao.users.impl.RelationTypeDAOImpl"/>
-	<bean id="actionLoggingDAO" class="com.planfisheye.dbdao.dao.logging.impl.ActionLoggingDAOImpl"/>
-	
-	<!-- Sessions DAO -->
-	<bean id="sessionTrackingDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionTrackingDAOImpl"/>
-	<bean id="sessionDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionDAOImpl"/>
-	<bean id="sessionTypeDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionTypeDAOImpl"/>
-	<bean id="sessionStatusDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionStatusDAOImpl"/>
-	<bean id="sessionEventsDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionEventsDAOImpl"/>
-	<bean id="sessionLocationsDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionLocationsDAOImpl"/>
-	<bean id="sessionMembersDAO" class="com.planfisheye.dbdao.dao.session.impl.SessionMembersDAOImpl"/>
+	<bean id="equipoDAO" class="es.nbajugones.dbdao.data.EquipoDAO" />
+	<bean id="jugadoresDAO" class="es.nbajugones.dbdao.data.JugadoresDAO" />
 	
 </beans> 
