@@ -1,72 +1,43 @@
-package es.nbajugones.dto.entities;
+package es.nbajugones.dto;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import es.nbajugones.dto.entities.Jugadores;
 
-
-/**
- * The persistent class for the jugadores database table.
- * 
- */
-
-@NamedQueries({@NamedQuery(name = "Jugadores.getPlantilla", 
-query = "SELECT j FROM Jugadores j WHERE j.idJugador IN (:plantilla)") })
-
-@Entity
-@Table(name="jugadores")
-
-
-public class Jugadores implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@Column(name="ID_JUGADOR")
+public class JugadorDTO {
 	private Integer idJugador;
-
-	@Column(name="ACTIVO")
 	private Integer activo;
-
-	@Column(name="AÑOS")
 	private String years;
-
-	@Column(name="CORTADO_POR")
 	private String cortadoPor;
-
-	@Column(name="ID_HOOPS")
 	private Integer idHoops;
-
-	@Column(name="JUGADOR")
 	private String jugador;
-
-	@Column(name="JUGADOS")
 	private Integer jugados;
-
-	@Column(name="MINUTOS")
 	private Double minutos;
-
-	@Column(name="OBS")
 	private String obs;
-
-	@Column(name="POSICION")
 	private String posicion;
-
-	@Column(name="PROMEDIO")
 	private Double promedio;
-
-	@Column(name="PUNTOS")
 	private Double puntos;
-
-	@Column(name="SALARIO")
 	private Double salario;
-
-	@Column(name="URL")
 	private String url;
 
-	public Jugadores() {
+	public JugadorDTO(Jugadores jugador) {
+		this.activo = jugador.getActivo();
+		this.cortadoPor = jugador.getCortadoPor();
+		this.idHoops = jugador.getIdHoops();
+		this.idJugador = jugador.getIdJugador();
+		this.jugador = jugador.getJugador();
+		this.jugados = jugador.getJugados();
+		this.minutos = jugador.getMinutos();
+		this.obs = jugador.getObs();
+		this.posicion = jugador.getPosicion();
+		this.promedio = jugador.getPromedio();
+		this.puntos = jugador.getPuntos();
+		this.salario = jugador.getSalario();
+		this.url = jugador.getUrl();
+		this.years = jugador.getYears();
+				
 	}
 
 	public Integer getIdJugador() {
-		return this.idJugador;
+		return idJugador;
 	}
 
 	public void setIdJugador(Integer idJugador) {
@@ -74,101 +45,11 @@ public class Jugadores implements Serializable {
 	}
 
 	public Integer getActivo() {
-		return this.activo;
+		return activo;
 	}
 
 	public void setActivo(Integer activo) {
 		this.activo = activo;
-	}
-
-	
-
-	public String getCortadoPor() {
-		return this.cortadoPor;
-	}
-
-	public void setCortadoPor(String cortadoPor) {
-		this.cortadoPor = cortadoPor;
-	}
-
-	public Integer getIdHoops() {
-		return this.idHoops;
-	}
-
-	public void setIdHoops(Integer idHoops) {
-		this.idHoops = idHoops;
-	}
-
-	public String getJugador() {
-		return this.jugador;
-	}
-
-	public void setJugador(String jugador) {
-		this.jugador = jugador;
-	}
-
-	public Integer getJugados() {
-		return this.jugados;
-	}
-
-	public void setJugados(Integer jugados) {
-		this.jugados = jugados;
-	}
-
-	public Double getMinutos() {
-		return this.minutos;
-	}
-
-	public void setMinutos(Double minutos) {
-		this.minutos = minutos;
-	}
-
-	public String getObs() {
-		return this.obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-
-	public String getPosicion() {
-		return this.posicion;
-	}
-
-	public void setPosicion(String posicion) {
-		this.posicion = posicion;
-	}
-
-	public Double getPromedio() {
-		return this.promedio;
-	}
-
-	public void setPromedio(Double promedio) {
-		this.promedio = promedio;
-	}
-
-	public Double getPuntos() {
-		return this.puntos;
-	}
-
-	public void setPuntos(Double puntos) {
-		this.puntos = puntos;
-	}
-
-	public Double getSalario() {
-		return this.salario;
-	}
-
-	public void setSalario(Double salario) {
-		this.salario = salario;
-	}
-
-	public String getUrl() {
-		return this.url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	public String getYears() {
@@ -179,4 +60,91 @@ public class Jugadores implements Serializable {
 		this.years = years;
 	}
 
+	public String getCortadoPor() {
+		return cortadoPor;
+	}
+
+	public void setCortadoPor(String cortadoPor) {
+		this.cortadoPor = cortadoPor;
+	}
+
+	public Integer getIdHoops() {
+		return idHoops;
+	}
+
+	public void setIdHoops(Integer idHoops) {
+		this.idHoops = idHoops;
+	}
+
+	public String getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(String jugador) {
+		this.jugador = jugador;
+	}
+
+	public Integer getJugados() {
+		return jugados;
+	}
+
+	public void setJugados(Integer jugados) {
+		this.jugados = jugados;
+	}
+
+	public Double getMinutos() {
+		return minutos;
+	}
+
+	public void setMinutos(Double minutos) {
+		this.minutos = minutos;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
+	public String getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
+	}
+
+	public Double getPromedio() {
+		return promedio;
+	}
+
+	public void setPromedio(Double promedio) {
+		this.promedio = promedio;
+	}
+
+	public Double getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(Double puntos) {
+		this.puntos = puntos;
+	}
+
+	public Double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }

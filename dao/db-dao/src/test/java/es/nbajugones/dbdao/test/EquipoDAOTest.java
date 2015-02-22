@@ -25,15 +25,16 @@ public class EquipoDAOTest {
 	EquipoDAO equipoDAO;
 	
 	@Test
-	public void test(){
+	public void test() {
+		try {
 		Equipo equipo = equipoDAO.getById("BOS");
 		Assert.assertTrue(equipo.getCalendarioLigas1().size()>0);
 		Assert.assertTrue(equipo.getDerechos().size()>0);
 		Assert.assertTrue(equipo.getHistorico().size()>0);
 		Assert.assertTrue(equipo.getRondas().size()>0);
 		Assert.assertTrue(equipo.getLog().size()>0);
-		try {
-			Assert.assertTrue(equipoDAO.getJugadores(equipo).size()>0);
+		
+			Assert.assertTrue(equipoDAO.getJugadores(equipo).size()>1);
 		} catch (DaoException e) {			
 			e.printStackTrace();
 			Assert.fail();

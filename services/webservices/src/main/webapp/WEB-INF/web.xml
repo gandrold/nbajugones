@@ -5,7 +5,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 
 	<listener>
@@ -39,6 +39,6 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
     
 </web-app>

@@ -1,5 +1,6 @@
 package es.nbajugones.dbdao.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,10 @@ public class EquipoDAO extends GenericDAOImpl<Equipo> {
 	JugadoresDAO jugadoresDAO;
 	
 	public List<Jugadores> getJugadores(Equipo equipo) throws DaoException{
-		int[] jugadores = new int[equipo.getPlantilla().size()];
+		List<Integer> jugadores = new ArrayList<Integer>();
 		int i=0;
 		for (Plantilla p:equipo.getPlantilla()){
-			jugadores[i] = p.getId().getIdJugador();
+			jugadores.add(p.getId().getIdJugador());
 		}
 		return jugadoresDAO.getPlantilla(jugadores);
 	}

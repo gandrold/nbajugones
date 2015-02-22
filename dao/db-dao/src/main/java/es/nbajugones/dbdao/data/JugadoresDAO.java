@@ -1,26 +1,19 @@
 package es.nbajugones.dbdao.data;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Query;
 
 import es.nbajugones.dbdao.base.GenericDAOImpl;
 import es.nbajugones.dto.entities.Jugadores;
-import es.nbajugones.dto.search.SearchCriteria;
-import es.nbajugones.dto.search.SearchCriteria.FilterCriterion;
-import es.nbajugones.dto.search.SearchCriteria.FilterCriterion.FilterType;
 import es.nbajugones.exception.dbdao.DaoException;
 
 public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 
-	public List<Jugadores> getPlantilla(int... jugadores) throws DaoException{
-		SearchCriteria criteria = new SearchCriteria();
-		List<FilterCriterion> orFilters = new ArrayList<SearchCriteria.FilterCriterion>();
-		for (int i=0;i<jugadores.length;i++){
-			FilterCriterion filter = new FilterCriterion("idJugador", jugadores[i], FilterType.EQUALS);
-			orFilters.add(filter);
-		}
-		criteria.addOrClause(orFilters);
-		return getByCriteria(criteria);
+	public List<Jugadores> getPlantilla(List<Integer> jugadores) throws DaoException{
+		Query query = entityManager.createNamedQuery("Jugadores.getPlantilla");
+        query = query.setParameter("plantilla", jugadores);
+		return query.getResultList();
 		
 	}
 	
