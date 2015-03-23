@@ -9,6 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>db-dao</module>
-  	<module>db-schema</module>
+  	<!--<module>db-schema</module>-->
   </modules>
 </project>
