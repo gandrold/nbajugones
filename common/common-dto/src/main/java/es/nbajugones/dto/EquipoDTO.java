@@ -5,6 +5,7 @@ import java.util.List;
 
 import es.nbajugones.dto.entities.CalendarioLiga;
 import es.nbajugones.dto.entities.Equipo;
+import es.nbajugones.dto.entities.Historico;
 import es.nbajugones.dto.entities.Jugadores;
 
 public class EquipoDTO {
@@ -33,7 +34,7 @@ public class EquipoDTO {
 	
 	private List<JugadorDTO> plantilla;
 	
-	private List<CalendarioDTO> calendario;
+	private List<HistoricoDTO> historico;
 
 	public EquipoDTO(Equipo equipo, List<Jugadores> plantilla){
 		this.bonusAct = equipo.getBonusAct();
@@ -51,12 +52,9 @@ public class EquipoDTO {
 		for (Jugadores p:plantilla){
 			this.plantilla.add(new JugadorDTO(p));
 		}
-		calendario = new ArrayList<CalendarioDTO>();
-		for (CalendarioLiga c:equipo.getCalendarioLigas1()){
-			calendario.add(new CalendarioDTO(c, false));
-		}
-		for (CalendarioLiga c:equipo.getCalendarioLigas2()){
-			calendario.add(new CalendarioDTO(c, true));
+		historico = new ArrayList<HistoricoDTO>();
+		for (Historico h: equipo.getHistorico()){
+			historico.add(new HistoricoDTO(h));
 		}
 	}
 
@@ -156,14 +154,14 @@ public class EquipoDTO {
 		this.plantilla = plantilla;
 	}
 
-	public List<CalendarioDTO> getCalendario() {
-		return calendario;
+	public List<HistoricoDTO> getHistorico() {
+		return historico;
 	}
 
-	public void setCalendario(List<CalendarioDTO> calendario) {
-		this.calendario = calendario;
+	public void setHistorico(List<HistoricoDTO> historico) {
+		this.historico = historico;
 	}
-	
+
 	
 	
 }

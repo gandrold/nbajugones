@@ -10,6 +10,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>es.nbajugones</groupId>
+			<artifactId>common-utils</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>es.nbajugones</groupId>
 			<artifactId>common-enum</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
@@ -41,10 +46,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.owasp.esapi</groupId>
-			<artifactId>esapi</artifactId>
-		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>

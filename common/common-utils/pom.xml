@@ -9,10 +9,8 @@
 	<artifactId>common-utils</artifactId>
 	<dependencies>
 		<dependency>
-			<groupId>es.nbajugones</groupId>
-			<artifactId>common-dto</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+            </dependency>
 	</dependencies>
 </project>

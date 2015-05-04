@@ -1,5 +1,7 @@
 package es.nbajugones.services.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.nbajugones.dto.CalendarioDTO;
+import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.services.EquipoService;
 
@@ -22,11 +26,31 @@ public class EquipoServiceTest {
 	EquipoService equipoService;
 	
 	@Test
-	public void test(){
+	public void testGetEquipo(){
 		try{
 			EquipoDTO equipo = equipoService.getEquipo("GSW");
 			Assert.assertTrue(equipo!=null);
 			Assert.assertTrue(equipo.getPlantilla().size()>1);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testGetCalendario(){
+		try{
+			List<CalendarioDTO> calendario = equipoService.getCalendario("ATL");
+			Assert.assertTrue(calendario.size()>1);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testGetDerechos(){
+		try{
+			List<DerechoDTO> calendario = equipoService.getDerechos("WAS");
+			Assert.assertTrue(calendario.size()>1);
 		} catch (Exception e){
 			Assert.fail();
 		}
