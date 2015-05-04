@@ -69,4 +69,16 @@ public class EquipoController extends BaseController {
 			return handleBaseException(e);
 		} 
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/log/{identifier}")
+    public ResponseEntity<BasicResponse> getLog(@PathVariable String identifier) {
+		BasicResponse response = new BasicResponse();
+		try {			
+			response.setResult("OK");
+			response.setResponse(equipoService.getLog(identifier));
+			return new ResponseEntity<BasicResponse>(response, HttpStatus.OK);
+		} catch (BaseException e) {			
+			return handleBaseException(e);
+		} 
+	}
 }

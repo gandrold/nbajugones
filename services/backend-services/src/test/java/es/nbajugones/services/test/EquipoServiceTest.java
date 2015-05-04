@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import es.nbajugones.dto.CalendarioDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.LogDTO;
 import es.nbajugones.services.EquipoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -51,6 +52,17 @@ public class EquipoServiceTest {
 		try{
 			List<DerechoDTO> calendario = equipoService.getDerechos("WAS");
 			Assert.assertTrue(calendario.size()>1);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testGetLog(){
+		try{
+			List<LogDTO> log = equipoService.getLog("DEN");
+			Assert.assertTrue(log.size()>1);
+			Assert.assertTrue(log.get(0).getFecha()!=null);
 		} catch (Exception e){
 			Assert.fail();
 		}

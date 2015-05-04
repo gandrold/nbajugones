@@ -25,9 +25,9 @@
         <!-- common configuration shared by all executions -->
         <configuration>
           <driver>com.mysql.jdbc.Driver</driver>
-          <url>jdbc:mysql://localhost:3306/test</url>
-          <username>root</username>
-          <password>root</password>
+          <url>jdbc:mysql://localhost:3306/bd1</url>
+          <username>jugones</username>
+          <password>jugones</password>
           <!-- You can comment out username/password configurations and
                have maven to look them up in your settings.xml using ${settingsKey}
           -->

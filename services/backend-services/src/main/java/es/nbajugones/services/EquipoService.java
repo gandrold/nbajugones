@@ -12,10 +12,12 @@ import es.nbajugones.dbdao.data.JugadoresDAO;
 import es.nbajugones.dto.CalendarioDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.LogDTO;
 import es.nbajugones.dto.entities.CalendarioLiga;
 import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
+import es.nbajugones.dto.entities.Log;
 import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.exception.service.ServiceException;
 
@@ -84,5 +86,17 @@ public class EquipoService {
 		}
 		
 		return derechos;
+	}
+	
+	public List<LogDTO> getLog(String idEquipo)
+			throws ServiceException {
+
+		Equipo equipo = equipoDAO.getById(idEquipo);
+		List<LogDTO> log = new ArrayList<LogDTO>();
+		for (Log l:equipo.getLog()){
+			log.add(new LogDTO(l));
+		}
+		Collections.sort(log);
+		return log;
 	}
 }

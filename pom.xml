@@ -12,16 +12,17 @@
   </modules>
    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>        
-        <spring.version>3.2.0.RELEASE</spring.version>
-		        <spring.security.version>3.0.5.RELEASE</spring.security.version>
-
+        <spring.version>4.0.5.RELEASE</spring.version>
+		<spring.security.version>3.0.5.RELEASE</spring.security.version>
         <hibernate.version>3.3.2.GA</hibernate.version>
-		<hibernate.core.version>3.3.2.GA</hibernate.core.version>
-		<hibernate.em.version>3.4.0.GA</hibernate.em.version>
-		<hibernate.validator.version>3.1.0.GA</hibernate.validator.version>
+		<hibernate.core.version>4.1.4.Final</hibernate.core.version>
+		<hibernate.em.version>4.1.4.Final</hibernate.em.version>
+		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
     </properties>
   <dependencyManagement>
 	  <dependencies>
+	  
+	  	
 	  	<dependency>
 	  		<groupId>junit</groupId>
 	  		<artifactId>junit</artifactId>
@@ -36,6 +37,7 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>2.4</version>
+                <scope>provided</scope>
             </dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -83,7 +85,7 @@
                 <artifactId>spring-orm</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            <!-- Spring Security -->
+             <!-- Spring Security -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-core</artifactId>
@@ -177,11 +179,7 @@
 				<!--</exclusions> -->
 
 			</dependency>
-	  	<dependency>
-	  		<groupId>org.hibernate.javax.persistence</groupId>
-	  		<artifactId>hibernate-jpa-2.0-api</artifactId>
-	  		<version>1.0.1.Final</version>	  		
-	  	</dependency>
+	  	
 	  	
   		<dependency>
   			<groupId>mysql</groupId>
