@@ -3,6 +3,7 @@ package es.nbajugones.dto;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import es.nbajugones.dto.entities.Log;
 
@@ -24,15 +25,26 @@ public class LogDTO implements Comparable<LogDTO>{
 			fecha = sdf.parse(tokens[0]);
 			texto = tokens[1];
 		} catch (ParseException e) {
+			sdf = new SimpleDateFormat ("dd-MMM-yyyy HH:mm:SS", Locale.ENGLISH);
 			
-			sdf = new SimpleDateFormat ("MMM dd, yyyy HH:mm:SS a");
 			try {
 			fecha = sdf.parse(tokens[0]);
 			texto = tokens[1];
 			} catch (ParseException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-				texto=tempText;
+				sdf = new SimpleDateFormat ("MMM dd, yyyy HH:mm:SS a");
+				try {
+					fecha = sdf.parse(tokens[0]);
+					texto = tokens[1];
+					} catch (ParseException e3) {
+						sdf = new SimpleDateFormat ("MMM dd, yyyy HH:mm:SS a", Locale.ENGLISH);
+						try {
+							fecha = sdf.parse(tokens[0]);
+							texto = tokens[1];
+							} catch (ParseException e4) {
+								e4.printStackTrace();
+								texto=tempText;
+							}
+					}
 			}
 			
 		}
@@ -63,7 +75,6 @@ public class LogDTO implements Comparable<LogDTO>{
 		this.texto = texto;
 	}
 
-	@Override
 	public int compareTo(LogDTO o) {
 		// TODO Auto-generated method stub
 		return o.fecha.compareTo(fecha);

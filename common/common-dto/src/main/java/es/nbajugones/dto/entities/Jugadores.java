@@ -61,6 +61,17 @@ public class Jugadores implements Serializable {
 
 	@Column(name="URL")
 	private String url;
+	
+	@Transient
+	private String equipo;
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
 
 	public Jugadores() {
 	}

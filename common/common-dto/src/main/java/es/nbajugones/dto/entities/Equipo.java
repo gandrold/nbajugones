@@ -9,6 +9,7 @@ import java.util.List;
  * The persistent class for the equipos database table.
  * 
  */
+
 @Entity
 @Table(name="equipos")
 public class Equipo implements Serializable {

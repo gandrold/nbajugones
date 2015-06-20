@@ -15,5 +15,6 @@
 	
 	
 	<bean id="equipoService" class="es.nbajugones.services.EquipoService" />
+	<bean id="jugadorService" class="es.nbajugones.services.JugadorService" />
 	
 </beans> 

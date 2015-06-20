@@ -12,12 +12,15 @@ import es.nbajugones.dbdao.data.JugadoresDAO;
 import es.nbajugones.dto.CalendarioDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.EvaluacionDTO;
+import es.nbajugones.dto.KeyValue;
 import es.nbajugones.dto.LogDTO;
 import es.nbajugones.dto.entities.CalendarioLiga;
 import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
 import es.nbajugones.dto.entities.Log;
+import es.nbajugones.dto.entities.Plantilla;
 import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.exception.service.ServiceException;
 
@@ -34,14 +37,25 @@ public class EquipoService {
 
 		try {
 			Equipo e = equipoDAO.getById(idEquipo);
-			List<Jugadores> plantilla = equipoDAO.getJugadores(e);
-			System.out.println(plantilla.size());
+			List<Integer> jugadores = new ArrayList<Integer>();
+			for (Plantilla p:e.getPlantilla()){
+				jugadores.add(p.getId().getIdJugador());
+			}
+			List<Jugadores> plantilla = jugadoresDAO.getPlantilla(jugadores);
 			EquipoDTO equipo = new EquipoDTO(e, plantilla);
 			return equipo;
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 
+	}
+	
+	public List<KeyValue> getEquipos() throws ServiceException {
+		try {			
+			return equipoDAO.getEquipos();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 	
 	public List<CalendarioDTO> getCalendario(String idEquipo)
@@ -99,4 +113,12 @@ public class EquipoService {
 		Collections.sort(log);
 		return log;
 	}
+	
+	public List<EvaluacionDTO> evaluar() throws ServiceException{
+        try {
+			return equipoDAO.evaluar();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+    }
 }

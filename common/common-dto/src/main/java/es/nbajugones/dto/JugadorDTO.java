@@ -2,13 +2,13 @@ package es.nbajugones.dto;
 
 import es.nbajugones.dto.entities.Jugadores;
 
-public class JugadorDTO {
+public class JugadorDTO implements Comparable<JugadorDTO> {
 	private Integer idJugador;
 	private Integer activo;
 	private String years;
 	private String cortadoPor;
 	private Integer idHoops;
-	private String jugador;
+	private String nombre;
 	private Integer jugados;
 	private Double minutos;
 	private String obs;
@@ -17,23 +17,29 @@ public class JugadorDTO {
 	private Double puntos;
 	private Double salario;
 	private String url;
+	private String equipo;
 
 	public JugadorDTO(Jugadores jugador) {
 		this.activo = jugador.getActivo();
 		this.cortadoPor = jugador.getCortadoPor();
 		this.idHoops = jugador.getIdHoops();
 		this.idJugador = jugador.getIdJugador();
-		this.jugador = jugador.getJugador();
+		this.nombre = jugador.getJugador();
 		this.jugados = jugador.getJugados();
 		this.minutos = jugador.getMinutos();
 		this.obs = jugador.getObs();
 		this.posicion = jugador.getPosicion();
 		this.promedio = jugador.getPromedio();
 		this.puntos = jugador.getPuntos();
-		this.salario = jugador.getSalario();
+		if ("FA".equals(obs)) {
+			this.salario = (double) 0;
+		} else {
+			this.salario = jugador.getSalario();
+		}
 		this.url = jugador.getUrl();
 		this.years = jugador.getYears();
-				
+		this.equipo = jugador.getEquipo();
+
 	}
 
 	public Integer getIdJugador() {
@@ -76,12 +82,12 @@ public class JugadorDTO {
 		this.idHoops = idHoops;
 	}
 
-	public String getJugador() {
-		return jugador;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setJugador(String jugador) {
-		this.jugador = jugador;
+	public void setNombre(String jugador) {
+		this.nombre = jugador;
 	}
 
 	public Integer getJugados() {
@@ -146,5 +152,31 @@ public class JugadorDTO {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
+
+	public String getNombreFoto() {
+		return nombre.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_")
+				.replaceAll("-", "_");
+	}
+
+	public int compareTo(JugadorDTO o) {
+		int i = o.posicion.compareTo(posicion);
+		if (posicion.substring(0, 1).equals(o.posicion.substring(0, 1))) {
+			return o.puntos.compareTo(puntos);
+		} else {
+			if (i == 0) {
+				return o.puntos.compareTo(puntos);
+			} else {
+				return i;
+			}
+		}
 	}
 }

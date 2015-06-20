@@ -1,12 +1,15 @@
 package es.nbajugones.dto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import es.nbajugones.dto.entities.CalendarioLiga;
+import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Historico;
 import es.nbajugones.dto.entities.Jugadores;
+import es.nbajugones.dto.entities.Log;
+import es.nbajugones.dto.entities.RondasDraft;
 
 public class EquipoDTO {
 	
@@ -35,27 +38,51 @@ public class EquipoDTO {
 	private List<JugadorDTO> plantilla;
 	
 	private List<HistoricoDTO> historico;
+	
+	private List<RondaDTO> rondas;
+	
+	private List<DerechoDTO> derechos;
+	
+	private List<LogDTO> log;
 
 	public EquipoDTO(Equipo equipo, List<Jugadores> plantilla){
-		this.bonusAct = equipo.getBonusAct();
-		this.bonusAnt = equipo.getBonusAnt();
-		this.cortes = equipo.getCortes();
+		this.bonusAct = equipo.getBonusAct()==null?0:equipo.getBonusAct();
+		this.bonusAnt = equipo.getBonusAnt()==null?0:equipo.getBonusAnt();
+		this.cortes = equipo.getCortes()==null?0:equipo.getCortes();
 		this.email = equipo.getEmail();
 		this.idEquipo = equipo.getIdEquipo();
-		this.lesionados = equipo.getLesionados();
+		this.lesionados = equipo.getLesionados()==null?0:equipo.getLesionados();
 		this.logo = equipo.getLogo();
 		this.logoDraft = equipo.getLogoDraft();
 		this.nombre = equipo.getNombre();
 		this.propietario = equipo.getPropietario();
-		this.sanciones = equipo.getSanciones();
+		this.sanciones = equipo.getSanciones()==null?0:equipo.getSanciones();
 		this.plantilla = new ArrayList<JugadorDTO>();
 		for (Jugadores p:plantilla){
 			this.plantilla.add(new JugadorDTO(p));
 		}
+		Collections.sort(this.plantilla);
 		historico = new ArrayList<HistoricoDTO>();
 		for (Historico h: equipo.getHistorico()){
 			historico.add(new HistoricoDTO(h));
 		}
+		Collections.sort(historico);
+		rondas = new ArrayList<RondaDTO>();
+		for (RondasDraft r:equipo.getRondas()){
+			if (r.getJugador()==null && r.getIdJugador()==null){
+				rondas.add(new RondaDTO(r));
+			}
+		}
+		Collections.sort(rondas);
+		derechos = new ArrayList<DerechoDTO>();
+		for (Derecho d:equipo.getDerechos()){
+			derechos.add(new DerechoDTO(d));
+		}		
+		log = new ArrayList<LogDTO>();
+		for (Log l:equipo.getLog()){
+			log.add(new LogDTO(l));
+		}
+		Collections.sort(log);
 	}
 
 	public String getIdEquipo() {
@@ -162,6 +189,44 @@ public class EquipoDTO {
 		this.historico = historico;
 	}
 
-	
+	public Double getSumaSalarios(){
+    	double suma=0;
+    	for (JugadorDTO j:plantilla){
+    		suma+=j.getSalario();
+    	}
+    	return suma;
+    }
+    
+    public Double getTotalSalarios(){
+    	return getSumaSalarios()-getLesionados()+getCortes();
+    }
+    
+    public Double getLimite(){
+    	return 61.0-getSanciones()+getBonusAct()+getBonusAnt();
+    }
+
+	public List<RondaDTO> getRondas() {
+		return rondas;
+	}
+
+	public void setRondas(List<RondaDTO> rondas) {
+		this.rondas = rondas;
+	}
+
+	public List<DerechoDTO> getDerechos() {
+		return derechos;
+	}
+
+	public void setDerechos(List<DerechoDTO> derechos) {
+		this.derechos = derechos;
+	}
+
+	public List<LogDTO> getLog() {
+		return log;
+	}
+
+	public void setLog(List<LogDTO> log) {
+		this.log = log;
+	}
 	
 }

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import es.nbajugones.dto.CalendarioDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.KeyValue;
 import es.nbajugones.dto.LogDTO;
 import es.nbajugones.services.EquipoService;
 
@@ -32,6 +33,16 @@ public class EquipoServiceTest {
 			EquipoDTO equipo = equipoService.getEquipo("GSW");
 			Assert.assertTrue(equipo!=null);
 			Assert.assertTrue(equipo.getPlantilla().size()>1);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testGetEquipos(){
+		try{
+			List<KeyValue> equipos = equipoService.getEquipos();
+			Assert.assertTrue(equipos.size()>1);
 		} catch (Exception e){
 			Assert.fail();
 		}

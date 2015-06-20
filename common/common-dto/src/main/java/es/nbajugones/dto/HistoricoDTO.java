@@ -2,7 +2,7 @@ package es.nbajugones.dto;
 
 import es.nbajugones.dto.entities.Historico;
 
-public class HistoricoDTO {
+public class HistoricoDTO implements Comparable<HistoricoDTO>{
 
 	private String temporada;
 	
@@ -12,10 +12,13 @@ public class HistoricoDTO {
 	
 	private String logros;
 	
+	private double media;
+	
 	public HistoricoDTO(Historico historico){
 		this.ganados = historico.getGanados();
 		this.logros = historico.getLogros();
 		this.perdidos = historico.getPerdidos();
+		this.media = historico.getMedia();
 		this.temporada =  historico.getId().getTemporada();
 	}
 
@@ -49,6 +52,19 @@ public class HistoricoDTO {
 
 	public void setLogros(String logros) {
 		this.logros = logros;
+	}
+
+	public double getMedia() {
+		return media;
+	}
+
+	public void setMedia(double media) {
+		this.media = media;
+	}
+
+	public int compareTo(HistoricoDTO o) {
+		
+		return o.temporada.compareTo(temporada);
 	}
 	
 	

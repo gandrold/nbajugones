@@ -36,6 +36,18 @@ public class RondasDraft implements Serializable {
 	@Column(name="salario")
 	private String salario;
 
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ID_EQUIPO",insertable=false, updatable=false)
+	private Equipo equipoRonda;
+	
+	public Equipo getEquipoRonda() {
+		return equipoRonda;
+	}
+
+	public void setEquipoRonda(Equipo equipoRonda) {
+		this.equipoRonda = equipoRonda;
+	}
+
 	public RondasDraft() {
 	}
 
