@@ -45,9 +45,10 @@ public class ExporterServiceTest {
 	
 	@Test
 	public void testTeamUploadFTP() throws ServiceException{
-		Map<String, String> export = exporterService.generateTeamHTML("BRO");
+		String testTeam = "BRO";
+		Map<String, String> export = exporterService.generateTeamHTML(testTeam);
 		Assert.assertTrue(!export.isEmpty());
-		String fileContent = export.get("BRO");
+		String fileContent = export.get(testTeam);
 		exporterService.sendContentToFTP(fileContent, "testBoots");
 	}
 	
