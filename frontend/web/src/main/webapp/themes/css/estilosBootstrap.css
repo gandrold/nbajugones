@@ -1,0 +1,73 @@
+.panel-body{
+	font-size: 12px !important;
+}
+
+
+.panel-body table thead tr td {
+	font-size: 12px !important;
+	font-weight: bold;
+}
+
+.panel-body table tbody tr td {
+	font-size: 12px !important;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.temporada{
+	font-size: 12px !important;
+}
+
+.tradeBox{
+	min-height: 600px;
+}
+
+.holder {
+	margin: 15px 0;
+}
+
+.holder a {
+	font-size: 12px;
+	cursor: pointer;
+	margin: 0 5px;
+	color: #333;
+}
+
+.content {
+	padding:0px;
+}
+
+.content li{
+	display: block;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+
+.holder a:hover {
+	background-color: #222;
+	color: #fff;
+}
+
+.holder a.jp-previous { margin-right: 15px; }
+.holder a.jp-next { margin-left: 15px; }
+
+.holder a.jp-current, a.jp-current:hover { 
+	color: #6685C1;
+	font-weight: bold;
+}
+
+.holder a.jp-disabled, a.jp-disabled:hover {
+	color: #bbb;
+}
+
+.holder a.jp-current, a.jp-current:hover,
+.holder a.jp-disabled, a.jp-disabled:hover {
+	cursor: default; 
+	background: none;
+}
+
+.holder span { margin: 0 5px; }

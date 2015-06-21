@@ -51,10 +51,13 @@ public class EquiposControlador {
 
     @RequestMapping("/equipos/roster.do")
     public String getEquipo(Model model, @RequestParam("id") String id,
-            HttpServletResponse response) throws JSONException,IOException, ServiceException {
-        EquipoDTO equipo=equipoService.getEquipo(id);
-        //Collections.sort(equipo.getPlantilla());
-        model.addAttribute("equipo", equipo);
+            HttpServletResponse response) throws JSONException,IOException{
+    	try{
+	        EquipoDTO equipo=equipoService.getEquipo(id);
+	        model.addAttribute("equipo", equipo);
+    	} catch (ServiceException e){
+    		e.printStackTrace();
+    	}
         response.setContentType("text/html;charset=UTF-8");       
         return "equipos/roster";
     }

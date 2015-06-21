@@ -18,6 +18,7 @@ public class Renovacione implements Serializable {
 	@EmbeddedId
 	private RenovacionePK id;
 
+	@Column(name="AÑOS")
 	private int years;
 
 	@Column(name="ID_EQUIPO_GANADOR")

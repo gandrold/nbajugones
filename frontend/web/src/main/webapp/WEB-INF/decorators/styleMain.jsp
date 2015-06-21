@@ -70,7 +70,7 @@
 												todos</a></li>
 										<li><a href="<c:url value="/trade.action"/>">Trade</a></li>
 										<li><a href="<c:url value="/evaluar.action"/>">Evaluar</a>
-										<li><a href="export.jsp">Generar rosters</a></li>
+										<li><a href="<c:url value="/exportar.action"/>">Generar rosters</a></li>
 										<li><a href="nuevo.jsp">Nuevo jugador</a></li>
 										<li><a href="upload.jsp">Stats</a></li>
 										<li><a href="renovacion.jsp">Renovaciones</a></li>

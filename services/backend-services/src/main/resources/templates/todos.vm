@@ -1,0 +1,152 @@
+
+<html>
+<head>
+<title>NBA Jugones - Roster</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-15">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="/css/estilosBootstrap.css"	type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/jpages.js"></script>
+</head>
+<body>
+
+	<div class="cuerpo">
+		<div class="cabecera">
+			<div class="equipos">
+				#parse("cabecera.vm")
+
+				<!-- /header -->
+			</div>
+			<div class="separadorHorizontal"></div>
+			<div id="contenido" class="container">
+				div class="row">
+	<div class="col-md-3 col-sd-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Filtros</h3>
+			</div>
+			<div class="panel-body table-responsive">
+				<table class="table">
+					
+					<tr>
+						<td>Posicion:</td>
+						<td><select id="posicion" onchange="javascript:filtrar();">
+								<option value="">---</option>
+								<option value="G">G</option>
+								<option value="GF">GF</option>
+								<option value="F">F</option>
+								<option value="FC">FC</option>
+								<option value="C">C</option>
+						</select>
+					</tr>
+					<tr>
+						<td>Puntos (mas que):</td>
+						<td><input id="puntos" style="width: 30px;"
+							onchange="javascript:filtrar();" />
+					</tr>
+					<tr>
+						<td>Promedio (mas que):</td>
+						<td><input id="promedio" style="width: 30px;"
+							onchange="javascript:filtrar();" />
+					</tr>
+					<tr>
+						<td>Minutos (mas que):</td>
+						<td><input id="minutosMas" style="width: 30px;"
+							onchange="javascript:filtrar();" />
+					</tr>
+					<tr>
+						<td>Minutos (menos que):</td>
+						<td><input id="minutosMenos" style="width: 30px;"
+							onchange="javascript:filtrar();" />
+					</tr>
+					<tr>
+						<td>Jugados (mas que):</td>
+						<td><input id="jugados" style="width: 30px;"
+							onchange="javascript:filtrar();" />
+					</tr>
+
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9 col-sd-9">
+
+
+		<div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Jugadores</h3>
+				</div>
+				<div class="panel-body table-responsive">
+					<table id="tablaJugadores" class="sort-table table">
+						<thead>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>Jugador</td>
+								<td>Salario</td>
+								<td>A&ntilde;os</td>
+								<td>Puntos</td>
+								<td>FPPM</td>
+								<td>Jugados</td>
+								<td>Minutos</td>
+								<td>Pertenece a</td>
+								<td>Observaciones</td>
+								<td>Cortado por</td>
+							</tr>
+						</thead>
+						<tbody>
+
+							#foreach ($jugador in $jugadores)
+								<tr
+									class="filaJugador #if($jugador.obs eq 'FA')bg-info#end">
+									<td style="font-weight: bold; font-size: 1.1em"
+										class='posicion'>$jugador.posicion</td>
+										#set($jpg=".jpg")
+									<td><img alt="$jugador.nombre"
+										src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto.$jpg"
+										style="height: 50px;" title="$jugador.nombre" /></td>
+									<td class='nombre'><a
+										href="http://basketball.sports.ws/player/$jugador.nombreFoto?league=140043"
+										target="blank">$jugador.nombre </a></td>
+									<td class='salario'>#if($jugador.obs eq 'FA')-
+										#else
+										$jugador.salario m$
+										#end</td>
+									<td class='years'>$jugador.years</td>
+									<td>#if($jugador.puntos)$jugador.puntos#end</td>
+									<td>#if($jugador.promedio)$jugador.promedio#end</td>
+									<td>#if($jugador.jugados)$jugador.jugados#end</td>
+									<td>#if($jugador.minutos)$jugador.minutos#end</td>
+									<td>#if($jugador.equipo)$jugador.equipo#end</td>
+									<td>#if($jugador.obs)$jugador.obs#end</td>
+									<td>#if($jugador.cortadoPor)$jugador.cortadoPor#end</td>
+								</tr>
+							#end
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){$('#tablaJugadores').tablesorter();});
+</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

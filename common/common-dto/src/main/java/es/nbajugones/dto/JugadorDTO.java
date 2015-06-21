@@ -170,7 +170,20 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 	public int compareTo(JugadorDTO o) {
 		int i = o.posicion.compareTo(posicion);
 		if (posicion.substring(0, 1).equals(o.posicion.substring(0, 1))) {
-			return o.puntos.compareTo(puntos);
+			if (puntos == null) {
+				if (o.puntos == null) {
+					return nombre.compareTo(o.nombre);
+				} else {
+					return 1;
+				}
+			} else {
+				if (o.puntos == null) {
+					return -1;
+				} else {
+					return o.puntos.compareTo(puntos);
+				}
+			}
+
 		} else {
 			if (i == 0) {
 				return o.puntos.compareTo(puntos);

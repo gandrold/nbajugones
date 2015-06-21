@@ -12,6 +12,7 @@ public class RenovacionePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
+	@Column(name="AÑO")
 	private int year;
 
 	@Column(name="ID_JUGADOR")

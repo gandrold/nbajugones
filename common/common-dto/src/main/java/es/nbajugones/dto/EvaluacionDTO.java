@@ -23,8 +23,8 @@ public class EvaluacionDTO {
 	private Double lesionados;
     private double salarios;
     private double limite;
-    private long jugadores;
-    private long fa;
+    private int jugadores;
+    private int fa;
    
     public EvaluacionDTO() {
 		super();
@@ -38,19 +38,19 @@ public class EvaluacionDTO {
         this.equipo = equipo;
     }
 
-    public long getFa() {
+    public int getFa() {
         return fa;
     }
 
-    public void setFa(long fa) {
+    public void setFa(int fa) {
         this.fa = fa;
     }
 
-    public long getJugadores() {
+    public int getJugadores() {
         return jugadores;
     }
 
-    public void setJugadores(long jugadores) {
+    public void setJugadores(int jugadores) {
         this.jugadores = jugadores;
     }
 
@@ -133,5 +133,14 @@ public class EvaluacionDTO {
 		this.conContrato = conContrato;
 	}
 
+	public boolean getWarning(){
+		if (getLimite() < getSalarios()){
+			return true;
+		}
+		if (14 < (jugadores-fa) ){
+			return true;
+		}
+		return false;
+	}
     
 }

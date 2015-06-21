@@ -43,15 +43,20 @@ public class EquipoDAO extends GenericDAOImpl<Equipo> {
 			for (Plantilla p:equipo.getPlantilla()){
 				jugadores.add(p.getId().getIdJugador());
 			}
+			int total =0;
+			int fa =0;
 			List<Jugadores> plantilla = jugadoresDAO.getPlantilla(jugadores);
 			for (Jugadores j:plantilla){
 				if ("FA".equals(j.getObs())){
-					e.setFa(e.getFa()+1);
+					fa++;
 				} 
-				e.setJugadores(e.getJugadores()+1);
+				total++;
 			}
+			e.setFa(fa);
+			e.setJugadores(total);
+			
 		}
-		return (List<EvaluacionDTO>) query.list();
+		return evaluacion;
 	}
 	
 }

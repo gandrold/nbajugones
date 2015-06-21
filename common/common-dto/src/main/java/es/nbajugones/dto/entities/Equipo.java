@@ -249,7 +249,14 @@ public class Equipo implements Serializable {
 	}
 	
 	
-	
+	public boolean checkPlayer(int id){
+		for (Plantilla p:plantilla){
+			if (p.getId().getIdJugador() == id){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	
 

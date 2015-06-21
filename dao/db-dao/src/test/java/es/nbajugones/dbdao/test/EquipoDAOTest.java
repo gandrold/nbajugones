@@ -53,5 +53,6 @@ public class EquipoDAOTest {
 		List<EvaluacionDTO> evaluacion = equipoDAO.evaluar();
 		Assert.assertTrue(evaluacion.size() > 0);
 		Assert.assertTrue(evaluacion.get(0).getEquipo() != null);
+		Assert.assertTrue(evaluacion.get(0).getJugadores() > 0);
 	}
 }

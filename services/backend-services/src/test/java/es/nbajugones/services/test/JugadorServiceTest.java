@@ -15,7 +15,7 @@ import es.nbajugones.dto.JugadorDTO;
 import es.nbajugones.services.JugadorService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:test-backend-services.xml" })
+@ContextConfiguration(locations = { "classpath:backend-services.xml" })
 @TransactionConfiguration(defaultRollback = true, transactionManager = "transactionManager")
 @Transactional
 public class JugadorServiceTest {

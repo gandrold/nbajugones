@@ -16,7 +16,7 @@
 			<tbody>
 
 				<c:forEach var="eval" items="${evaluacion}">
-					<tr>
+					<tr <c:if test="${eval.warning}">class="alert alert-danger"</c:if>>
 						<td><img src="${eval.logo}" alt="Logo" /></td>
 						<td>${eval.salarios}</td>
 						<td>${eval.limite}</td>

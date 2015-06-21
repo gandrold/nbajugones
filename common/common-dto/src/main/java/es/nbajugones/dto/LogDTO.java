@@ -7,48 +7,29 @@ import java.util.Locale;
 
 import es.nbajugones.dto.entities.Log;
 
-
-public class LogDTO implements Comparable<LogDTO>{
+public class LogDTO implements Comparable<LogDTO> {
 
 	private String idEquipo;
-	
+
 	private Date fecha;
 
 	private String texto;
 	
-	public LogDTO(Log log){
+	public static final String[] DATE_FORMATS ={"dd-MMM-yyyy HH:mm:SS", "MMM dd, yyyy HH:mm:SS a", "dd-MMM-yyyy HH:mm"};
+	
+
+	public LogDTO(Log log) {
 		idEquipo = log.getIdEquipo();
 		String tempText = log.getTexto();
 		String[] tokens = tempText.split(" - ");
-		SimpleDateFormat sdf = new SimpleDateFormat ("dd-MMM-yyyy HH:mm:SS");
-		try {
-			fecha = sdf.parse(tokens[0]);
-			texto = tokens[1];
-		} catch (ParseException e) {
-			sdf = new SimpleDateFormat ("dd-MMM-yyyy HH:mm:SS", Locale.ENGLISH);
-			
-			try {
-			fecha = sdf.parse(tokens[0]);
-			texto = tokens[1];
-			} catch (ParseException e2) {
-				sdf = new SimpleDateFormat ("MMM dd, yyyy HH:mm:SS a");
-				try {
-					fecha = sdf.parse(tokens[0]);
-					texto = tokens[1];
-					} catch (ParseException e3) {
-						sdf = new SimpleDateFormat ("MMM dd, yyyy HH:mm:SS a", Locale.ENGLISH);
-						try {
-							fecha = sdf.parse(tokens[0]);
-							texto = tokens[1];
-							} catch (ParseException e4) {
-								e4.printStackTrace();
-								texto=tempText;
-							}
-					}
-			}
-			
+		for (int i=0;i<DATE_FORMATS.length && texto == null;i++){
+			parseLog(DATE_FORMATS[i], tokens);			
 		}
-		
+		if (texto == null){
+			texto=tempText;
+			System.out.println("Log not parseable: "+tempText);
+		}
+
 	}
 
 	public String getIdEquipo() {
@@ -77,8 +58,26 @@ public class LogDTO implements Comparable<LogDTO>{
 
 	public int compareTo(LogDTO o) {
 		// TODO Auto-generated method stub
-		return o.fecha.compareTo(fecha);
+		if (fecha!=null & o.fecha!=null){
+			return o.fecha.compareTo(fecha);
+		} else {
+			return -1;
+		}
 	}
-	
-	
+
+	private void parseLog(String format, String[] tokens) {
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		try {
+			fecha = sdf.parse(tokens[0]);
+			texto = tokens[1];
+		} catch (ParseException e) {
+			sdf = new SimpleDateFormat(format, Locale.ENGLISH);
+			try {
+				fecha = sdf.parse(tokens[0]);
+				texto = tokens[1];
+			} catch (ParseException e4) {
+			}
+		}
+	}
+
 }

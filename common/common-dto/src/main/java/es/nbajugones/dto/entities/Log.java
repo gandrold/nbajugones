@@ -1,6 +1,7 @@
 package es.nbajugones.dto.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -13,6 +14,7 @@ public class Log implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	@Column(name="ID_ACCION")
 	private int idAccion;
 
