@@ -8,9 +8,11 @@ package es.nbajugones.frontend.controllers;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.exception.service.ServiceException;
 import es.nbajugones.services.EquipoService;
+import es.nbajugones.services.ExporterService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,7 +33,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ExportControlador {
 
     @Autowired
-    EquipoService equipoService; 
+    EquipoService equipoService;
+    
+    @Autowired
+    ExporterService exporterService;
 
     @RequestMapping("/exportar.action")
     public void init(Model model) throws ServiceException{
@@ -39,13 +44,11 @@ public class ExportControlador {
     }
 
     @RequestMapping("/export.do")
-    public String getEquipo(Model model, @RequestParam("id") String id,
+    public String getEquipo(Model model, @RequestParam("equipos") List<String> id,
             HttpServletResponse response) throws JSONException,IOException, ServiceException {
-        EquipoDTO equipo=equipoService.getEquipo(id);
-        //Collections.sort(equipo.getPlantilla());
-        model.addAttribute("equipo", equipo);
+        exporterService.export(id);
         response.setContentType("text/html;charset=UTF-8");       
-        return "equipos/roster";
+        return "redirect:/exportar.action";
     }
 
     

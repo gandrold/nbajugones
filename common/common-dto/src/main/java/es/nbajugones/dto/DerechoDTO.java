@@ -15,10 +15,15 @@ public class DerechoDTO {
 
 	private Double salario;
 	
+	private String equipo;
+	
+	private int jugados;
+	
 	public DerechoDTO(Derecho derecho){
 		this.anoEleccion = derecho.getAnoEleccion();
 		this.anos = derecho.getAnos();
 		this.jugador = derecho.getId().getJugador();
+		this.setEquipo(derecho.getId().getIdEquipo());
 		this.posicion = derecho.getPosicion();
 		this.salario = derecho.getSalario();
 	}
@@ -61,6 +66,22 @@ public class DerechoDTO {
 
 	public void setSalario(Double salario) {
 		this.salario = salario;
+	}
+
+	public int getJugados() {
+		return jugados;
+	}
+
+	public void setJugados(int jugados) {
+		this.jugados = jugados;
+	}
+
+	public String getEquipo() {
+		return equipo;
+	}
+
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
 	}
 	
 	

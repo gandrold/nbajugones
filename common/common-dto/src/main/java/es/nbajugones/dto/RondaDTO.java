@@ -9,11 +9,17 @@ public class RondaDTO implements Comparable<RondaDTO>{
 	private int ronda;
 	
 	private String equipo;
+	
+	private String equipoProp;
+	
+	private String idEquipo;
 
 	public RondaDTO(RondasDraft ronda){
 		this.ano=ronda.getId().getAno();
 		this.ronda=ronda.getId().getRonda();
 		this.equipo=ronda.getEquipoRonda().getNombre();
+		this.equipoProp = ronda.getEquipoPropietario().getNombre();
+		this.idEquipo = ronda.getId().getIdEquipo();
 	}
 	public int getAno() {
 		return ano;
@@ -49,6 +55,18 @@ public class RondaDTO implements Comparable<RondaDTO>{
 			return ano-o.ano;
 		}
 		
+	}
+	public String getIdEquipo() {
+		return idEquipo;
+	}
+	public void setIdEquipo(String idEquipo) {
+		this.idEquipo = idEquipo;
+	}
+	public String getEquipoProp() {
+		return equipoProp;
+	}
+	public void setEquipoProp(String equipoProp) {
+		this.equipoProp = equipoProp;
 	}
 	
 	

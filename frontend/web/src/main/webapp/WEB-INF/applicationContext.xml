@@ -10,19 +10,26 @@
                                     http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd  
                                     http://www.springframework.org/schema/util  
                                      http://www.springframework.org/schema/util/spring-util-3.0.xsd">
-	
-	
+
+
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	<bean id="viewResolver"	class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-        <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="message" />
 	</bean>
-
-	<bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource" />
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="50000000" />
+	</bean>
+	<bean id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource" />
 </beans>  

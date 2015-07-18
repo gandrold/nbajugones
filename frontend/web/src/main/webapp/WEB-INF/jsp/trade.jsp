@@ -3,14 +3,19 @@
 
 <div class="row">
 	<div class="col-md-12 col-sd-12 center">
-		<button onClick="javascript: checkTrade();" class="btn btn-primary">Comprobar
+		<button onClick="javascript: checkTrade();" class="btn btn-primary">Enviar
 			trade</button>
-		<button class="btn btn-primary"  data-toggle="modal" data-target="#evaluador">Evaluar
-			trade</button>
+		
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#evaluador">Evaluar trade</button>
 	</div>
 </div>
 <br />
+<form id="datosTrade" name="datosTrade" method="post" data-async data-target="#contenido"
+	action="/jugones-frontend/equipos/trade.do">
 <div class="row">
+	<div class="col-md-12 col-sd-12 center">
+	</div>
 	<div class="col-md-6 col-sd-6">
 		<div class="panel panel-primary tradeBox">
 			<div class="panel-heading">
@@ -68,7 +73,10 @@
 
 
 </div>
-<div class="modal fade" id="evaluador" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+</form>
+<div class="modal fade" id="evaluador" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

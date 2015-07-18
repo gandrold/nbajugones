@@ -59,6 +59,18 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
     }
 	
 	@SuppressWarnings("unchecked")
+	public List<Jugadores> getFA(String name){
+        String sqlQuery="SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
+        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM JUGADORES j WHERE "
+                + " id_jugador not in (select id_jugador from plantillas) "
+                + "and lower(j.jugador) like :nombre order by Puntos DESC, jugados desc";
+        SQLQuery query = getSQLQuery(sqlQuery);
+        query.setParameter("nombre", "%"+name.toLowerCase()+"%");
+        query.setResultTransformer(Transformers.aliasToBean(Jugadores.class));
+        return (List<Jugadores>) query.list();
+    }
+	
+	@SuppressWarnings("unchecked")
 	public List<Jugadores> getAll(){
         String sqlQuery="SELECT j.id_jugador as idJugador, j.AÑOS as years, j.CORTADO_POR as cortadoPor, j.jugador, "
         		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos,j.salario, j.promedio, e.nombre as equipo FROM JUGADORES j"
@@ -79,6 +91,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
         j.setSalario(s);
         j.setYears(anos);
         j.setObs(obs);
+        j.setActivo(1);
         saveOrUpdateEntity(j, jugador);  
         Equipo e = equipoDAO.getById(destino);
         Plantilla p = new Plantilla();
@@ -153,8 +166,10 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
                 penalizacion = Math.round((s * 0.5) * 100.0) / 100.0;
             }
         }
-        double cortes = e.getCortes()+penalizacion;
-        e.setCortes(cortes);
+        if (penalizacion !=0){
+	        double cortes = (e.getCortes()==null?0:e.getCortes())+penalizacion;
+	        e.setCortes(cortes);
+        }
         equipoDAO.saveOrUpdateEntity(e, destino);
         plantillaDAO.removeEntity(cut.getId());
         List<Plantilla> p = e.getPlantilla();
@@ -162,6 +177,14 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
         equipoDAO.saveOrUpdateEntity(e, destino);
     }
 
-    
+    public Jugadores getByName(String jugador) throws DaoException{
+    	SearchCriteria searchCriteria = new SearchCriteria();
+        searchCriteria.addFilter("jugador", jugador, FilterType.EQUALS);
+        List<Jugadores> result = getByCriteria(searchCriteria);
+        if (!result.isEmpty()){
+        	return result.get(0);
+        }
+        return null;
+    }
 	
 }

@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript">
-	
+
 </script>
 <div class="row">
 	<div class="col-md-12 col-sd-12 center">
@@ -12,6 +12,9 @@
 				href="http://privados.miarroba.es/#!new&to=${equipo.propietario}"
 				target="blank">${equipo.propietario}</a>
 		</p>
+		<c:if test="${evaluacion.warning}">
+		<p class="alert alert-danger">Este equipo esta por encima de algun limite</p>
+		</c:if>
 	</div>
 </div>
 <div class="row">
@@ -112,13 +115,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-7 col-sd-7">
+	<div class="col-md-8 col-sd-8">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Roster</h3>
 			</div>
-			<div class="panel-body table-responsive">
-				<table class="table">
+			<div class="panel-body">
+				<table class="table tablesorter" id="tablaRoster">
 					<thead>
 						<tr>
 							<td>&nbsp;</td>
@@ -131,21 +134,22 @@
 							<td>Jugados</td>
 							<td>Minutos</td>
 							<td>Observaciones</td>
+							<td>Cortar</td>
 						</tr>
 					</thead>
 					<tbody>
 
 						<c:forEach var="jugador" items="${equipo.plantilla}">
-							<tr <c:if test="${jugador.obs eq 'FA'}">class="bg-info"</c:if> >								
-							<td style="font-weight: bold; font-size: 1.1em">${jugador.posicion}</td>
+							<tr id="player${jugador.idJugador}" <c:if test="${jugador.obs eq 'FA'}">class="bg-info"</c:if>>
+								<td style="font-weight: bold; font-size: 1.1em">${jugador.posicion}</td>
 								<td><img alt="${jugador.nombre}"
 									src="http://cdn.basketball.sports.ws/players/${jugador.nombreFoto}.jpg"
 									style="height: 50px;" title="${jugador.nombre}" /></td>
 								<td><a
 									href="http://basketball.sports.ws/player/${jugador.nombreFoto}?league=140043"
 									target="blank">${jugador.nombre} </a></td>
-								<td><c:if test="${jugador.obs eq 'FA'}">-</c:if>
-								<c:if test="${jugador.obs ne 'FA'}">${jugador.salario}m$</c:if></td>
+								<td><c:if test="${jugador.obs eq 'FA'}">-</c:if> <c:if
+										test="${jugador.obs ne 'FA'}">${jugador.salario}m$</c:if></td>
 								<td>${jugador.years}</td>
 								<td>${jugador.puntos}</td>
 								<td>${jugador.promedio}</td>
@@ -153,44 +157,24 @@
 								<td>${jugador.minutos}</td>
 
 								<td>${jugador.obs}</td>
+								<td>
+									<c:if test="${jugador.obs ne 'FA'}">
+									<select data-jugador="${jugador.idJugador}" class="corte">
+										<option value="-">----</option>
+										<option value="0">Normal</option>
+										<option value="0.25">25%</option>
+										<option value="1">Gratis</option>
+									</select>	
+									</c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				
 			</div>
-
+			
 		</div>
-	</div>
-	<div class="col-md-3 col-sd-3">
-		<c:if test="${fn:length(equipo.rondas) gt 0}">
-			<div class="row">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Rondas</h3>
-					</div>
-					<div class="panel-body table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<td>A&ntilde;o</td>
-									<td>Ronda</td>
-									<td>Equipo</td>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="ronda" items="${equipo.rondas}">
-									<tr>
-										<td>${ronda.ano}</td>
-										<td>${ronda.ronda}</td>
-										<td>${ronda.equipo}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</c:if>
 		<c:if test="${fn:length(equipo.derechos) gt 0}">
 			<div class="row">
 				<div class="panel panel-primary">
@@ -205,6 +189,7 @@
 									<td>Posicion</td>
 									<td>Salario</td>
 									<td>A&ntilde;os</td>
+									<td>Activar</td>
 								</tr>
 							</thead>
 							<tbody>
@@ -214,7 +199,7 @@
 										<td>${derecho.posicion}</td>
 										<td>${derecho.salario}</td>
 										<td>${derecho.anos}</td>
-
+										<td><button onClick="javascript: activar('${derecho.jugador}','${equipo.idEquipo}');" class="btn btn-primary">Activar</button></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -247,17 +232,49 @@
 	</div> --%>
 			</div>
 		</c:if>
+	</div>
+	<div class="col-md-2 col-sd-2">
+		<c:if test="${fn:length(equipo.rondas) gt 0}">
+			<div class="row">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Rondas</h3>
+					</div>
+					<div class="panel-body table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<td>A&ntilde;o</td>
+									<td>Ronda</td>
+									<td>Equipo</td>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="ronda" items="${equipo.rondas}">
+									<tr>
+										<td>${ronda.ano}</td>
+										<td>${ronda.ronda}</td>
+										<td>${ronda.equipo}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		
 		<div class="row">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">Movimientos</h3>
 				</div>
 				<div class="panel-body">
-					
+
 					<ul class="content" id="historicos">
 						<c:forEach var="log" items="${equipo.log}">
-							<li><b><fmt:formatDate type="both" value="${log.fecha}" />: </b>
-								${log.texto}</li>
+							<li><b><fmt:formatDate type="both" value="${log.fecha}" />:
+							</b> ${log.texto}</li>
 						</c:forEach>
 					</ul>
 					<div class="holder"></div>

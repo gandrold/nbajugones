@@ -2,6 +2,9 @@
 	font-size: 12px !important;
 }
 
+.ejecutarTrade{
+	display: none !important;	
+}
 
 .panel-body table thead tr td {
 	font-size: 12px !important;

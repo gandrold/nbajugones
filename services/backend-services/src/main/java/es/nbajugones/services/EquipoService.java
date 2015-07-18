@@ -2,6 +2,7 @@ package es.nbajugones.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,18 +10,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import es.nbajugones.dbdao.data.EquipoDAO;
 import es.nbajugones.dbdao.data.JugadoresDAO;
+import es.nbajugones.dbdao.data.RondasDraftDAO;
 import es.nbajugones.dto.CalendarioDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.EvaluacionDTO;
 import es.nbajugones.dto.KeyValue;
 import es.nbajugones.dto.LogDTO;
+import es.nbajugones.dto.RondaDTO;
 import es.nbajugones.dto.entities.CalendarioLiga;
 import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
 import es.nbajugones.dto.entities.Log;
 import es.nbajugones.dto.entities.Plantilla;
+import es.nbajugones.dto.entities.RondasDraft;
 import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.exception.service.ServiceException;
 
@@ -32,6 +36,9 @@ public class EquipoService {
 
 	@Autowired
 	JugadoresDAO jugadoresDAO;
+	
+	@Autowired
+	RondasDraftDAO rondasDraftDAO;
 
 	public EquipoDTO getEquipo(String idEquipo) throws ServiceException {
 
@@ -102,6 +109,35 @@ public class EquipoService {
 		return derechos;
 	}
 	
+	public List<RondaDTO> getRondas() throws ServiceException{
+		try {
+			List<RondasDraft> rondas = rondasDraftDAO.getAll();
+			List<RondaDTO> result = new ArrayList<RondaDTO>();
+			for (RondasDraft ronda:rondas){
+				if (ronda.getJugador()==null && ronda.getIdJugador()==null){
+				result.add(new RondaDTO(ronda));
+				}
+			}
+			Collections.sort(result, new Comparator<RondaDTO>() {
+
+				public int compare(RondaDTO o1, RondaDTO o2) {
+					if (o1.getEquipo().equals(o2.getEquipo())){
+						if (o1.getAno()==o2.getAno()){
+							return o1.getRonda()-o2.getRonda();
+						} else {
+							return o1.getAno()-o2.getAno();
+						}
+					} else {
+						return o1.getEquipo().compareTo(o2.getEquipo());
+					}
+				}
+			});
+			return result;
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		} 
+	}
+	
 	public List<LogDTO> getLog(String idEquipo)
 			throws ServiceException {
 
@@ -117,6 +153,14 @@ public class EquipoService {
 	public List<EvaluacionDTO> evaluar() throws ServiceException{
         try {
 			return equipoDAO.evaluar();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+    }
+	
+	public EvaluacionDTO evaluar(String id) throws ServiceException{
+        try {
+			return equipoDAO.evaluar(id).get(0);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

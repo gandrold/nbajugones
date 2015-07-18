@@ -63,5 +63,7 @@
 	<bean id="plantillaDAO" class="es.nbajugones.dbdao.data.PlantillaDAO" />
 	<bean id="renovacionesDAO" class="es.nbajugones.dbdao.data.RenovacionesDAO" />
 	<bean id="logDAO" class="es.nbajugones.dbdao.data.LogDAO" />
+	<bean id="derechosDAO" class="es.nbajugones.dbdao.data.DerechosDAO" />
+	<bean id="rondasDraftDAO" class="es.nbajugones.dbdao.data.RondasDraftDAO" />
 	
 </beans> 

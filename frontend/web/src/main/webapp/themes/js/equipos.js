@@ -1,3 +1,19 @@
+function initRosterPage(equipo){
+	$("div.holder").jPages({
+        containerID : "historicos"
+      });
+    $(".corte").each(function(){
+    	$(this).change(function(){
+    		if ($(this).val()!="-"){
+    			if (confirm("Estas seguro que lo quieres cortar?")){
+    				cortar($(this).val(),$(this).data("jugador"),equipo);
+    			}
+    		}
+    	});
+    });
+    $("#tablaRoster").tablesorter();
+}
+
 
 function loadTeam(equipo){
 	$("#contenido").html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
@@ -7,12 +23,27 @@ function loadTeam(equipo){
 		data : "id="+equipo,
 		success : function (data){
 	        $("#contenido").html(data);
-	        $("div.holder").jPages({
-	            containerID : "historicos"
-	          });
+	        initRosterPage(equipo);
 	    }
-	});
+	});	
+}
+
+function cortar(factor,idJugador, equipo){
 	
+	$("#contenido").html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
+	
+	$.ajax({
+		type : "POST",
+		url : "/jugones-frontend/equipos/cortar.do",
+		data : "id="+idJugador+"&factor="+factor+"&equipo="+equipo,
+		success : function (data){
+	        $("#contenido").html(data);
+	        initRosterPage(equipo);
+	    },
+	    error:function(data){
+	    	loadTeam(equipo);
+	    }
+	});	
 }
 
 function loadTeamTrade(equipo,id){
@@ -45,11 +76,17 @@ function calcularSalarios(posicion){
     var puntos=0;
     var eficiencia=0;
     var jugadores=0;
+    var players = "";
     $(".jugadores_"+posicion).each(function(){
         if ($(this).is(':checked')){
             //Nos quedamos con el id
             var ident=$(this).attr('id');
             var id=ident.substr(ident.indexOf("_")+1, ident.length);
+            if (players == ""){
+            	players = "" +id;
+            } else {
+            	players = players +","+id;
+            }
             //Calculamos salarios, eficiencia y puntos
             jugadores++;
             salarios+=parseFloat($("#salario_"+id).val());
@@ -64,7 +101,7 @@ function calcularSalarios(posicion){
     $("#puntos_"+posicion).html(puntos.toFixed(2));
     $("#puntosProm_"+posicion).html(puntosProm.toFixed(2));
     $("#eficiencia_"+posicion).html(efiProm.toFixed(2));
-
+    $("#players"+posicion).value = players;
 }
 
 function checkTrade(){
@@ -72,12 +109,14 @@ function checkTrade(){
     var sal2=$("#salarios_2").html();
     if (Math.abs(sal1-sal2)<=1){
         alert('Trade valido');
+        $("#datosTrade").submit();
         return true;
     } else {
         var max=Math.max(sal1,sal2);
         var limite=max*0.2;
         if (Math.abs(sal1-sal2)<=limite){
             alert('Trade valido');
+            $("#datosTrade").submit();
             return true;
         } else {
             alert('Trade no valido. La diferencia ha de ser menor de '+limite.toFixed(2));

@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -20,6 +21,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.app.event.implement.IncludeRelativePath;
 import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.NumberTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,34 +39,57 @@ public class ExporterService {
 
 	FTPClient ftp;
 
-	public Map<String, String> generateTeamHTML(String... teams)
+	public Map<String, String> generateTeamHTML(List<String> teams)
 			throws ServiceException {
 		Map<String, String> results = new HashMap<String, String>();
 		for (String id : teams) {
 			EquipoDTO equipo = equipoService.getEquipo(id);
-			String html = generateTemplate("roster", "equipo", equipo);
+			Map<String, Object> values = new HashMap<String, Object>();
+			values.put("equipo", equipo);
+			values.put("evaluacion", equipoService.evaluar(id));
+			String html = generateTemplate("roster", values);
 			results.put(id, html);
 		}
 		return results;
 	}
 
-	public String generateFAList() throws ServiceException {		
-		String html = generateTemplate("fa", "fa", jugadorService.getAllFA());
+	public String generateFAList() throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put( "fa", jugadorService.getAllFA());
+		String html = generateTemplate("fa", values);
 		return html;
 	}
 	
 	public String generateAllList() throws ServiceException {		
-		String html = generateTemplate("todos", "jugadores", jugadorService.getAll());
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("jugadores", jugadorService.getAll());
+		String html = generateTemplate("todos", values);
 		return html;
 	}
 	
-	public void export(String... teams) throws ServiceException{
+	public String generateDerechos() throws ServiceException {		
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("derechos", jugadorService.getDerechos());
+		String html = generateTemplate("derechos", values);
+		return html;
+	}
+	
+	public String generateRondas() throws ServiceException {		
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("rondas", equipoService.getRondas());
+		String html = generateTemplate("rondas", values);
+		return html;
+	}
+	
+	public void export(List<String> teams) throws ServiceException{
 		Map<String, String> equipos = generateTeamHTML(teams);
 		for (String id:equipos.keySet()){
-			sendContentToFTP(id, equipos.get(id));
+			sendContentToFTP(equipos.get(id), id);
 		}
-		sendContentToFTP(generateFAList(), "fa");
+		sendContentToFTP(generateFAList(), "free_agents");
 		sendContentToFTP(generateAllList(), "todos");
+		sendContentToFTP(generateDerechos(), "derechos");
+		sendContentToFTP(generateRondas(), "rondas");
 	}
 
 	public void sendContentToFTP(String content, String fileName)
@@ -79,6 +104,7 @@ public class ExporterService {
 				throw new ServiceException("Error uploading to FTP file "
 						+ fileName);
 			} else {
+				System.out.println("Uploading "+fileName);
 				File f = File.createTempFile(fileName, ".html");
 				Writer out = new BufferedWriter(new OutputStreamWriter(
 						new FileOutputStream(f), "ISO-8859-1"));
@@ -101,20 +127,22 @@ public class ExporterService {
 		}
 	}
 
-	private String generateTemplate(String template, String var, Object value)
+	private String generateTemplate(String template, Map<String, Object> values)
 			throws ServiceException {
 		 Properties properties = new Properties();
 		 properties.setProperty(RuntimeConstants.EVENTHANDLER_INCLUDE, IncludeRelativePath.class.getName());
-
+		 properties.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
+		 properties.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
 		VelocityEngine ve = new VelocityEngine();
 		ve.init(properties);
 		VelocityContext context = new VelocityContext();
-		context.put(var, value);
+		for (String var:values.keySet()){
+			context.put(var, values.get(var));
+		}
 		context.put("combo", equipoService.getEquipos());
 		context.put("numberTool", new NumberTool());
 		context.put("dateTool", new DateTool());
-		Template t = ve.getTemplate("./src/main/resources/templates/"
-				+ template + ".vm");
+		Template t = ve.getTemplate("/templates/"+ template + ".vm");
 		StringWriter writer = new StringWriter();
 		t.merge(context, writer);
 		return writer.toString();

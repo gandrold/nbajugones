@@ -43,6 +43,9 @@
 				href="http://privados.miarroba.es/#!new&to=$equipo.propietario"
 				target="blank">$equipo.propietario</a>
 		</p>
+		#if ($evaluacion.warning)
+		<p class="alert alert-danger">Este equipo esta por encima de algun limite</p>
+		#end
 		</div>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -152,7 +155,7 @@
 									<td>#if($jugador.jugados)$jugador.jugados#end</td>
 									<td>#if($jugador.minutos)$jugador.minutos#end</td>
 
-								<td>$jugador.obs</td>
+								<td>#if($jugador.obs)$jugador.obs#end</td>
 							</tr>
 						#end
 					</tbody>

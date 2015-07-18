@@ -22,19 +22,20 @@
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Equipos <span class="caret"></span></a>
 									<ul class="dropdown-menu">
+									#set($html=".html")
 										 #foreach( $equipo in $combo )
 											<li><a
-												href="javascript:loadTeam('$equipo.key')">
+												href="$equipo.key$html">
 													$equipo.value </a></li>
 										#end
 										
 									</ul></li>
-								<li><a href="fa.html">Ver
+								<li><a href="free_agents.html">Ver
 												FA's</a></li>
 										<li><a href="todos.html">Ver
 												todos</a></li>
-										<li><a href="#">Derechos</a></li>
-										<li><a href="#">Rondas</a></li>
+										<li><a href="derechos.html">Derechos</a></li>
+										<li><a href="rondas.html">Rondas</a></li>
 							</ul>
 
 						</div>

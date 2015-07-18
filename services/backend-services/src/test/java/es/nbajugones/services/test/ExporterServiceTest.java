@@ -1,6 +1,10 @@
 package es.nbajugones.services.test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+
 
 
 
@@ -27,7 +31,9 @@ public class ExporterServiceTest {
 	
 	@Test
 	public void testTeamHTML() throws ServiceException{
-		Map<String, String> export = exporterService.generateTeamHTML("BRO");
+		List<String> teams = new ArrayList<String>();
+		teams.add("BRO");
+		Map<String, String> export = exporterService.generateTeamHTML(teams);
 		Assert.assertTrue(!export.isEmpty());
 	}
 	
@@ -44,9 +50,23 @@ public class ExporterServiceTest {
 	}
 	
 	@Test
+	public void testDerechos() throws ServiceException{
+		String export = exporterService.generateDerechos();
+		Assert.assertTrue(!export.isEmpty());
+	}
+	
+	@Test
+	public void testRondas() throws ServiceException{
+		String export = exporterService.generateRondas();
+		Assert.assertTrue(!export.isEmpty());
+	}
+	
+	@Test
 	public void testTeamUploadFTP() throws ServiceException{
 		String testTeam = "BRO";
-		Map<String, String> export = exporterService.generateTeamHTML(testTeam);
+		List<String> teams = new ArrayList<String>();
+		teams.add(testTeam);
+		Map<String, String> export = exporterService.generateTeamHTML(teams);
 		Assert.assertTrue(!export.isEmpty());
 		String fileContent = export.get(testTeam);
 		exporterService.sendContentToFTP(fileContent, "testBoots");

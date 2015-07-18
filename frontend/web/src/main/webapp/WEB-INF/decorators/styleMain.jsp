@@ -21,13 +21,13 @@
 <link rel="stylesheet" href="/jugones-frontend/themes/css/estilos.css"
 	type="text/css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="/jugones-frontend/themes/js/jquery.min.js"></script>
 <script type="text/javascript" src="/jugones-frontend/themes/js/equipos.js"></script>
 <script type="text/javascript" src="/jugones-frontend/themes/js/jugadores.js"></script>
 <script type="text/javascript" src="/jugones-frontend/themes/js/main.js"></script>
 <script type="text/javascript" src="/jugones-frontend/themes/js/jpages.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/tablesorter.js"></script>
+<script type="text/javascript" src="/jugones-frontend/themes/js/jquery.tablesorter.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -71,11 +71,11 @@
 										<li><a href="<c:url value="/trade.action"/>">Trade</a></li>
 										<li><a href="<c:url value="/evaluar.action"/>">Evaluar</a>
 										<li><a href="<c:url value="/exportar.action"/>">Generar rosters</a></li>
-										<li><a href="nuevo.jsp">Nuevo jugador</a></li>
-										<li><a href="upload.jsp">Stats</a></li>
-										<li><a href="renovacion.jsp">Renovaciones</a></li>
-										<li><a href="derechos.jsp">Derechos</a></li>
-										<li><a href="rondas.jsp">Rondas</a></li>
+										<li><a href="<c:url value="/jugadores/new.action"/>">Nuevo jugador</a></li>
+										<li><a href="<c:url value="/import.action"/>">Stats</a></li>
+										<li><a href="<c:url value="/jugadores/derechos.action"/>">Derechos</a></li>
+										<li><a href="<c:url value="/rondas.action"/>">Rondas</a></li>
+										<li><a href="rondas.jsp">Renovaciones</a></li>
 										<li><a href="draft.jsp">Drafts</a></li>
 										<li><a href="copa.jsp">Copa</a></li>
 							</ul>

@@ -1,575 +1,117 @@
-2015-06-21 18:44:16,620 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:16,620 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:16,620 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:16,620 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:16,620 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:16,620 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:16,620 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:16,626 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:16,627 - Do unicode file recognition:  false
-2015-06-21 18:44:16,627 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:16,637 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:16,638 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:16,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:16,640 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:16,640 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:16,641 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:16,642 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:16,643 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:16,644 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:16,645 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:16,668 - Created '20' parsers.
-2015-06-21 18:44:16,672 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:16,673 - Velocimacro : Default library not found.
-2015-06-21 18:44:16,673 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:16,673 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:16,673 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:16,673 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:16,709 - ResourceManager : found ./src/main/resources/templates/todos.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:16,712 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:16,764 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,764 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,765 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,765 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,785 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,785 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,800 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,800 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,802 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,802 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,802 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,802 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,802 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,803 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,803 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,803 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,805 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,805 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,808 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,808 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,814 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,814 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,824 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,824 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,826 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,826 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,826 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,826 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,828 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,828 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:16,829 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:16,829 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:17,001 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:17,001 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:17,001 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:17,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:17,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:17,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:17,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:17,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:17,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:17,002 - Do unicode file recognition:  false
-2015-06-21 18:44:17,002 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:17,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:17,002 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:17,003 - Created '20' parsers.
-2015-06-21 18:44:17,003 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:17,003 - Velocimacro : Default library not found.
-2015-06-21 18:44:17,003 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:17,003 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:17,003 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:17,003 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:17,028 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:17,029 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,434 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:18,434 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:18,434 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:18,434 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:18,434 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:18,434 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:18,434 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,434 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,434 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,434 - Do unicode file recognition:  false
-2015-06-21 18:44:18,434 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:18,434 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:18,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:18,436 - Created '20' parsers.
-2015-06-21 18:44:18,436 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:18,436 - Velocimacro : Default library not found.
-2015-06-21 18:44:18,436 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:18,436 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:18,436 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:18,436 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:18,452 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,453 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,495 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:18,495 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:18,495 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:18,495 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:18,496 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,496 - Do unicode file recognition:  false
-2015-06-21 18:44:18,496 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:18,496 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:18,498 - Created '20' parsers.
-2015-06-21 18:44:18,498 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:18,498 - Velocimacro : Default library not found.
-2015-06-21 18:44:18,498 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:18,498 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-locity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,453 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,495 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:18,495 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:18,495 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:18,495 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:18,495 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:18,495 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:18,495 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:18,495 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:18,495 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:18,495 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:18,495 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:18,495 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:18,496 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:18,496 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:18,496 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:18,496 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,496 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,496 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,496 - Do unicode file recognition:  false
-2015-06-21 18:44:18,496 - Do unicode file recognition:  false
-2015-06-21 18:44:18,496 - Do unicode file recognition:  false
-2015-06-21 18:44:18,496 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:18,496 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:18,496 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:18,496 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:18,496 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:18,496 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:18,497 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:18,498 - Created '20' parsers.
-2015-06-21 18:44:18,498 - Created '20' parsers.
-2015-06-21 18:44:18,498 - Created '20' parsers.
-2015-06-21 18:44:18,498 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:18,498 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:18,498 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:18,498 - Velocimacro : Default library not found.
-2015-06-21 18:44:18,498 - Velocimacro : Default library not found.
-2015-06-21 18:44:18,498 - Velocimacro : Default library not found.
-2015-06-21 18:44:18,498 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:18,498 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:18,498 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:18,498 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:18,498 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:18,498 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:18,498 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:18,502 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,427 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:58,427 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:58,427 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:58,427 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:58,427 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:58,427 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:58,427 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,427 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,431 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,432 - Do unicode file recognition:  false
-2015-06-21 18:44:58,432 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:58,442 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:58,443 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:58,444 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:58,445 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:58,446 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:58,446 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:58,448 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:58,449 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:58,451 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:58,451 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:58,476 - Created '20' parsers.
-2015-06-21 18:44:58,481 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:58,481 - Velocimacro : Default library not found.
-2015-06-21 18:44:58,481 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:58,481 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:58,481 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:58,481 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:58,520 - ResourceManager : found ./src/main/resources/templates/todos.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,523 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,578 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,578 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,578 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,578 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,599 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,599 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,615 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,615 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,616 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,616 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,617 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,617 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,617 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,617 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,618 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,618 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,620 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,620 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,623 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,623 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,632 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,632 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,644 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,644 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,646 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,646 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,646 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,647 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,649 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,649 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,650 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 113, column 111]
-2015-06-21 18:44:58,650 - Left side ($jugador.obs) of '==' operation has null value. If it is a reference, it may not be in the context or its toString() returned null. ./src/main/resources/templates/todos.vm[line 123, column 112]
-2015-06-21 18:44:58,871 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:58,871 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:58,872 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:58,872 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:58,872 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:58,872 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:58,872 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:58,872 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:58,872 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:58,872 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:58,872 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:58,872 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:58,872 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,872 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,872 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,872 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:58,872 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,872 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,872 - Do unicode file recognition:  false
-2015-06-21 18:44:58,872 - Do unicode file recognition:  false
-2015-06-21 18:44:58,872 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:58,872 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:58,872 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:58,872 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:58,872 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:58,873 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:58,873 - Created '20' parsers.
-2015-06-21 18:44:58,873 - Created '20' parsers.
-2015-06-21 18:44:58,874 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:58,874 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:58,874 - Velocimacro : Default library not found.
-2015-06-21 18:44:58,874 - Velocimacro : Default library not found.
-2015-06-21 18:44:58,874 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:58,874 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:58,874 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:58,874 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:58,874 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:58,874 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:58,874 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:58,874 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:58,900 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,900 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,902 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:58,902 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,963 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:59,963 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:59,963 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:44:59,963 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:59,963 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:59,963 - Initializing Velocity, Calling init()...
-2015-06-21 18:44:59,963 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:59,963 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:59,963 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:44:59,963 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:59,963 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:59,963 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:44:59,963 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:59,963 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:59,963 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,963 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,963 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,963 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,963 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:44:59,964 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,964 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,964 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,964 - Do unicode file recognition:  false
-2015-06-21 18:44:59,964 - Do unicode file recognition:  false
-2015-06-21 18:44:59,964 - Do unicode file recognition:  false
-2015-06-21 18:44:59,964 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:59,964 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:59,964 - FileResourceLoader : adding path '.'
-2015-06-21 18:44:59,964 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:59,964 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:59,964 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:59,965 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:44:59,967 - Created '20' parsers.
-2015-06-21 18:44:59,967 - Created '20' parsers.
-2015-06-21 18:44:59,967 - Created '20' parsers.
-2015-06-21 18:44:59,968 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:59,968 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:59,968 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:44:59,968 - Velocimacro : Default library not found.
-2015-06-21 18:44:59,968 - Velocimacro : Default library not found.
-2015-06-21 18:44:59,968 - Velocimacro : Default library not found.
-2015-06-21 18:44:59,968 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:59,968 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:59,968 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:59,968 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:44:59,968 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:59,968 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:59,968 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:44:59,995 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,995 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,995 - ResourceManager : found ./src/main/resources/templates/roster.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,997 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,997 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:44:59,997 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,055 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:45:00,055 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:45:00,055 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:45:00,055 - Log4JLogChute initialized using file 'velocity.log'
-2015-06-21 18:45:00,055 - Initializing Velocity, Calling init()...
-2015-06-21 18:45:00,055 - Initializing Velocity, Calling init()...
-2015-06-21 18:45:00,055 - Initializing Velocity, Calling init()...
-2015-06-21 18:45:00,055 - Initializing Velocity, Calling init()...
-2015-06-21 18:45:00,055 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:45:00,055 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:45:00,055 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:45:00,055 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2015-06-21 18:45:00,055 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:45:00,055 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:45:00,055 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:45:00,055 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2015-06-21 18:45:00,055 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:45:00,055 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:45:00,055 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:45:00,055 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,055 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2015-06-21 18:45:00,056 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,056 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,056 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,056 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,056 - Do unicode file recognition:  false
-2015-06-21 18:45:00,056 - Do unicode file recognition:  false
-2015-06-21 18:45:00,056 - Do unicode file recognition:  false
-2015-06-21 18:45:00,056 - Do unicode file recognition:  false
-2015-06-21 18:45:00,056 - FileResourceLoader : adding path '.'
-2015-06-21 18:45:00,056 - FileResourceLoader : adding path '.'
-2015-06-21 18:45:00,056 - FileResourceLoader : adding path '.'
-2015-06-21 18:45:00,056 - FileResourceLoader : adding path '.'
-2015-06-21 18:45:00,056 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:45:00,056 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:45:00,056 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:45:00,056 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2015-06-21 18:45:00,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:45:00,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:45:00,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:45:00,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:45:00,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2015-06-21 18:45:00,058 - Created '20' parsers.
-2015-06-21 18:45:00,058 - Created '20' parsers.
-2015-06-21 18:45:00,058 - Created '20' parsers.
-2015-06-21 18:45:00,058 - Created '20' parsers.
-2015-06-21 18:45:00,058 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:45:00,058 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:45:00,058 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:45:00,058 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2015-06-21 18:45:00,058 - Velocimacro : Default library not found.
-2015-06-21 18:45:00,058 - Velocimacro : Default library not found.
-2015-06-21 18:45:00,058 - Velocimacro : Default library not found.
-2015-06-21 18:45:00,058 - Velocimacro : Default library not found.
-2015-06-21 18:45:00,058 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:45:00,058 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:45:00,058 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:45:00,058 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:45:00,058 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2015-06-21 18:45:00,058 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:45:00,058 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:45:00,058 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:45:00,058 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
-2015-06-21 18:45:00,063 - ResourceManager : found ./src/main/resources/templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-07-18 17:40:13,507 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,507 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,507 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,507 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-07-18 17:40:13,508 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-07-18 17:40:13,509 - Created '20' parsers.
+2015-07-18 17:40:13,509 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-07-18 17:40:13,509 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-07-18 17:40:13,509 - Velocimacro : Default library not found.
+2015-07-18 17:40:13,509 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-07-18 17:40:13,509 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-07-18 17:40:13,509 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,510 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,513 - ResourceManager : found /templates/fa.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,514 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,712 - Log4JLogChute initialized using file 'velocity.log'
+2015-07-18 17:40:13,712 - Initializing Velocity, Calling init()...
+2015-07-18 17:40:13,712 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-07-18 17:40:13,712 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-07-18 17:40:13,712 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-07-18 17:40:13,712 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-07-18 17:40:13,712 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,712 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,712 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,712 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-07-18 17:40:13,713 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-07-18 17:40:13,714 - Created '20' parsers.
+2015-07-18 17:40:13,714 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-07-18 17:40:13,714 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-07-18 17:40:13,714 - Velocimacro : Default library not found.
+2015-07-18 17:40:13,714 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-07-18 17:40:13,714 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-07-18 17:40:13,715 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,715 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,735 - ResourceManager : found /templates/rondas.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,735 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,753 - Log4JLogChute initialized using file 'velocity.log'
+2015-07-18 17:40:13,754 - Initializing Velocity, Calling init()...
+2015-07-18 17:40:13,754 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-07-18 17:40:13,754 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2015-07-18 17:40:13,754 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-07-18 17:40:13,754 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-07-18 17:40:13,754 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,754 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-07-18 17:40:13,754 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,754 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-07-18 17:40:13,756 - Created '20' parsers.
+2015-07-18 17:40:13,756 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-07-18 17:40:13,756 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-07-18 17:40:13,757 - Velocimacro : Default library not found.
+2015-07-18 17:40:13,757 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,757 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,761 - ResourceManager : found /templates/derechos.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,762 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+ replace previous VM definitions
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,757 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,761 - ResourceManager : found /templates/derechos.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,762 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+elocity.runtime.directive.Evaluate
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-07-18 17:40:13,755 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-07-18 17:40:13,756 - Created '20' parsers.
+2015-07-18 17:40:13,756 - Created '20' parsers.
+2015-07-18 17:40:13,756 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-07-18 17:40:13,756 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-07-18 17:40:13,756 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-07-18 17:40:13,756 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2015-07-18 17:40:13,757 - Velocimacro : Default library not found.
+2015-07-18 17:40:13,757 - Velocimacro : Default library not found.
+2015-07-18 17:40:13,757 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-07-18 17:40:13,757 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,757 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-07-18 17:40:13,757 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,757 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-07-18 17:40:13,761 - ResourceManager : found /templates/derechos.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,761 - ResourceManager : found /templates/derechos.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,762 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2015-07-18 17:40:13,762 - ResourceManager : found /templates/cabecera.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

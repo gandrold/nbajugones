@@ -13,10 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.nbajugones.dbdao.data.DerechosDAO;
 import es.nbajugones.dbdao.data.EquipoDAO;
 import es.nbajugones.dbdao.data.JugadoresDAO;
+import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
+import es.nbajugones.dto.entities.pk.DerechoPK;
 import es.nbajugones.exception.dbdao.DaoException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,6 +33,9 @@ public class JugadoresDAOTest {
 	
 	@Autowired
 	EquipoDAO equipoDAO;
+	
+	@Autowired
+	DerechosDAO derechosDAO;
 	
 	@Test
 	public void testGetPlayer(){
@@ -45,8 +51,13 @@ public class JugadoresDAOTest {
 	}
 	
 	@Test
-	public void testGetFA(){
+	public void testGetAllFA(){
 		Assert.assertTrue(jugadoresDAO.getAllFA().size()>0);
+	}
+	
+	@Test
+	public void testGetFA(){
+		Assert.assertTrue(jugadoresDAO.getFA("Jo").size()>0);
 	}
 	
 	@Test
@@ -74,6 +85,23 @@ public class JugadoresDAOTest {
 		j = jugadoresDAO.getById(id);
 		Assert.assertTrue(j.getYears().equals("-"));
 		Assert.assertTrue(!equipoDAO.getById("CLE").checkPlayer(id));
+	}
+	
+	@Test
+	public void testActivar() throws DaoException{
+		Derecho d = new Derecho();
+		DerechoPK pk = new DerechoPK();
+		pk.setIdEquipo("BRO");
+		pk.setJugador("Perico de los palotes");
+		d.setId(pk);
+		d.setAnoEleccion(2999);
+		d.setAnos(2);
+		d.setPosicion("FC");
+		d.setSalario(0.35);
+		derechosDAO.saveOrUpdateEntity(d, null);
+		Jugadores j = derechosDAO.activarJugador("Perico de los palotes");
+		Assert.assertTrue(j!=null);
+		Assert.assertTrue(j.getIdJugador()>0);
 	}
 	
 }

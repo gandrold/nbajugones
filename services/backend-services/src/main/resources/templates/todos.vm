@@ -17,7 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
-<script type="text/javascript" src="/js/jpages.js"></script>
+<script type="text/javascript" src="/js/todos.js"></script>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 			</div>
 			<div class="separadorHorizontal"></div>
 			<div id="contenido" class="container">
-				div class="row">
+				<div class="row">
 	<div class="col-md-3 col-sd-3">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -38,7 +38,10 @@
 			</div>
 			<div class="panel-body table-responsive">
 				<table class="table">
-					
+					<tr>
+						<td>Jugador: </td>
+						<td><input id="jugador" onchange="javascript:filtrar();"/></td>
+					</tr>
 					<tr>
 						<td>Posicion:</td>
 						<td><select id="posicion" onchange="javascript:filtrar();">
@@ -75,7 +78,11 @@
 						<td><input id="jugados" style="width: 30px;"
 							onchange="javascript:filtrar();" />
 					</tr>
-
+					<tr>
+						<td>A&ntilde;os: </td>
+						<td><input id="years" style="width:30px;" 
+						onchange="javascript:filtrar();"/></td>
+					</tr>
 				</table>
 			</div>
 		</div>
@@ -115,7 +122,7 @@
 										class='posicion'>$jugador.posicion</td>
 										#set($jpg=".jpg")
 									<td><img alt="$jugador.nombre"
-										src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto.$jpg"
+										src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto$jpg"
 										style="height: 50px;" title="$jugador.nombre" /></td>
 									<td class='nombre'><a
 										href="http://basketball.sports.ws/player/$jugador.nombreFoto?league=140043"
