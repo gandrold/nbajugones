@@ -18,6 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript" src="/js/jpages.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
 </head>
 <body>
 
@@ -119,18 +120,18 @@
 				<h3 class="panel-title">Roster</h3>
 			</div>
 			<div class="panel-body table-responsive">
-				<table class="table">
+				<table id="tablaJugadores" class="sort-table table">
 					<thead>
 						<tr>
-							<td>&nbsp;</td>
-							<td>Jugador</td>
-							<td>Salario (m$)</td>
-							<td>A&ntilde;os</td>
-							<td>Puntos</td>
-							<td>FPPM</td>
-							<td>Jugados</td>
-							<td>Minutos</td>
-							<td>Observaciones</td>
+							<th>&nbsp;</th>
+							<th>Jugador</th>
+							<th>Salario (m$)</th>
+							<th>A&ntilde;os</th>
+							<th>Puntos</th>
+							<th>FPPM</th>
+							<th>Jugados</th>
+							<th>Minutos</th>
+							<th>Observaciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -249,4 +250,13 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#tablaJugadores').tablesorter();
+	$("div.holder").jPages({
+	            containerID : "historicos"
+	          });
+});
+</script>
+
 </html>

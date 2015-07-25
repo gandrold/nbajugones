@@ -17,7 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
-<script type="text/javascript" src="/js/jpages.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
 </head>
 <body>
 
@@ -40,18 +40,18 @@
 				<h3 class="panel-title">FA's</h3>
 			</div>
 			<div class="panel-body table-responsive">
-				<table class="table">
+				<table id="tablaJugadores" class="sort-table table">
 					<thead>
 						<tr>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>Jugador</td>
-							<td>Puntos</td>
-							<td>FPPM</td>
-							<td>Jugados</td>
-							<td>Minutos</td>
-							<td>Observaciones</td>
-							<td>Cortado por</td>
+							<th>&nbsp;</th>
+							<th>&nbsp;</th>
+							<th>Jugador</th>
+							<th>Puntos</th>
+							<th>FPPM</th>
+							<th>Jugados</th>
+							<th>Minutos</th>
+							<th>Observaciones</th>
+							<th>Cortado por</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -86,4 +86,7 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){$('#tablaJugadores').tablesorter();});
+</script>
 </html>

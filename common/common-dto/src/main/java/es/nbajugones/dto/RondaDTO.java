@@ -10,16 +10,30 @@ public class RondaDTO implements Comparable<RondaDTO>{
 	
 	private String equipo;
 	
+	private String equipoLogo;
+	
 	private String equipoProp;
 	
+	private String equipoPropLogo;
+	
 	private String idEquipo;
+	
+	private String jugador;
+	
+	private String posicion;
+	
+	private int orden;
 
 	public RondaDTO(RondasDraft ronda){
 		this.ano=ronda.getId().getAno();
 		this.ronda=ronda.getId().getRonda();
 		this.equipo=ronda.getEquipoRonda().getNombre();
+		this.setEquipoLogo(ronda.getEquipoRonda().getLogoDraft());
 		this.equipoProp = ronda.getEquipoPropietario().getNombre();
+		this.setEquipoPropLogo(ronda.getEquipoPropietario().getLogoDraft());
 		this.idEquipo = ronda.getId().getIdEquipo();
+		this.setJugador(ronda.getJugador());
+		this.setPosicion(ronda.getLetra());
 	}
 	public int getAno() {
 		return ano;
@@ -67,6 +81,36 @@ public class RondaDTO implements Comparable<RondaDTO>{
 	}
 	public void setEquipoProp(String equipoProp) {
 		this.equipoProp = equipoProp;
+	}
+	public int getOrden() {
+		return orden;
+	}
+	public void setOrden(int orden) {
+		this.orden = orden;
+	}
+	public String getEquipoPropLogo() {
+		return equipoPropLogo;
+	}
+	public void setEquipoPropLogo(String equipoPropLogo) {
+		this.equipoPropLogo = equipoPropLogo;
+	}
+	public String getEquipoLogo() {
+		return equipoLogo;
+	}
+	public void setEquipoLogo(String equipoLogo) {
+		this.equipoLogo = equipoLogo;
+	}
+	public String getJugador() {
+		return jugador;
+	}
+	public void setJugador(String jugador) {
+		this.jugador = jugador;
+	}
+	public String getPosicion() {
+		return posicion;
+	}
+	public void setPosicion(String posicion) {
+		this.posicion = posicion;
 	}
 	
 	

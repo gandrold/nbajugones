@@ -26,4 +26,12 @@ public class RondasDraftDAO extends GenericDAOImpl<RondasDraft> {
 		return rondas;
 	}
 	
+	public List<RondasDraft> getYear(int y, int round) throws DaoException{
+		SearchCriteria criteria = new SearchCriteria();
+		criteria.addFilter("id.ano", y, FilterType.EQUALS);
+		criteria.addFilter("id.ronda", round, FilterType.EQUALS);
+		List<RondasDraft> rondas = getByCriteria(criteria);		
+		return rondas;
+	}
+	
 }

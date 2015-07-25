@@ -18,4 +18,5 @@
 	<bean id="jugadorService" class="es.nbajugones.services.JugadorService" />
 	<bean id="exporterService" class="es.nbajugones.services.ExporterService" />
 	<bean id="tradeService" class="es.nbajugones.services.TradeService" />
+	<bean id="draftService" class="es.nbajugones.services.DraftService" />
 </beans> 

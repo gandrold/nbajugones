@@ -6,7 +6,7 @@
 				<h3 class="panel-title">Filtros</h3>
 			</div>
 			<div class="panel-body table-responsive">
-				<table class="table">
+				<table class="table ">
 					
 					<tr>
 						<td>Posicion:</td>
@@ -58,21 +58,21 @@
 					<h3 class="panel-title">Jugadores</h3>
 				</div>
 				<div class="panel-body table-responsive">
-					<table id="tablaJugadores" class="sort-table table">
+					<table id="tablaOrden" class="sort-table table">
 						<thead>
 							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>Jugador</td>
-								<td>Salario</td>
-								<td>A&ntilde;os</td>
-								<td>Puntos</td>
-								<td>FPPM</td>
-								<td>Jugados</td>
-								<td>Minutos</td>
-								<td>Pertenece a</td>
-								<td>Observaciones</td>
-								<td>Cortado por</td>
+								<th>&nbsp;</th>
+								<th>&nbsp;</th>
+								<th>Jugador</th>
+								<th>Salario</th>
+								<th>A&ntilde;os</th>
+								<th>Puntos</th>
+								<th>FPPM</th>
+								<th>Jugados</th>
+								<th>Minutos</th>
+								<th>Pertenece a</th>
+								<th>Observaciones</th>
+								<th>Cortado por</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -109,5 +109,5 @@
 	</div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){$('#tablaJugadores').tablesorter();});
+$(document).ready(function(){$('#tablaOrden').tablesorter();});
 </script>

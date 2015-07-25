@@ -65,5 +65,5 @@
 	<bean id="logDAO" class="es.nbajugones.dbdao.data.LogDAO" />
 	<bean id="derechosDAO" class="es.nbajugones.dbdao.data.DerechosDAO" />
 	<bean id="rondasDraftDAO" class="es.nbajugones.dbdao.data.RondasDraftDAO" />
-	
+	<bean id="ordenDraftDAO" class="es.nbajugones.dbdao.data.OrdenDraftDAO" />
 </beans> 
