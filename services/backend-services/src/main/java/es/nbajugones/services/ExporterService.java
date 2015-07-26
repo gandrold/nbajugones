@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +32,16 @@ import es.nbajugones.exception.service.ServiceException;
 
 public class ExporterService {
 
+	public static final int LAST_DRAFT = 2015;
+	
 	@Autowired
 	EquipoService equipoService;
 
 	@Autowired
 	JugadorService jugadorService;
+	
+	@Autowired
+    DraftService draftService;
 
 	FTPClient ftp;
 
@@ -58,6 +64,7 @@ public class ExporterService {
 		values.put( "fa", jugadorService.getAllFA());
 		String html = generateTemplate("fa", values);
 		return html;
+		
 	}
 	
 	public String generateAllList() throws ServiceException {		
@@ -81,15 +88,27 @@ public class ExporterService {
 		return html;
 	}
 	
+	public String generateDraft(int y) throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("primeraRonda", draftService.getDraft(y,1));
+		values.put("segundaRonda", draftService.getDraft(y,2));
+		values.put("ano", y);
+		String html = generateTemplate("draft", values);
+		return html;
+	}
+	
 	public void export(List<String> teams) throws ServiceException{
 		Map<String, String> equipos = generateTeamHTML(teams);
 		for (String id:equipos.keySet()){
 			sendContentToFTP(equipos.get(id), id);
-		}
+		}		
 		sendContentToFTP(generateFAList(), "free_agents");
 		sendContentToFTP(generateAllList(), "todos");
 		sendContentToFTP(generateDerechos(), "derechos");
 		sendContentToFTP(generateRondas(), "rondas");
+		for (int i = LAST_DRAFT ; i >= 2005;i--){
+			sendContentToFTP(generateDraft(i), "draft"+i);
+		}
 	}
 
 	public void sendContentToFTP(String content, String fileName)
@@ -133,15 +152,22 @@ public class ExporterService {
 		 properties.setProperty(RuntimeConstants.EVENTHANDLER_INCLUDE, IncludeRelativePath.class.getName());
 		 properties.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath"); 
 		 properties.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		 properties.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+					"org.apache.velocity.runtime.log.NullLogSystem");
 		VelocityEngine ve = new VelocityEngine();
 		ve.init(properties);
 		VelocityContext context = new VelocityContext();
 		for (String var:values.keySet()){
 			context.put(var, values.get(var));
 		}
+		List<Integer> years = new ArrayList<Integer>();
+        for (int i = LAST_DRAFT ; i >= 2005;i--){
+        	years.add(i);
+        }
 		context.put("combo", equipoService.getEquipos());
 		context.put("numberTool", new NumberTool());
 		context.put("dateTool", new DateTool());
+		context.put("years", years);
 		Template t = ve.getTemplate("/templates/"+ template + ".vm");
 		StringWriter writer = new StringWriter();
 		t.merge(context, writer);

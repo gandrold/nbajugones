@@ -62,6 +62,12 @@ public class ExporterServiceTest {
 	}
 	
 	@Test
+	public void testDraft() throws ServiceException{
+		String export = exporterService.generateDraft(2015);
+		Assert.assertTrue(!export.isEmpty());
+	}
+	
+	@Test
 	public void testTeamUploadFTP() throws ServiceException{
 		String testTeam = "BRO";
 		List<String> teams = new ArrayList<String>();

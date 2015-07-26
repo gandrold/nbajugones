@@ -75,7 +75,7 @@
 										<li><a href="<c:url value="/import.action"/>">Stats</a></li>
 										<li><a href="<c:url value="/jugadores/derechos.action"/>">Derechos</a></li>
 										<li><a href="<c:url value="/rondas.action"/>">Rondas</a></li>
-										<li><a href="rondas.jsp">Renovaciones</a></li>
+										<li><a href="<c:url value="/renovacion.action"/>">Renovaciones</a></li>
 										<li><a href="<c:url value="/draft.action"/>">Drafts</a></li>
 										<li><a href="copa.jsp">Copa</a></li>
 							</ul>

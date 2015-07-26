@@ -19,23 +19,35 @@ public class Renovacione implements Serializable {
 	private RenovacionePK id;
 
 	@Column(name="AÑOS")
-	private int years;
+	private Integer years;
 
 	@Column(name="ID_EQUIPO_GANADOR")
 	private String idEquipoGanador;
 
 	@Column(name="ID_EQUIPO_PROP")
 	private String idEquipoProp;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ID_JUGADOR",insertable=false, updatable=false)
+	private Jugadores jugador;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ID_EQUIPO_GANADOR",insertable=false, updatable=false)
+	private Equipo equipoGanador;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ID_EQUIPO_PROP",insertable=false, updatable=false)
+	private Equipo equipoPropietario;
 
 	private String posicion;
 
-	private double promedio;
+	private Double promedio;
 
-	private double puntos;
+	private Double puntos;
 
 	private String renueva;
 
-	private double salario;
+	private Double salario;
 
 	private int tanda;
 
@@ -75,19 +87,19 @@ public class Renovacione implements Serializable {
 		this.posicion = posicion;
 	}
 
-	public double getPromedio() {
+	public Double getPromedio() {
 		return this.promedio;
 	}
 
-	public void setPromedio(double promedio) {
+	public void setPromedio(Double promedio) {
 		this.promedio = promedio;
 	}
 
-	public double getPuntos() {
+	public Double getPuntos() {
 		return this.puntos;
 	}
 
-	public void setPuntos(double puntos) {
+	public void setPuntos(Double puntos) {
 		this.puntos = puntos;
 	}
 
@@ -99,11 +111,11 @@ public class Renovacione implements Serializable {
 		this.renueva = renueva;
 	}
 
-	public double getSalario() {
+	public Double getSalario() {
 		return this.salario;
 	}
 
-	public void setSalario(double salario) {
+	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
 
@@ -115,12 +127,38 @@ public class Renovacione implements Serializable {
 		this.tanda = tanda;
 	}
 
-	public int getYears() {
+	public Integer getYears() {
 		return years;
 	}
 
-	public void setYears(int years) {
+	public void setYears(Integer years) {
 		this.years = years;
 	}
 
+	public Jugadores getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(Jugadores jugador) {
+		this.jugador = jugador;
+	}
+
+	public Equipo getEquipoGanador() {
+		return equipoGanador;
+	}
+
+	public void setEquipoGanador(Equipo equipoGanador) {
+		this.equipoGanador = equipoGanador;
+	}
+
+	public Equipo getEquipoPropietario() {
+		return equipoPropietario;
+	}
+
+	public void setEquipoPropietario(Equipo equipoPropietario) {
+		this.equipoPropietario = equipoPropietario;
+	}
+
+	
+	
 }

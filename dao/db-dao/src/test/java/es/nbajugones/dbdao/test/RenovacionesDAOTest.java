@@ -36,6 +36,10 @@ public class RenovacionesDAOTest {
 	@Autowired
 	RenovacionesDAO renovacionesDAO;
 	
+	@Test
+	public void testGet() throws DaoException{
+		Assert.assertTrue(!renovacionesDAO.get(2015, 1).isEmpty());
+	}
 	
 	@Test
 	public void testRenovar() throws DaoException{
@@ -52,7 +56,7 @@ public class RenovacionesDAOTest {
 		Assert.assertTrue(renovacionesDAO.getById(pk).getIdEquipoProp().equals("BRO"));
 		renovacionesDAO.renovacionTemp("ATL", 2, 3, id, Calendar.getInstance().get(Calendar.YEAR));
 		Assert.assertTrue(renovacionesDAO.getById(pk).getIdEquipoGanador().equals("ATL"));
-		renovacionesDAO.renovar(id, "ATL", 2, "3");
+		renovacionesDAO.renovar(id, "ATL", 2, 3);
 		Assert.assertTrue(renovacionesDAO.getById(pk).getRenueva().equals("FICHADO"));
 		Assert.assertTrue(!equipoDAO.getById("BRO").checkPlayer(id));
 		Assert.assertTrue(equipoDAO.getById("ATL").checkPlayer(id));
@@ -73,7 +77,7 @@ public class RenovacionesDAOTest {
 		Assert.assertTrue(renovacionesDAO.getById(pk).getIdEquipoProp().equals("BRO"));
 		renovacionesDAO.renovacionTemp("ATL", 2, 3, id, Calendar.getInstance().get(Calendar.YEAR));
 		Assert.assertTrue(renovacionesDAO.getById(pk).getIdEquipoGanador().equals("ATL"));
-		renovacionesDAO.renovar(id, "BRO", 2, "3");
+		renovacionesDAO.renovar(id, "BRO", 2, 3);
 		Assert.assertTrue(renovacionesDAO.getById(pk).getRenueva().equals("RENOVADO"));
 		Assert.assertTrue(equipoDAO.getById("BRO").checkPlayer(id));
 		Assert.assertTrue(!equipoDAO.getById("ATL").checkPlayer(id));

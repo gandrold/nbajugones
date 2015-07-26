@@ -1,0 +1,125 @@
+
+<html>
+<head>
+<title>NBA Jugones - Draft $ano</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-15">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="/css/estilosBootstrap.css"	type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/jpages.js"></script>
+</head>
+<body>
+
+	<div class="cuerpo">
+		<div class="cabecera">
+			<div class="equipos">
+				#parse("cabecera.vm")
+
+				<!-- /header -->
+			</div>
+			<div class="separadorHorizontal"></div>
+			<div id="contenido" class="container">
+				<div class="row">
+	<div class="col-md-12 col-sd-12 center">
+	<h1>Draft $ano</h1>
+	</div>
+</div>
+<div class="row">
+	
+	<div class="col-md-6 col-sd-6 center">
+
+
+		<div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Primera ronda</h3>
+				</div>
+				<div class="panel-body table-responsive">					
+					<table class="table">
+						<thead>
+							<tr>
+								<td>Pick</td>
+								<td>Equipo</td>
+								<td>Pertenece a</td>
+								<td>Eleccion</td>
+							</tr>
+						</thead>
+						<tbody>
+							#foreach ($ronda in $primeraRonda)
+								<tr>
+									<td>$ronda.orden</td>
+									<td><img alt="$ronda.equipo"
+										src="$ronda.equipoLogo" title="$ronda.equipo" /></td>
+									<td><img alt="$ronda.equipoProp"
+										src="$ronda.equipoPropLogo" title="$ronda.equipoProp" /></td>
+									<td>$ronda.jugador #if($ronda.posicion)($ronda.posicion)#end</td>									
+								</tr>
+							#end
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-6 col-sd-6 center">
+
+
+		<div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Segunda ronda</h3>
+				</div>
+				<div class="panel-body table-responsive">					
+					<table class="table">
+						<thead>
+							<tr>
+								<td>Pick</td>
+								<td>Equipo</td>
+								<td>Pertenece a</td>
+								<td>Eleccion</td>
+							</tr>
+						</thead>
+						<tbody>
+
+							#foreach ($ronda in $segundaRonda)
+								<tr>
+									<td>$ronda.orden</td>
+									<td><img alt="$ronda.equipo"
+										src="$ronda.equipoLogo" title="$ronda.equipo" /></td>
+									<td><img alt="$ronda.equipoProp"
+										src="$ronda.equipoPropLogo" title="$ronda.equipoProp" /></td>
+									<td>$ronda.jugador #if($ronda.posicion)($ronda.posicion)#end</td>									
+								</tr>
+							#end
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+$(document).ready(function(){$('#tablaJugadores').tablesorter();});
+</script>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

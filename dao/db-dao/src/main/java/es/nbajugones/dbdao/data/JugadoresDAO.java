@@ -38,7 +38,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 	@SuppressWarnings("unchecked")
 	public List<Jugadores> getTop5FA(String pos){
 		String sqlQuery="SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
-        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM JUGADORES j WHERE activo=1 "
+        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM jugadores j WHERE activo=1 "
                 + " and posicion like :position"
                 + " and id_jugador not in (select id_jugador from plantillas)"
                 + "order by Puntos DESC, jugados desc LIMIT 5";
@@ -51,7 +51,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 	@SuppressWarnings("unchecked")
 	public List<Jugadores> getAllFA(){
         String sqlQuery="SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
-        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM JUGADORES j WHERE activo=1 "
+        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM jugadores j WHERE activo=1 "
                 + " and id_jugador not in (select id_jugador from plantillas) order by Puntos DESC, jugados desc";
         SQLQuery query = getSQLQuery(sqlQuery);
         query.setResultTransformer(Transformers.aliasToBean(Jugadores.class));
@@ -61,7 +61,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 	@SuppressWarnings("unchecked")
 	public List<Jugadores> getFA(String name){
         String sqlQuery="SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
-        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM JUGADORES j WHERE "
+        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos FROM jugadores j WHERE "
                 + " id_jugador not in (select id_jugador from plantillas) "
                 + "and lower(j.jugador) like :nombre order by Puntos DESC, jugados desc";
         SQLQuery query = getSQLQuery(sqlQuery);
@@ -73,7 +73,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 	@SuppressWarnings("unchecked")
 	public List<Jugadores> getAll(){
         String sqlQuery="SELECT j.id_jugador as idJugador, j.AÑOS as years, j.CORTADO_POR as cortadoPor, j.jugador, "
-        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos,j.salario, j.promedio, e.nombre as equipo FROM JUGADORES j"
+        		+ "j.jugados,j.minutos,j.obs,j.posicion,j.puntos,j.salario, j.promedio, e.nombre as equipo FROM jugadores j"
                 + " left join (select p.id_jugador, e1.nombre from plantillas p inner join equipos e1 on p.id_equipo=e1.id_equipo) e "
                 + "on j.id_jugador=e.id_jugador WHERE activo=1 order by Puntos DESC, jugados desc";
         SQLQuery query = getSQLQuery(sqlQuery);

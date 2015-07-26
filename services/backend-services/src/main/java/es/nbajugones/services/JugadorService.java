@@ -106,31 +106,8 @@ public class JugadorService {
 		}
 	}
 
-	@Transactional
-	public void renovar(int player, String origen, String destino,
-			double salario, String anos) throws ServiceException {
-		try {
-			renovacionesDAO.renovar(player, destino, salario, anos);
-			if (origen.equals(destino)) {
-				logDAO.renovar(player, destino, salario, anos);
-			} else {
-				logDAO.noRenovar2(player, origen);
-				logDAO.ficharRenovaciones(player, destino, salario, anos);
-			}
-		} catch (DaoException e) {
-			throw new ServiceException(e.getFullMessage());
-		}
-	}
+	
 
-	@Transactional
-	public void noRenovar(int player, String origen) throws ServiceException {
-		try {
-			renovacionesDAO.noRenovar(player, origen);
-			logDAO.noRenovar(player, origen);
-		} catch (DaoException e) {
-			throw new ServiceException(e.getFullMessage());
-		}
-	}
 
 	@Transactional
 	public List<JugadorDTO> getAll() {
