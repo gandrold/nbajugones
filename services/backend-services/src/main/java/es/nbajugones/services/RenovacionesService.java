@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import es.nbajugones.dbdao.data.LogDAO;
 import es.nbajugones.dbdao.data.RenovacionesDAO;
 import es.nbajugones.dto.RenovacionDTO;
 import es.nbajugones.dto.entities.Renovacione;
@@ -19,6 +20,9 @@ public class RenovacionesService {
 
 	@Autowired
 	RenovacionesDAO renovacionesDAO;
+	
+	@Autowired
+	LogDAO logDAO;
 
 	@Transactional
 	public List<RenovacionDTO> get(int y, int tanda) throws ServiceException {
@@ -61,9 +65,20 @@ public class RenovacionesService {
 		}
 	}
 	@Transactional
-	public void renovar(int player, String destino, double salario, int anos) throws ServiceException {
+	public void renovar(int player, String origen, String destino, double salario, int anos) throws ServiceException {
 		try {
+			
+			if (origen.equals(destino)){				
+				if (salario < 2){
+					salario =2;
+				}
+				logDAO.renovar(player, destino, salario, ""+anos);
+			} else {
+				logDAO.noRenovar2(player, origen);
+				logDAO.ficharRenovaciones(player, destino, salario, ""+anos);
+			}
 			renovacionesDAO.renovar(player, destino, salario, anos);
+			
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -72,6 +87,7 @@ public class RenovacionesService {
 	public void noRenovar(int player, String origen) throws ServiceException {
 		try {
 			renovacionesDAO.noRenovar(player, origen);
+			logDAO.noRenovar(player, origen);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

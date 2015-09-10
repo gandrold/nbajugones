@@ -64,7 +64,7 @@ public class TradeService {
 				}
 			}
 			if (derechos2 != null) {
-				for (String d : derechos1) {
+				for (String d : derechos2) {
 					derechosDAO.trade(equipo2, equipo1, d);
 				}
 			}

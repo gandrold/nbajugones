@@ -86,7 +86,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DATE, 5);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
-        String obs = String.format("No movible antes del %s (Si se traspasa, se ha de mantener un mes en destino)", sdf.format(c.getTime()));
+        String obs = String.format("No movible antes del %s (Si se traspasa, se ha de mantener 15 dias en destino)", sdf.format(c.getTime()));
         Jugadores j = getById(jugador);
         j.setSalario(s);
         j.setYears(anos);
@@ -124,7 +124,15 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
         pk.setIdJugador(player);
         p.setId(pk);
         plantillaDAO.saveOrUpdateEntity(p, pk);
-        
+        Jugadores j = getById(player);
+        if (j.getObs().equals("Si se traspasa, se ha de mantener 15 dias en destino")){
+        	Calendar c = Calendar.getInstance();
+        	c.add(Calendar.DATE, 15);
+        	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
+        	String obs = String.format("No movible antes del %s", sdf.format(c.getTime()));
+        	j.setObs(obs);
+        	saveOrUpdateEntity(j, player);
+        }
         
     }
 

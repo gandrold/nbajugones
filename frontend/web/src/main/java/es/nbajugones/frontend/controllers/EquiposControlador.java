@@ -45,6 +45,7 @@ public class EquiposControlador {
     @RequestMapping("/index.action")
     public void init(Model model) throws ServiceException{
         model.addAttribute("equipos", equipoService.getEquipos());
+        model.addAttribute("evaluacion", equipoService.evaluar());
     }
 
     @RequestMapping("/trade.action")

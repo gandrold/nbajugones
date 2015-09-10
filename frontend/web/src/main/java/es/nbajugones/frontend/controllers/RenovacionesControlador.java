@@ -82,10 +82,10 @@ public class RenovacionesControlador {
 				renovacionesService.noRenovar(jugador, idEquipoProp);
 			}
 			if("RENUEVA".equals(renueva)) {
-				renovacionesService.renovar(jugador, idEquipoProp, salario, years);
+				renovacionesService.renovar(jugador, idEquipoProp, idEquipoProp, salario, years);
 			}
 			if("FICHADO".equals(renueva)) {
-				renovacionesService.renovar(jugador, idEquipoGanador, salario, years);				
+				renovacionesService.renovar(jugador, idEquipoProp, idEquipoGanador, salario, years);				
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");
