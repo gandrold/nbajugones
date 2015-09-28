@@ -67,10 +67,12 @@ public class EvaluacionDTO {
     }
 
     public double getSalarios() {
-    	if (salarios==0){
-    		salarios=conContrato-(lesionados!=null?lesionados:0)+(cortes!=null?cortes:0);
-    	}
         return Math.round((salarios) * 100.0) / 100.0;
+    }
+    
+    public double getSalaryCap(){
+    	double cap=salarios-(lesionados!=null?lesionados:0)+(cortes!=null?cortes:0);
+        return Math.round((cap) * 100.0) / 100.0;
     }
 
     public void setSalarios(double salarios) {
@@ -133,8 +135,12 @@ public class EvaluacionDTO {
 		this.conContrato = conContrato;
 	}
 
+	public double getDisponible(){
+		return Math.round((getLimite() - getSalaryCap()) * 100.0) / 100.0;
+	}
+	
 	public boolean getWarning(){
-		if (getLimite() < getSalarios()){
+		if (getDisponible()<0){
 			return true;
 		}
 		if (14 < (jugadores-fa) ){

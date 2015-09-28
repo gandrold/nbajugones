@@ -146,7 +146,7 @@
 									src="http://cdn.basketball.sports.ws/players/${jugador.nombreFoto}.jpg"
 									style="height: 50px;" title="${jugador.nombre}" /></td>
 								<td><a
-									href="http://basketball.sports.ws/player/${jugador.nombreFoto}?league=140043"
+									href="http://basketball.sports.ws/player/${jugador.nombreFoto}?league=160091"
 									target="blank">${jugador.nombre} </a></td>
 								<td><c:if test="${jugador.obs eq 'FA'}">-</c:if> <c:if
 										test="${jugador.obs ne 'FA'}">${jugador.salario}m$</c:if></td>

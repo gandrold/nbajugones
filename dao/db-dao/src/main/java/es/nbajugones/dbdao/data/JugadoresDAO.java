@@ -125,7 +125,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
         p.setId(pk);
         plantillaDAO.saveOrUpdateEntity(p, pk);
         Jugadores j = getById(player);
-        if (j.getObs().equals("Si se traspasa, se ha de mantener 15 dias en destino")){
+        if ("Si se traspasa, se ha de mantener 15 dias en destino".equals(j.getObs())){
         	Calendar c = Calendar.getInstance();
         	c.add(Calendar.DATE, 15);
         	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");

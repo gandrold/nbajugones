@@ -7,8 +7,7 @@
 			<thead>
 				<tr>
 					<td>Equipo</td>
-					<td>Salarios</td>
-					<td>Limite</td>
+					<td>Cap disponible</td>
 					<td>Jugadores</td>
 					<td>FA</td>
 				</tr>
@@ -16,14 +15,14 @@
 			<tbody>
 
 				<c:forEach var="eval" items="${evaluacion}">
-					<tr <c:if test="${eval.warning}">class="alert alert-danger"</c:if>>
-						<td><img src="${eval.logo}" alt="Logo" /></td>
-						<td>${eval.salarios}</td>
-						<td>${eval.limite}</td>
-						<td>${eval.jugadores}</td>
-						<td>${eval.fa}</td>
-					</tr>
-
+					<c:if test="${eval.warning}">
+						<tr class="alert alert-danger">
+							<td><img src="${eval.logo}" alt="Logo" /></td>
+							<td>${eval.disponible}</td>
+							<td>${eval.jugadores}</td>
+							<td>${eval.fa}</td>
+						</tr>
+					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>
