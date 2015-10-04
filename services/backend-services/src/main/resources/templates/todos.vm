@@ -103,7 +103,7 @@
 								<th>&nbsp;</th>
 								<th>&nbsp;</th>
 								<th>Jugador</th>
-								<th>Salario</th>
+								<th>Salario (m$)</th>
 								<th>A&ntilde;os</th>
 								<th>Puntos</th>
 								<th>FPPM</th>
@@ -130,7 +130,7 @@
 										target="blank">$jugador.nombre </a></td>
 									<td class='salario'>#if($jugador.obs eq 'FA')-
 										#else
-										$jugador.salario m$
+										$jugador.salario
 										#end</td>
 									<td class='years'>$jugador.years</td>
 									<td>#if($jugador.puntos)$jugador.puntos#end</td>

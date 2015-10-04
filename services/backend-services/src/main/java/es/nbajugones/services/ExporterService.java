@@ -95,6 +95,13 @@ public class ExporterService {
 		String html = generateTemplate("draft", values);
 		return html;
 	}
+	
+	public String generateIndex() throws ServiceException{
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("evaluacion", equipoService.evaluar());
+		String html = generateTemplate("index", values);
+		return html;
+	}
 
 	public void export(List<String> teams) throws ServiceException {
 		Map<String, String> equipos = generateTeamHTML(teams);
@@ -102,6 +109,7 @@ public class ExporterService {
 		equipos.put("todos", generateAllList());
 		equipos.put("derechos", generateDerechos());
 		equipos.put("rondas", generateRondas());
+		equipos.put("index", generateIndex());
 		sendMapToFTP(equipos);
 	}
 

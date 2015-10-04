@@ -1,6 +1,7 @@
 package es.nbajugones.services.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,13 +70,10 @@ public class ExporterServiceTest {
 	
 	@Test
 	public void testTeamUploadFTP() throws ServiceException{
-		String testTeam = "BRO";
-		List<String> teams = new ArrayList<String>();
-		teams.add(testTeam);
-		Map<String, String> export = exporterService.generateTeamHTML(teams);
-		Assert.assertTrue(!export.isEmpty());
-		String fileContent = export.get(testTeam);
-		exporterService.sendContentToFTP(fileContent, "testBoots");
+		
+		Map<String, String> export = new HashMap<String, String>();
+		export.put("testBoots", exporterService.generateIndex());
+		exporterService.sendMapToFTP(export);
 	}
 	
 }

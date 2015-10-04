@@ -12,6 +12,7 @@ package es.nbajugones.dto;
 public class EvaluacionDTO {
 
     private String equipo;
+    private String nombre;
     private String logo;
     private Double conContrato;
     private Double sanciones;
@@ -139,6 +140,10 @@ public class EvaluacionDTO {
 		return Math.round((getLimite() - getSalaryCap()) * 100.0) / 100.0;
 	}
 	
+	public int getTotalJugadores(){
+		return jugadores-fa;
+	}
+	
 	public boolean getWarning(){
 		if (getDisponible()<0){
 			return true;
@@ -147,6 +152,14 @@ public class EvaluacionDTO {
 			return true;
 		}
 		return false;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
     
 }

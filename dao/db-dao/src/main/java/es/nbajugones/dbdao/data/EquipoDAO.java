@@ -61,7 +61,7 @@ public class EquipoDAO extends GenericDAOImpl<Equipo> {
 	
 	@SuppressWarnings("unchecked")
 	public List<EvaluacionDTO> evaluar() throws DaoException{
-		String sqlQuery="select e.id_equipo as equipo, e.logo_draft as logo, (select sum(j.salario) from jugadores j inner join plantillas p on "
+		String sqlQuery="select e.id_equipo as equipo, e.nombre as nombre, e.logo_draft as logo, (select sum(j.salario) from jugadores j inner join plantillas p on "
                 + "j.id_jugador=p.id_jugador where p.id_equipo=e.id_equipo and (j.obs<>'FA' or j.obs is null)) as salarios,e.sanciones,e.bonus_ant as bonusAnt, "
                 + "e.bonus_act as bonusAct,e.lesionados,e.cortes from equipos e";
 		SQLQuery query = getSQLQuery(sqlQuery);
