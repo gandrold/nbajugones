@@ -163,8 +163,7 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 	}
 
 	public String getNombreFoto() {
-		return nombre.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "_")
-				.replaceAll("-", "_");
+		return nombre.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "");
 	}
 
 	public int compareTo(JugadorDTO o) {

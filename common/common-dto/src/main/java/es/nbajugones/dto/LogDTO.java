@@ -68,6 +68,7 @@ public class LogDTO implements Comparable<LogDTO> {
 	private void parseLog(String format, String[] tokens) {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		try {
+			sdf = new SimpleDateFormat(format, new Locale("es", "ES"));
 			fecha = sdf.parse(tokens[0]);
 			texto = tokens[1];
 		} catch (ParseException e) {
