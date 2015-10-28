@@ -20,7 +20,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 	private static final String NO_RENUEVA = "%s - %s no renueva a %s";
 	private static final String NO_RENUEVA_FA = "%s - %s no renueva a %s y pasa a ser FA";
 	private static final String FICHA_RENOVACIONES = "%s - %s ficha en renovaciones a %s por %s en %s años ";
-	private static final String ACTIVA = "%s - %s activa a %s (%,.2f-%s) ";
+	private static final String ACTIVA = "%s - %s activa a %s (%s) por %,.2f-%s";
 	private static final String TRADE = "%s - %s traspasa a %s a %s cambio de %s ";
 
 	private SimpleDateFormat sdf = new SimpleDateFormat(LogDTO.DATE_FORMATS[0]);
@@ -59,7 +59,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 		Jugadores j = jugadoresDAO.getById(jugador);
 		String mensaje = String.format(ACTIVA, sdf.format(Calendar
 				.getInstance().getTime()), equipoDAO.getById(equipo)
-				.getNombre(), j.getJugador(), j.getSalario().doubleValue(), j
+				.getNombre(), j.getJugador(), j.getPosicion(), j.getSalario().doubleValue(), j
 				.getYears());
 		Log log = new Log();
 		log.setIdEquipo(equipo);

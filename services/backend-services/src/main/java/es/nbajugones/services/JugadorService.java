@@ -177,6 +177,7 @@ public class JugadorService {
 						j.setMinutos(Double.parseDouble(st.nextToken()));
 						j.setPuntos(Double.parseDouble(st.nextToken()));
 						j.setPromedio(Double.parseDouble(st.nextToken()));
+						j.setJugados(jugados);
 						j.setActivo(1);
 						jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
 					} else {

@@ -43,12 +43,7 @@ public class JugadoresDAOTest {
 		Assert.assertTrue(jugador.getJugador().equals("Austin Rivers"));
 	}
 	
-	@Test
-	public void testGetTop5FA(){
-		Assert.assertTrue(jugadoresDAO.getTop5FA("G").size()>0);
-		Assert.assertTrue(jugadoresDAO.getTop5FA("F").size()>0);
-		Assert.assertTrue(jugadoresDAO.getTop5FA("C").size()>0);
-	}
+	
 	
 	@Test
 	public void testGetAllFA(){

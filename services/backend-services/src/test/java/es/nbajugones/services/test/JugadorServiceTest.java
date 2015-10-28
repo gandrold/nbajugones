@@ -23,12 +23,7 @@ public class JugadorServiceTest {
 	@Autowired
 	JugadorService jugadorService;
 	
-	@Test
-	public void testGetTop5FA(){
-		Assert.assertTrue(jugadorService.getTop5FA("G").size()>0);
-		Assert.assertTrue(jugadorService.getTop5FA("F").size()>0);
-		Assert.assertTrue(jugadorService.getTop5FA("C").size()>0);
-	}
+
 	
 	@Test
 	public void testGetFA(){
