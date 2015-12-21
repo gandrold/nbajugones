@@ -6,6 +6,7 @@
 package es.nbajugones.frontend.controllers;
 
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.CopaDTO;
 import es.nbajugones.exception.service.ServiceException;
 import es.nbajugones.services.EquipoService;
 import es.nbajugones.services.JugadorService;
@@ -63,6 +64,18 @@ public class EquiposControlador {
     public void evaluar(Model model) throws ServiceException{
         model.addAttribute("equipos", equipoService.getEquipos());
         model.addAttribute("evaluacion", equipoService.evaluar());
+    }
+	
+	@RequestMapping("/copa.action")
+    public void evaluar(Model model, @RequestParam(value = "y", required = false) String temp) throws ServiceException{
+		String temporada = temp == null?"2015-16":temp;
+		List<CopaDTO> ronda1 = equipoService.getRondaCopa(temporada, 1);
+        model.addAttribute("ronda1", ronda1);
+		model.addAttribute("ronda2", equipoService.getRondaCopa(temporada, 2));
+		model.addAttribute("cuartos", equipoService.getRondaCopa(temporada, 3));
+		model.addAttribute("semi", equipoService.getRondaCopa(temporada, 4));
+		model.addAttribute("rondaFinal", equipoService.getRondaCopa(temporada, 5));
+		model.addAttribute("temporada", temporada);
     }
 
     @RequestMapping("/equipos/roster.do")

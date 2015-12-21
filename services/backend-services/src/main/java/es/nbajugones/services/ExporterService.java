@@ -144,17 +144,17 @@ public class ExporterService {
 				for (String fileName : files.keySet()) {
 					String content = files.get(fileName);
 					System.out.println("Uploading " + fileName);
-					File f = File.createTempFile(fileName, ".html");
+					File f = new File("C:\\temp\\roster\\"+fileName+".html");
 					Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), "ISO-8859-1"));
 					try {
 						out.write(content);
 					} finally {
 						out.close();
 					}
-					InputStream in = new FileInputStream(f);
-					ftp.setFileType(FTP.BINARY_FILE_TYPE);
-					ftp.storeFile(fileName + ".html", in);
-					in.close();
+					//InputStream in = new FileInputStream(f);
+					//ftp.setFileType(FTP.BINARY_FILE_TYPE);
+					//ftp.storeFile(fileName + ".html", in);
+					//in.close();
 				}
 				ftp.logout();
 				ftp.disconnect();

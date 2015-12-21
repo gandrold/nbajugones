@@ -23,14 +23,11 @@ public class Copa implements Serializable {
 	@Column(name="id_equipo_fuera")
 	private String idEquipoFuera;
 
-	@Column(name="partido_padre")
-	private int partidoPadre;
-
 	@Column(name="puntos_casa")
-	private double puntosCasa;
+	private Double puntosCasa;
 
 	@Column(name="puntos_fuera")
-	private double puntosFuera;
+	private Double puntosFuera;
 
 	private String url;
 
@@ -61,27 +58,19 @@ public class Copa implements Serializable {
 		this.idEquipoFuera = idEquipoFuera;
 	}
 
-	public int getPartidoPadre() {
-		return this.partidoPadre;
-	}
-
-	public void setPartidoPadre(int partidoPadre) {
-		this.partidoPadre = partidoPadre;
-	}
-
-	public double getPuntosCasa() {
+	public Double getPuntosCasa() {
 		return this.puntosCasa;
 	}
 
-	public void setPuntosCasa(double puntosCasa) {
+	public void setPuntosCasa(Double puntosCasa) {
 		this.puntosCasa = puntosCasa;
 	}
 
-	public double getPuntosFuera() {
+	public Double getPuntosFuera() {
 		return this.puntosFuera;
 	}
 
-	public void setPuntosFuera(double puntosFuera) {
+	public void setPuntosFuera(Double puntosFuera) {
 		this.puntosFuera = puntosFuera;
 	}
 

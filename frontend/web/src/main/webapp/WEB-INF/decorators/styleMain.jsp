@@ -77,7 +77,7 @@
 										<li><a href="<c:url value="/rondas.action"/>">Rondas</a></li>
 										<li><a href="<c:url value="/renovacion.action"/>">Renovaciones</a></li>
 										<li><a href="<c:url value="/draft.action"/>">Drafts</a></li>
-										<li><a href="copa.jsp">Copa</a></li>
+										<li><a href="<c:url value="/copa.action"/>">Copa</a></li>
 							</ul>
 
 						</div>

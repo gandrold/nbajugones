@@ -126,3 +126,50 @@
 .deg324 { transform: rotate(324deg) translate(22em) rotate(-324deg); }
 .deg336 { transform: rotate(336deg) translate(23em) rotate(-336deg); }
 .deg348 { transform: rotate(348deg) translate(24em) rotate(-348deg); }
+
+main{
+  display:flex;
+  flex-direction:row;
+}
+.round{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  list-style:none;
+  padding:0;
+}
+  .round .spacer{ flex-grow:1; }
+  .round .spacer:first-child,
+  .round .spacer:last-child{ flex-grow:.5; }
+
+  .round .game-spacer{
+    flex-grow:1;
+  }
+
+/*
+ *  General Styles
+*/
+
+
+li.game{
+  padding-left:20px;
+}
+
+  li.game.winner{
+    font-weight:bold;
+  }
+  li.game span{
+    float:right;
+    margin-right:5px;
+  }
+
+  li.game-top{ border-bottom:1px solid #aaa; }
+
+  li.game-spacer{ 
+    border-right:1px solid #aaa;
+    min-height:40px;
+  }
+
+  li.game-bottom{ 
+    border-top:1px solid #aaa;
+  }

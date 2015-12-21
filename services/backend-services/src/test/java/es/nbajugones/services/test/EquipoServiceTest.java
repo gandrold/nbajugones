@@ -16,6 +16,7 @@ import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.KeyValue;
 import es.nbajugones.dto.LogDTO;
+import es.nbajugones.dto.CopaDTO;
 import es.nbajugones.services.EquipoService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -78,5 +79,28 @@ public class EquipoServiceTest {
 			Assert.fail();
 		}
 	}
+	
+	@Test
+	public void testGetCopa(){
+		try{
+			List<CopaDTO> copa = equipoService.getCopa("2015-16");
+			Assert.assertTrue(copa.size()>1);
+			Assert.assertTrue(copa.get(0).getUrl()!=null);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testGetRondaCopa(){
+		try{
+			List<CopaDTO> copa = equipoService.getRondaCopa("2015-16", 1);
+			Assert.assertTrue(copa.size()>1);
+			Assert.assertTrue(copa.get(0).getUrl()!=null);
+		} catch (Exception e){
+			Assert.fail();
+		}
+	}
+	
 	
 }

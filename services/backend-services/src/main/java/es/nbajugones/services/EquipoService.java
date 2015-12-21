@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import es.nbajugones.dbdao.data.EquipoDAO;
 import es.nbajugones.dbdao.data.JugadoresDAO;
 import es.nbajugones.dbdao.data.RondasDraftDAO;
+import es.nbajugones.dbdao.data.CopaDAO;
 import es.nbajugones.dto.CalendarioDTO;
+import es.nbajugones.dto.CopaDTO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.EvaluacionDTO;
@@ -19,6 +21,7 @@ import es.nbajugones.dto.KeyValue;
 import es.nbajugones.dto.LogDTO;
 import es.nbajugones.dto.RondaDTO;
 import es.nbajugones.dto.entities.CalendarioLiga;
+import es.nbajugones.dto.entities.Copa;
 import es.nbajugones.dto.entities.Derecho;
 import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
@@ -39,6 +42,9 @@ public class EquipoService {
 	
 	@Autowired
 	RondasDraftDAO rondasDraftDAO;
+	
+	@Autowired
+	CopaDAO copaDAO;
 
 	public EquipoDTO getEquipo(String idEquipo) throws ServiceException {
 
@@ -161,6 +167,36 @@ public class EquipoService {
 	public EvaluacionDTO evaluar(String id) throws ServiceException{
         try {
 			return equipoDAO.evaluar(id).get(0);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+    }
+	
+	public List<CopaDTO> getCopa(String temporada) throws ServiceException{
+        try {
+			List<CopaDTO> result = new ArrayList<CopaDTO>();
+			for (int ronda=1;ronda<=5;ronda++){
+				List<Copa> r = copaDAO.getRondaCopa(temporada, ronda);
+				for (Copa c:r){
+					result.add(new CopaDTO(c, getEquipo(c.getIdEquipoCasa()), getEquipo(c.getIdEquipoFuera())));
+				}
+			}
+			return result;
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+    }
+	
+	public List<CopaDTO> getRondaCopa(String temporada, int ronda) throws ServiceException{
+        try {
+			List<CopaDTO> result = new ArrayList<CopaDTO>();
+			
+				List<Copa> r = copaDAO.getRondaCopa(temporada, ronda);
+				for (Copa c:r){
+					result.add(new CopaDTO(c, getEquipo(c.getIdEquipoCasa()), getEquipo(c.getIdEquipoFuera())));
+				}
+			
+			return result;
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
