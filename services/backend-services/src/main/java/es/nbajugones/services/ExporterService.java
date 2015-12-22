@@ -28,6 +28,7 @@ import org.apache.velocity.tools.generic.NumberTool;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.nbajugones.dto.EquipoDTO;
+import es.nbajugones.dto.CopaDTO;
 import es.nbajugones.exception.service.ServiceException;
 
 public class ExporterService {
@@ -93,6 +94,29 @@ public class ExporterService {
 		values.put("segundaRonda", draftService.getDraft(y, 2));
 		values.put("ano", y);
 		String html = generateTemplate("draft", values);
+		return html;
+	}
+	
+	public String generateCopa(String temporada) throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+		List<CopaDTO> ronda1 = equipoService.getRondaCopa(temporada, 1);
+        values.put("ronda1", ronda1);
+		values.put("ronda2", equipoService.getRondaCopa(temporada, 2));
+		values.put("cuartos", equipoService.getRondaCopa(temporada, 3));
+		values.put("semi", equipoService.getRondaCopa(temporada, 4));
+		List<CopaDTO> rondaFinal = equipoService.getRondaCopa(temporada, 5);
+		values.put("rondaFinal", rondaFinal);
+		if (!rondaFinal.isEmpty()){
+			if (rondaFinal.get(0).isCasaGanador()){
+				values.put("ganador", rondaFinal.get(0).getEquipoCasa());
+			} else {
+				if (rondaFinal.get(0).isFueraGanador()){
+				values.put("ganador", rondaFinal.get(0).getEquipoFuera());
+			}
+			}
+		}	
+		values.put("temporada", temporada);
+		String html = generateTemplate("copa", values);
 		return html;
 	}
 	

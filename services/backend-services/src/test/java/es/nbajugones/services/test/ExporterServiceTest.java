@@ -72,7 +72,12 @@ public class ExporterServiceTest {
 	public void testTeamUploadFTP() throws ServiceException{
 		
 		Map<String, String> export = new HashMap<String, String>();
-		export.put("testBoots", exporterService.generateIndex());
+		export.put("copa1516", exporterService.generateCopa("2015-16"));
+		export.put("copa1415", exporterService.generateCopa("2014-15"));
+		export.put("copa1314", exporterService.generateCopa("2013-14"));
+		export.put("copa1213", exporterService.generateCopa("2012-13"));
+		export.put("copa1112", exporterService.generateCopa("2011-12"));
+		
 		exporterService.sendMapToFTP(export);
 	}
 	
