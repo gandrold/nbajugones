@@ -28,8 +28,8 @@ public class CopaDTO implements Serializable {
 		ronda = copa.getId().getRonda();
 		this.equipoCasa = equipoCasa;
 		this.equipoFuera = equipoFuera;
-		this.puntosCasa = copa.getPuntosCasa();
-		this.puntosFuera = copa.getPuntosFuera();
+		this.puntosCasa = copa.getPuntosCasa()!=null?copa.getPuntosCasa():0.0;
+		this.puntosFuera = copa.getPuntosFuera()!=null?copa.getPuntosFuera():0.0;
 		this.url = copa.getUrl();
 	}
 
@@ -89,6 +89,22 @@ public class CopaDTO implements Serializable {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+	public boolean isCasaGanador(){
+		if (puntosCasa!=null && puntosFuera !=null){
+			return puntosCasa > puntosFuera;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isFueraGanador(){
+		if (puntosCasa!=null && puntosFuera !=null){
+			return puntosCasa < puntosFuera;
+		} else {
+			return false;
+		}
 	}
 
 }

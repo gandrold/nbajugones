@@ -150,14 +150,21 @@ main{
  *  General Styles
 */
 
+.winner{
+    font-weight:bold;
+  }
+
+.bracket{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 li.game{
   padding-left:20px;
 }
 
-  li.game.winner{
-    font-weight:bold;
-  }
+
   li.game span{
     float:right;
     margin-right:5px;

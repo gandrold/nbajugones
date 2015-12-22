@@ -74,7 +74,17 @@ public class EquiposControlador {
 		model.addAttribute("ronda2", equipoService.getRondaCopa(temporada, 2));
 		model.addAttribute("cuartos", equipoService.getRondaCopa(temporada, 3));
 		model.addAttribute("semi", equipoService.getRondaCopa(temporada, 4));
-		model.addAttribute("rondaFinal", equipoService.getRondaCopa(temporada, 5));
+		List<CopaDTO> rondaFinal = equipoService.getRondaCopa(temporada, 5);
+		model.addAttribute("rondaFinal", rondaFinal);
+		if (!rondaFinal.isEmpty()){
+			if (rondaFinal.get(0).isCasaGanador()){
+				model.addAttribute("ganador", rondaFinal.get(0).getEquipoCasa());
+			} else {
+				if (rondaFinal.get(0).isFueraGanador()){
+				model.addAttribute("ganador", rondaFinal.get(0).getEquipoFuera());
+			}
+			}
+		}		
 		model.addAttribute("temporada", temporada);
     }
 
