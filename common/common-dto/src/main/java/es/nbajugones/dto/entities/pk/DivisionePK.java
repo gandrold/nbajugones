@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 /**
  * The primary key class for the divisiones database table.
- * 
+ *
  */
 @Embeddable
 public class DivisionePK implements Serializable {
@@ -18,6 +18,13 @@ public class DivisionePK implements Serializable {
 
 	public DivisionePK() {
 	}
+
+	public DivisionePK(int division, String temporada) {
+		this.division = division;
+		this.temporada = temporada;
+	}
+	
+
 	public int getDivision() {
 		return this.division;
 	}
@@ -39,7 +46,7 @@ public class DivisionePK implements Serializable {
 			return false;
 		}
 		DivisionePK castOther = (DivisionePK)other;
-		return 
+		return
 			(this.division == castOther.division)
 			&& this.temporada.equals(castOther.temporada);
 	}
@@ -49,7 +56,7 @@ public class DivisionePK implements Serializable {
 		int hash = 17;
 		hash = hash * prime + this.division;
 		hash = hash * prime + this.temporada.hashCode();
-		
+
 		return hash;
 	}
 }

@@ -5,21 +5,32 @@ import es.nbajugones.dto.entities.Historico;
 public class HistoricoDTO implements Comparable<HistoricoDTO>{
 
 	private String temporada;
-	
+
 	private int ganados;
-	
+
 	private int perdidos;
-	
+
 	private String logros;
-	
+
 	private double media;
-	
+
+	private String nombreEquipo;
+
 	public HistoricoDTO(Historico historico){
 		this.ganados = historico.getGanados();
 		this.logros = historico.getLogros();
 		this.perdidos = historico.getPerdidos();
 		this.media = historico.getMedia();
 		this.temporada =  historico.getId().getTemporada();
+	}
+
+	public HistoricoDTO(Historico historico, String nombreEquipo){
+		this.ganados = historico.getGanados();
+		this.logros = historico.getLogros();
+		this.perdidos = historico.getPerdidos();
+		this.media = historico.getMedia();
+		this.temporada =  historico.getId().getTemporada();
+		this.nombreEquipo = nombreEquipo;
 	}
 
 	public String getTemporada() {
@@ -63,10 +74,18 @@ public class HistoricoDTO implements Comparable<HistoricoDTO>{
 	}
 
 	public int compareTo(HistoricoDTO o) {
-		
+
 		return o.temporada.compareTo(temporada);
 	}
-	
-	
-	
+
+	public String getNombreEquipo() {
+		return nombreEquipo;
+	}
+
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+
+
 }

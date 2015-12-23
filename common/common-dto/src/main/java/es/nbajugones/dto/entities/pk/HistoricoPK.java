@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 /**
  * The primary key class for the historico database table.
- * 
+ *
  */
 @Embeddable
 public class HistoricoPK implements Serializable {
@@ -15,7 +15,7 @@ public class HistoricoPK implements Serializable {
 	@Column(name="ID_EQUIPO")
 	private String idEquipo;
 
-	@Column(name="temporada")
+	@Column(name="TEMPORADA")
 	private String temporada;
 
 	public HistoricoPK() {
@@ -41,7 +41,7 @@ public class HistoricoPK implements Serializable {
 			return false;
 		}
 		HistoricoPK castOther = (HistoricoPK)other;
-		return 
+		return
 			this.idEquipo.equals(castOther.idEquipo)
 			&& this.temporada.equals(castOther.temporada);
 	}
@@ -51,7 +51,7 @@ public class HistoricoPK implements Serializable {
 		int hash = 17;
 		hash = hash * prime + this.idEquipo.hashCode();
 		hash = hash * prime + this.temporada.hashCode();
-		
+
 		return hash;
 	}
 }

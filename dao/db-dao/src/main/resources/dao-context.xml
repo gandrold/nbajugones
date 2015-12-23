@@ -6,7 +6,7 @@
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd    
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/context
@@ -19,7 +19,7 @@
 	default-autowire="byName">
 
     <context:annotation-config/>
-    
+
 	<import resource="classpath:db-config.xml"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
@@ -67,4 +67,8 @@
 	<bean id="rondasDraftDAO" class="es.nbajugones.dbdao.data.RondasDraftDAO" />
 	<bean id="ordenDraftDAO" class="es.nbajugones.dbdao.data.OrdenDraftDAO" />
 	<bean id="copaDAO" class="es.nbajugones.dbdao.data.CopaDAO" />
-</beans> 
+	<bean id="historicoDAO" class="es.nbajugones.dbdao.data.HistoricoDAO" />
+	<bean id="playoffDAO" class="es.nbajugones.dbdao.data.PlayoffDAO" />
+	<bean id="conferenciaDAO" class="es.nbajugones.dbdao.data.ConferenciaDAO" />
+	<bean id="divisionDAO" class="es.nbajugones.dbdao.data.DivisionDAO" />
+</beans>

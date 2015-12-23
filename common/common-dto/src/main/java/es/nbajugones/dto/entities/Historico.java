@@ -8,7 +8,7 @@ import es.nbajugones.dto.entities.pk.HistoricoPK;
 
 /**
  * The persistent class for the historico database table.
- * 
+ *
  */
 @Entity
 @Table(name="historico")

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 /**
  * The primary key class for the conferencias database table.
- * 
+ *
  */
 @Embeddable
 public class ConferenciaPK implements Serializable {
@@ -18,6 +18,13 @@ public class ConferenciaPK implements Serializable {
 
 	public ConferenciaPK() {
 	}
+
+	public ConferenciaPK(int conferencia, String temporada) {
+		this.conferencia = conferencia;
+		this.temporada = temporada;
+	}
+
+	
 	public int getConferencia() {
 		return this.conferencia;
 	}
@@ -39,7 +46,7 @@ public class ConferenciaPK implements Serializable {
 			return false;
 		}
 		ConferenciaPK castOther = (ConferenciaPK)other;
-		return 
+		return
 			(this.conferencia == castOther.conferencia)
 			&& this.temporada.equals(castOther.temporada);
 	}
@@ -49,7 +56,7 @@ public class ConferenciaPK implements Serializable {
 		int hash = 17;
 		hash = hash * prime + this.conferencia;
 		hash = hash * prime + this.temporada.hashCode();
-		
+
 		return hash;
 	}
 }
