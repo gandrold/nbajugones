@@ -15,6 +15,7 @@ import es.nbajugones.services.TradeService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -89,6 +90,7 @@ public class EquiposControlador {
 			}
 		}
 		model.addAttribute("temporada", temporada);
+		buildTemporadas(model, 16);
 	}
 
 	@RequestMapping("/historico.action")
@@ -110,6 +112,7 @@ public class EquiposControlador {
 				}
 			}
 		}
+		buildTemporadas(model, 15);
 	}
 
 	@RequestMapping("/equipos/roster.do")
@@ -192,6 +195,17 @@ public class EquiposControlador {
 		PrintWriter out = response.getWriter();
 		out.println(eq.toString());
 		out.close();
+	}
+
+	private void buildTemporadas(Model model, int limit){
+		List<String> temporadas = new ArrayList<String>();
+		for (int i=limit;i>3;i--){
+			int next = i+1;
+			String t = "20";
+			t = t +(i<10?"0"+i:i)+"-"+(next<10?"0"+next:next);
+			temporadas.add(t);
+		}
+		model.addAttribute("tempList", temporadas);
 	}
 
 }

@@ -1,10 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="row">
-	<div class="col-md-12 col-sd-12 center">
+<div class="col-md-12 col-sd-12 center">
+	<div class="row">
 	<h1>Temporada ${temporada}</h1>
+
 	</div>
-</div>
+	</div>
+	</div>
 <div class="row">
+	<div class="col-md-2 col-sd-2 center">
+	<c:forEach var="year" items="${tempList}">
+	<p><a href = "<c:url value="/historico.action?y=${year}"/>">Temporada ${year}</a></p>
+	</c:forEach>
+	</div>
+
+<div class="col-md-10 col-sd-10 center">
 	<c:set var="elemento" value="0"/>
 	<div class="col-md-12 col-sd-12 center">
 	<c:if test="${not empty ganador}">
@@ -13,8 +23,8 @@
 			<br/>
 	<b>${ganador.nombre}</b>
 	</c:if>
-	<div class="row">
-	<div class="col-md-6 col-sd-6 center">
+	</div>
+	<div class="col-md-12 col-sd-12 center">
 	<h3>Playoffs</h3>
 	<main id="tournament" class = "bracket">
 
@@ -68,7 +78,7 @@
 		</ul>
 		</main>
 		</div>
-	<div class="col-md-6 col-sd-6 center">
+	<div class="col-md-12 col-sd-12 center">
 	<h3>Temporada regular</h3>
 		<c:forEach var="conferencia" items="${rs}">
 		<div class="col-md-6 col-sd-6 center">
@@ -91,13 +101,12 @@
 					</c:forEach>
 					</table>
 				</div>
-		</div>
+			</div>
 			</c:forEach>
 		</div>
 		</c:forEach>
-		</div>
-		</div>
-	</div>
 	</div>
 
-</div>
+
+		</div>
+	</div>

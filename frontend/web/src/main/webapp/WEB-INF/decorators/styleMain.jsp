@@ -52,7 +52,7 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse"
 							id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">								
+							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Equipos <span class="caret"></span></a>
@@ -62,7 +62,7 @@
 												href="javascript:loadTeam('${equipo.key}')">
 													${equipo.value} </a></li>
 										</c:forEach>
-										
+
 									</ul></li>
 								<li><a href="<c:url value="/jugadores/fa.action"/>">Ver
 												FA's</a></li>
@@ -78,6 +78,7 @@
 										<li><a href="<c:url value="/renovacion.action"/>">Renovaciones</a></li>
 										<li><a href="<c:url value="/draft.action"/>">Drafts</a></li>
 										<li><a href="<c:url value="/copa.action"/>">Copa</a></li>
+										<li><a href="<c:url value="/historico.action"/>">Historico</a></li>
 							</ul>
 
 						</div>
