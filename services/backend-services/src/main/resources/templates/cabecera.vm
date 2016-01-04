@@ -17,7 +17,7 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse"
 							id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">								
+							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Equipos <span class="caret"></span></a>
@@ -28,7 +28,7 @@
 												href="$equipo.key$html">
 													$equipo.value </a></li>
 										#end
-										
+
 									</ul></li>
 								<li><a href="free_agents.html">Ver
 												FA's</a></li>
@@ -45,7 +45,7 @@
 												href="draft$y$html">
 													$y </a></li>
 										#end
-										
+
 									</ul></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -65,8 +65,46 @@
 													2012-13 </a></li>
 											<li><a
 												href="copa1112.html">
-													2011-12 </a></li>								
-										
+													2011-12 </a></li>
+
+									</ul></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Historico <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+											<li><a
+												href="temp1415.html">
+													2014-15 </a></li>
+											<li><a
+												href="temp1314.html">
+													2013-14 </a></li>
+											<li><a
+												href="temp1213.html">
+													2012-13 </a></li>
+											<li><a
+												href="temp1112.html">
+													2011-12 </a></li>
+											<li><a
+												href="temp1011.html">
+													2010-11 </a></li>
+											<li><a
+												href="temp0910.html">
+													2009-10 </a></li>
+											<li><a
+												href="temp0809.html">
+													2008-09 </a></li>
+											<li><a
+												href="temp0708.html">
+													2007-08 </a></li>
+											<li><a
+												href="temp0607.html">
+													2006-07 </a></li>
+											<li><a
+												href="temp0506.html">
+													2005-06 </a></li>
+											<li><a
+												href="temp0405.html">
+													2004-05 </a></li>
 									</ul></li>
 							</ul>
 
@@ -75,4 +113,3 @@
 					</div>
 					<!-- /.container-fluid -->
 				</nav>
-				

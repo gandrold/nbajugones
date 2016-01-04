@@ -29,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.CopaDTO;
+import es.nbajugones.dto.PlayoffDTO;
 import es.nbajugones.exception.service.ServiceException;
 
 public class ExporterService {
@@ -43,6 +44,9 @@ public class ExporterService {
 
 	@Autowired
 	DraftService draftService;
+
+	@Autowired
+	HistoricoService historicoService;
 
 	FTPClient ftp;
 
@@ -96,7 +100,7 @@ public class ExporterService {
 		String html = generateTemplate("draft", values);
 		return html;
 	}
-	
+
 	public String generateCopa(String temporada) throws ServiceException {
 		Map<String, Object> values = new HashMap<String, Object>();
 		List<CopaDTO> ronda1 = equipoService.getRondaCopa(temporada, 1);
@@ -114,12 +118,34 @@ public class ExporterService {
 				values.put("ganador", rondaFinal.get(0).getEquipoFuera());
 			}
 			}
-		}	
+		}
 		values.put("temporada", temporada);
 		String html = generateTemplate("copa", values);
 		return html;
 	}
-	
+
+	public String generateHistorico(String temporada) throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+        values.put("rs", historicoService.getResultados(temporada));
+		values.put("ronda1", historicoService.getPlayOff(temporada, 1));
+		values.put("ronda2", historicoService.getPlayOff(temporada, 2));
+		values.put("semis", historicoService.getPlayOff(temporada, 3));
+		List<PlayoffDTO> rondaFinal = historicoService.getPlayOff(temporada, 4);
+		values.put("rondaFinal", rondaFinal);
+		if (!rondaFinal.isEmpty()){
+			if (rondaFinal.get(0).isGanador1()) {
+				values.put("ganador", rondaFinal.get(0).getEquipo1());
+			} else {
+				if (rondaFinal.get(0).isGanador2()){
+				values.put("ganador", rondaFinal.get(0).getEquipo2());
+			}
+			}
+		}
+		values.put("temporada", temporada);
+		String html = generateTemplate("historico", values);
+		return html;
+	}
+
 	public String generateIndex() throws ServiceException{
 		Map<String, Object> values = new HashMap<String, Object>();
 		values.put("evaluacion", equipoService.evaluar());
