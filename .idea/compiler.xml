@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="data-getter" />
         <module name="frontend-common" />
-        <module name="webservices" />
         <module name="common-dto" />
         <module name="common-interfaces" />
         <module name="common-utils" />

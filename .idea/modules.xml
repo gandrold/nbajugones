@@ -17,7 +17,6 @@
       <module fileurl="file://$PROJECT_DIR$/frontend/web/jugones-frontend.iml" filepath="$PROJECT_DIR$/frontend/web/jugones-frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
-      <module fileurl="file://$PROJECT_DIR$/services/webservices/webservices.iml" filepath="$PROJECT_DIR$/services/webservices/webservices.iml" />
     </modules>
   </component>
 </project>
