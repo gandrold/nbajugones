@@ -29,23 +29,23 @@ public class RenovacionesDAOTest {
 
 	@Autowired
 	JugadoresDAO jugadoresDAO;
-	
+
 	@Autowired
 	EquipoDAO equipoDAO;
-	
+
 	@Autowired
 	RenovacionesDAO renovacionesDAO;
-	
+
 	@Test
 	public void testGet() throws DaoException{
 		Assert.assertTrue(!renovacionesDAO.get(2015, 1).isEmpty());
 	}
-	
+
 	@Test
 	public void testRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
-		jugadoresDAO.ficharFA("BRO", id, "0.7", "-");
+		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();
 		pk.setIdJugador(id);
@@ -61,12 +61,12 @@ public class RenovacionesDAOTest {
 		Assert.assertTrue(!equipoDAO.getById("BRO").checkPlayer(id));
 		Assert.assertTrue(equipoDAO.getById("ATL").checkPlayer(id));
 	}
-	
+
 	@Test
 	public void testRenovarFichar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
-		jugadoresDAO.ficharFA("BRO", id, "0.7", "-");
+		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();
 		pk.setIdJugador(id);
@@ -82,12 +82,12 @@ public class RenovacionesDAOTest {
 		Assert.assertTrue(equipoDAO.getById("BRO").checkPlayer(id));
 		Assert.assertTrue(!equipoDAO.getById("ATL").checkPlayer(id));
 	}
-	
+
 	@Test
 	public void testNoRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
-		jugadoresDAO.ficharFA("BRO", id, "0.7", "-");
+		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();
 		pk.setIdJugador(id);
@@ -100,5 +100,5 @@ public class RenovacionesDAOTest {
 		Assert.assertTrue(renovacionesDAO.getById(pk).getRenueva().equals("FA"));
 		Assert.assertTrue(!equipoDAO.getById("BRO").checkPlayer(id));
 	}
-	
+
 }

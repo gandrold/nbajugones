@@ -27,18 +27,18 @@ public class EquipoServiceTest {
 
 	@Autowired
 	EquipoService equipoService;
-	
+
 	@Test
 	public void testGetEquipo(){
 		try{
-			EquipoDTO equipo = equipoService.getEquipo("GSW");
+			EquipoDTO equipo = equipoService.getEquipo("CHI");
 			Assert.assertTrue(equipo!=null);
 			Assert.assertTrue(equipo.getPlantilla().size()>1);
 		} catch (Exception e){
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetEquipos(){
 		try{
@@ -48,7 +48,7 @@ public class EquipoServiceTest {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetCalendario(){
 		try{
@@ -58,7 +58,7 @@ public class EquipoServiceTest {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetDerechos(){
 		try{
@@ -68,7 +68,7 @@ public class EquipoServiceTest {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetLog(){
 		try{
@@ -79,7 +79,7 @@ public class EquipoServiceTest {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetCopa(){
 		try{
@@ -87,10 +87,11 @@ public class EquipoServiceTest {
 			Assert.assertTrue(copa.size()>1);
 			Assert.assertTrue(copa.get(0).getUrl()!=null);
 		} catch (Exception e){
+			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
 	public void testGetRondaCopa(){
 		try{
@@ -98,9 +99,10 @@ public class EquipoServiceTest {
 			Assert.assertTrue(copa.size()>1);
 			Assert.assertTrue(copa.get(0).getUrl()!=null);
 		} catch (Exception e){
+			e.printStackTrace();
 			Assert.fail();
 		}
 	}
-	
-	
+
+
 }

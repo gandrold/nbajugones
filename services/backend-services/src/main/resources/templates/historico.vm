@@ -40,11 +40,12 @@
 	<div class="col-md-12 col-sd-12 center">
 	#if ($ganador)
 	<h3>Ganador</h3>
-	$ganador.logo
+	<img src="$ganador.logoDraft" class="logoHistorico"/>
 			<br/>
 	<b>$ganador.nombre</b>
 	#end
 	<div class="row">
+	#if ($hasPlayoff)
 	<h3>Playoffs</h3>
 	<main id="tournament" class = "bracket">
 
@@ -99,6 +100,7 @@
 		</ul>
 		</main>
 		</div>
+	#end
 	<h3>Temporada regular</h3>
 		#foreach($conferencia in $rs)
 		<div class="col-md-6 col-sd-6 center">

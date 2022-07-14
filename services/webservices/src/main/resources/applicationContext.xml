@@ -17,32 +17,6 @@
 		scans specified packages for classes configured as Spring managed beans and 
 		automatically sets up objects annotated with @Controller, @Service etc. -->
 	<context:component-scan base-package="es.nbajugones.webservices.controllers" />
-	
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	<!-- Configures view for returning JSON to the client -->
-	<bean
-		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
-		<property name="contentType" value="text/plain" />
-	</bean>
-	<!-- maps handler methods based on HTTP paths -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<util:list id="beanList">
-				<ref bean="jsonMessageConverter" />
-			</util:list>
-		</property>
-	</bean>
-	
-	<!-- set JSON date format to ISO-8601 e.g. 1970-01-01T00:00:00.000+0000 -->
-	<bean id="sourceObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
-	<bean id="acmObjectMapper" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-	    <property name="targetObject" ref="sourceObjectMapper"/>
-	    <property name="targetMethod" value="disable"/>
-	    <property name="arguments" value="WRITE_DATES_AS_TIMESTAMPS"/>
-	</bean>
-	<bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-	    <property name="objectMapper" ref="acmObjectMapper"/>
-	</bean>
+
+
 </beans>  

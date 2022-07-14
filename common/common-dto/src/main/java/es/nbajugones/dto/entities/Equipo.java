@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * The persistent class for the equipos database table.
- * 
+ *
  */
 
 @Entity
@@ -19,19 +19,19 @@ public class Equipo implements Serializable {
 	@Column(name="ID_EQUIPO")
 	private String idEquipo;
 
-	@Column(name="BONUS_ACT", nullable=false)
+	@Column(name="BONUS_ACT")
 	private Double bonusAct;
 
-	@Column(name="BONUS_ANT", nullable=false)
+	@Column(name="BONUS_ANT")
 	private Double bonusAnt;
 
-	@Column(name="CORTES", nullable=false)
+	@Column(name="CORTES")
 	private Double cortes;
 
 	@Column(name="EMAIL")
 	private String email;
 
-	@Column(name="LESIONADOS", nullable=false)
+	@Column(name="LESIONADOS")
 	private Double lesionados;
 
 	@Column(name="LOGO")
@@ -46,7 +46,7 @@ public class Equipo implements Serializable {
 	@Column(name="PROPIETARIO")
 	private String propietario;
 
-	@Column(name="SANCIONES", nullable=false)
+	@Column(name="SANCIONES")
 	private Double sanciones;
 
 	//bi-directional many-to-one association to CalendarioLiga
@@ -56,23 +56,23 @@ public class Equipo implements Serializable {
 	//bi-directional many-to-one association to CalendarioLiga
 	@OneToMany(mappedBy="equipo2")
 	private List<CalendarioLiga> calendarioLigas2;
-	
+
 		@OneToMany(mappedBy="id.idEquipo")
 		private List<Plantilla> plantilla;
 
-		@OneToMany(mappedBy="id.idEquipo")
-		private List<Derecho> derechos;	
-		
-		@OneToMany(mappedBy="idEquipoProp")
-		private List<RondasDraft> rondas;	
-		
-		@OneToMany(mappedBy="id.idEquipo")
-		private List<Historico> historico;	
-		
 		@OneToMany(mappedBy="idEquipo")
-		private List<Log> log;	
-		
-	
+		private List<Derecho> derechos;
+
+		@OneToMany(mappedBy="idEquipoProp")
+		private List<RondasDraft> rondas;
+
+		@OneToMany(mappedBy="id.idEquipo")
+		private List<Historico> historico;
+
+		@OneToMany(mappedBy="idEquipo")
+		private List<Log> log;
+
+
 	public Equipo() {
 	}
 
@@ -247,8 +247,8 @@ public class Equipo implements Serializable {
 	public void setLog(List<Log> log) {
 		this.log = log;
 	}
-	
-	
+
+
 	public boolean checkPlayer(int id){
 		for (Plantilla p:plantilla){
 			if (p.getId().getIdJugador() == id){
@@ -257,7 +257,7 @@ public class Equipo implements Serializable {
 		}
 		return false;
 	}
-	
-	
+
+
 
 }

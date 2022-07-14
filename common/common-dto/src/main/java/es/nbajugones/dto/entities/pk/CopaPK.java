@@ -20,6 +20,13 @@ public class CopaPK implements Serializable {
 
 	public CopaPK() {
 	}
+
+	public CopaPK(String temporada, int ronda, int partido) {
+		this.temporada = temporada;
+		this.ronda = ronda;
+		this.partido = partido;
+	}
+
 	public String getTemporada() {
 		return this.temporada;
 	}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="data-getter" />
+        <module name="frontend-common" />
+        <module name="webservices" />
+        <module name="common-dto" />
+        <module name="common-interfaces" />
+        <module name="common-utils" />
+        <module name="common-enum" />
+        <module name="db-dao" />
+        <module name="jugones-frontend" />
+        <module name="backend-services" />
+        <module name="integration-client" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="backend-services" target="8" />
+      <module name="common" target="1.7" />
+      <module name="common-dto" target="1.7" />
+      <module name="common-enum" target="1.7" />
+      <module name="common-interfaces" target="1.7" />
+      <module name="common-utils" target="1.7" />
+      <module name="dao" target="1.7" />
+      <module name="data-getter" target="1.7" />
+      <module name="db-dao" target="1.7" />
+      <module name="frontend" target="1.7" />
+      <module name="frontend-common" target="1.7" />
+      <module name="integration-client" target="1.7" />
+      <module name="jugones-frontend" target="1.7" />
+      <module name="parent" target="1.7" />
+      <module name="services" target="1.7" />
+      <module name="webservices" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

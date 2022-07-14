@@ -1,0 +1,47 @@
+
+p
+java:S2293ü"YReplace the type specification in this constructor call with the diamond operator ("<>").(şâìÅ
+o
+java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(ï¦¿ü
+Q
+java:S1141ë"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+…
+java:S1130"nRemove the declaration of thrown exception 'java.io.IOException' which is a subclass of 'java.lang.Exception'.(öºÂ€
+i
+java:S3776Æ"SRefactor this method to reduce its Cognitive Complexity from 106 to the 15 allowed.(ÛÀ†
+O	java:S106ï"9Replace this use of System.out or System.err by a logger.(Ïë¼õ
+p
+java:S2293¦"YReplace the type specification in this constructor call with the diamond operator ("<>").(ñ˜¡¨
+p
+java:S2293˜"YReplace the type specification in this constructor call with the diamond operator ("<>").(ï¦¿ü
+o
+java:S2293ù"YReplace the type specification in this constructor call with the diamond operator ("<>").(¿†‰~
+u
+java:S2293–"YReplace the type specification in this constructor call with the diamond operator ("<>").(Œı¯ùûÿÿÿÿ
+N
+java:S2629¾"7Use the built-in formatting to construct this argument.(¼„„‰
+i
+java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 66 to the 15 allowed.(„üœ’
+X
+java:S3457±"AFormat specifiers should be used instead of string concatenation.(Èû‹õ
+d
+java:S1192U"IDefine a constant instead of duplicating this literal "yyyyMMdd" 6 times.(ÊÂúÿÿÿÿ
+o
+java:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(ï¦¿ü
+u
+java:S2293û"YReplace the type specification in this constructor call with the diamond operator ("<>").(•ç´…ùÿÿÿÿ
+u
+java:S2293—"YReplace the type specification in this constructor call with the diamond operator ("<>").(®ªıüÿÿÿÿ
+X
+java:S3457¾"AFormat specifiers should be used instead of string concatenation.(¼„„‰
+
+java:S1130"…Remove the declaration of thrown exception 'es.nbajugones.exception.dbdao.DaoException' which is a subclass of 'java.lang.Exception'.(öºÂ€
+T	java:S106ª"9Replace this use of System.out or System.err by a logger.(ğ·´àûÿÿÿÿ
+u
+java:S2293ú"YReplace the type specification in this constructor call with the diamond operator ("<>").(‡­³óúÿÿÿÿ
+X
+java:S3457¡"AFormat specifiers should be used instead of string concatenation.(€ø®É
+n
+java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(˜ö‘¢ıÿÿÿÿ
+N
+java:S2629±"7Use the built-in formatting to construct this argument.(Èû‹õ

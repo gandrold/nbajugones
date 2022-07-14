@@ -28,7 +28,7 @@
 								value="${jugador.idJugador}"
 								onclick="javascript:calcularSalarios(${posicion})"></td>
 							<td><img alt="${jugador.nombre}"
-								src="http://cdn.basketball.sports.ws/players/${jugador.nombreFoto}.jpg"
+								src="http://sports.ws/img/headshots/png/${jugador.nombreFoto}.png"
 								style="height: 50px;" title="${jugador.nombre}" /></td>
 							<td><span style="font-weight: bold"><a
 									href="http://basketball.sports.ws/player/${jugador.nombreFoto}?league=140043"

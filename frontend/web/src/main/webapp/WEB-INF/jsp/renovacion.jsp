@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="row">
-	
+
 	<div class="col-md-8 col-sd-8 center">
 		<select id="ySelect" name="ySelect">
 	<c:forEach var="year" items="${years}">
 	<option value="${year}" <c:if test="${y eq year}">selected</c:if>>${year}</option>
 	</c:forEach>
 	</select>
-	<select id="tandaSelect" name="tandaSelect">	
+	<select id="tandaSelect" name="tandaSelect">
 	<option value="1" <c:if test="${t eq 1}">selected</c:if>>1</option>
 	<option value="2" <c:if test="${t eq 2}">selected</c:if>>2</option>
 	<option value="3" <c:if test="${t eq 3}">selected</c:if>>3</option>
@@ -22,7 +22,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Tanda ${t} de renovaciones de ${y}</h3>
 				</div>
-				<div class="panel-body table-responsive">					
+				<div class="panel-body table-responsive">
 					<table class="table">
 						<thead>
 							<tr>
@@ -51,7 +51,7 @@
 									<td>${r.promedio}</td>
 									<td>${r.salario}</td>
 									<td>${r.years}</td>
-									<td>${r.renueva}</td>									
+									<td>${r.renueva}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -84,25 +84,27 @@
 		$("#tandaSelect").change(function() {
 			seleccionar($("#ySelect").val(),$(this).val());
 		});
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 		$(".renovacionRow").each(function(){
 	    	$(this).click(function(){
 	    		$("#detalleRenovacion").show();
 	    		$("html, body").animate({ scrollTop: 0 }, "fast");
-	    		$("#datosRenovacion").html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
+	    		$("#datosRenovacion").html("<img src='<c:url value="/themes/img/loader.gif"/>' class='center'/>");
 	    		$.ajax({
 	    			type : "POST",
-	    			url : "/jugones-frontend/renovacionDetail.do",
+	    			url : "<c:url value="/renovacionDetail.do"/>",
 	    			data : "y="+$(this).data("year")+"&idJugador="+$(this).data("idjugador"),
 	    			success : function (data){
-	    		        $("#datosRenovacion").html(data);	    		        
+	    		        $("#datosRenovacion").html(data);
 	    		    }
-	    			
-	    		});	
+
+	    		});
 	    	});
 		});
+		</sec:authorize>
 	});
-	
+
 	function seleccionar(y, tanda){
-		document.location.href="/jugones-frontend/renovacion.action?y="+y+"&tanda="+tanda;
+		document.location.href="<c:url value="/renovacion.action"/>?y="+y+"&tanda="+tanda;
 	}
 </script>

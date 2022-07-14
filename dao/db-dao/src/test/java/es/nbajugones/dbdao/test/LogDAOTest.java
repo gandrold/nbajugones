@@ -25,48 +25,48 @@ public class LogDAOTest {
 
 	@Autowired
 	JugadoresDAO jugadoresDAO;
-	
+
 	@Autowired
 	LogDAO logDAO;
-	
-	
-	
+
+
+
 	@Test
 	public void testCut() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
-		jugadoresDAO.ficharFA("BRO", id, "0.7", "3");
+		jugadoresDAO.ficharFA("BRO", id, "0.7", "3", "2016-07-31");
 		Assert.assertTrue(logDAO.cut("BRO", id).getIdAccion()>0);
 	}
-	
+
 	@Test
 	public void testFicharRenovaciones() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
 		Assert.assertTrue(logDAO.ficharRenovaciones(id, "BRO", 0.32, "2").getIdAccion()>0);
 	}
-	
+
 	@Test
 	public void testNoRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
 		Assert.assertTrue(logDAO.noRenovar(id, "BRO").getIdAccion()>0);
 	}
-	
+
 	@Test
 	public void testNoRenovar2() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
 		Assert.assertTrue(logDAO.noRenovar2(id, "BRO").getIdAccion()>0);
 	}
-	
+
 	@Test
 	public void testRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
 		int id = j.getIdJugador();
 		Assert.assertTrue(logDAO.renovar(id, "BRO", 0.32, "2").getIdAccion()>0);
 	}
-	
-	
-	
+
+
+
 }

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<form id="formFA" action="/jugones-frontend/jugadores/new.do" method="post" name="formFA">
-	
+<form id="formFA" action="<c:url value="/jugadores/new.do"/>" method="post" name="formFA">
+
 	<div class="form-group">
 		<label for="salario" class="col-sm-4 col-sd-4 control-label">Nombre</label>
 		<div class="col-md-8 col-sd-8">

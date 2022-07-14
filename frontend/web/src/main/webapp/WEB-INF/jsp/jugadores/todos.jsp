@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="row">
 	<div class="col-md-3 col-sd-3">
 		<div class="panel panel-primary">
@@ -7,7 +8,7 @@
 			</div>
 			<div class="panel-body table-responsive">
 				<table class="table ">
-					
+
 					<tr>
 						<td>Posicion:</td>
 						<td><select id="posicion" onchange="javascript:filtrar();">
@@ -83,18 +84,21 @@
 									<td style="font-weight: bold; font-size: 1.1em"
 										class='posicion'>${jugador.posicion}</td>
 									<td><img alt="${jugador.nombre}"
-										src="http://cdn.basketball.sports.ws/players/${jugador.nombreFoto}.jpg"
+										src="http://sports.ws/img/headshots/png/${jugador.nombreFoto}.png"
 										style="height: 50px;" title="${jugador.nombre}" /></td>
 									<td class='nombre'><a
-										href="http://basketball.sports.ws/player/${jugador.nombreFoto}?league=140043"
+										href="<c:url value="/playerStats.action?id=${jugador.playerId}"/>"
 										target="blank">${jugador.nombre} </a></td>
 									<td class='salario'><c:if test="${jugador.obs eq 'FA'}">-</c:if>
 										<c:if test="${jugador.obs ne 'FA'}">${jugador.salario}m$</c:if></td>
 									<td class='years'>${jugador.years}</td>
-									<td class='puntos'>${jugador.puntos}</td>
-									<td class='promedio'>${jugador.promedio}</td>
+									<td class='puntos'><fmt:formatNumber type="number" maxFractionDigits="2"
+														value="${jugador.puntos}"/></td>
+									<td class='promedio'><fmt:formatNumber type="number" maxFractionDigits="2"
+														value="${jugador.promedio}"/></td>
 									<td class='jugados'>${jugador.jugados}</td>
-									<td class='minutos'>${jugador.minutos}</td>
+									<td class='minutos'><fmt:formatNumber type="number" maxFractionDigits="2"
+															value="${jugador.minutos}"/></td>
 									<td>${jugador.equipo}</td>
 									<td>${jugador.obs}</td>
 									<td>${jugador.cortadoPor}</td>

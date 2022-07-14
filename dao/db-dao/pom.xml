@@ -19,7 +19,12 @@
 			<artifactId>common-utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>es.nbajugones</groupId>
+			<artifactId>data-getter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -36,7 +41,10 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

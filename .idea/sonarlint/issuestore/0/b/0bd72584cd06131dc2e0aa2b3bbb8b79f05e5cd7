@@ -1,0 +1,11 @@
+
+=
+java:S1905s"'Remove this unnecessary cast to "List".(éÿ‘Ä
+=
+java:S1905]"'Remove this unnecessary cast to "List".(éÿ‘Ä
+=
+java:S1905~"'Remove this unnecessary cast to "List".(äÓ‘í
+R
+java:S1128"7Remove this unused import 'es.nbajugones.dto.StatsDTO'.(Æ¯ÝÝüÿÿÿÿ
+Ÿ
+java:S1130%"ƒRemove the declaration of thrown exception 'es.nbajugones.exception.dbdao.DaoException', as it cannot be thrown from method's body.(ØÍðöúÿÿÿÿ

@@ -13,7 +13,7 @@
 					<h3 class="panel-title">Rondas</h3>
 				</div>
 				<div class="panel-body table-responsive">
-					
+
 					<table class="table">
 						<thead>
 							<tr>
@@ -27,7 +27,7 @@
 
 							<c:forEach var="ronda" items="${rondas}">
 								<tr>
-									
+
 									<td>${ronda.ano}</td>
 									<td>${ronda.ronda}</td>
 									<td>${ronda.equipo}</td>
@@ -66,17 +66,17 @@
 		$('form[data-async]').submit(function(event) {
 	        var $form = $(this);
 	        var $target = $($form.attr('data-target'));
-	 		$target.html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
+	 		$target.html("<img src='<c:url value="/themes/img/loader.gif"/>' class='center'/>");
 	        $.ajax({
 	            type: $form.attr('method'),
 	            url: $form.attr('action'),
 	            data: $form.serialize(),
-	 
+
 	            success: function(data, status) {
 	                $target.html(data);
 	            }
 	        });
-	 
+
 	        event.preventDefault();
 	    });
 	});

@@ -19,7 +19,7 @@
 	<div class="col-md-12 col-sd-12 center">
 	<c:if test="${not empty ganador}">
 	<h3>Ganador</h3>
-	${ganador.logo}
+	<img src="${ganador.logo}" class="logoHistorico"/>
 			<br/>
 	<b>${ganador.nombre}</b>
 	</c:if>
@@ -33,10 +33,10 @@
 		<c:forEach var="partido" items="${ronda1}">
 		<li class="spacer">&nbsp;</li>
 		<li class="game game-top <c:if test="${partido.ganador1}">winner</c:if>"><img alt="${partido.equipo1.nombre}"
-			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" /><span>${partido.resultado1}</span></li>
+			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" class="logoEquipo"/><span>${partido.resultado1}</span></li>
 		<li class="game game-spacer">&nbsp;</li>
 		<li class="game game-bottom <c:if test="${partido.ganador2}">winner</c:if>"><img alt="${partido.equipo2.nombre}"
-			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" /><span>${partido.resultado2}</span></li>
+			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" class="logoEquipo"/><span>${partido.resultado2}</span></li>
 
 		</c:forEach>
 		<li class="spacer">&nbsp;</li>
@@ -45,10 +45,10 @@
 		<c:forEach var="partido" items="${ronda2}">
 		<li class="spacer">&nbsp;</li>
 		<li class="game game-top <c:if test="${partido.ganador1}">winner</c:if>"><img alt="${partido.equipo1.nombre}"
-			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" /><span>${partido.resultado1}</span></li>
+			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" class="logoEquipo"/><span>${partido.resultado1}</span></li>
 		<li class="game game-spacer">&nbsp;</li>
 		<li class="game game-bottom <c:if test="${partido.ganador2}">winner</c:if>"><img alt="${partido.equipo2.nombre}"
-			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" /><span>${partido.resultado2}</span></li>
+			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" class="logoEquipo"/><span>${partido.resultado2}</span></li>
 
 		</c:forEach>
 		<li class="spacer">&nbsp;</li>
@@ -57,10 +57,10 @@
 		<c:forEach var="partido" items="${semis}">
 		<li class="spacer">&nbsp;</li>
 		<li class="game game-top <c:if test="${partido.ganador1}">winner</c:if>"><img alt="${partido.equipo1.nombre}"
-			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" /><span>${partido.resultado1}</span></li>
+			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" class="logoEquipo"/><span>${partido.resultado1}</span></li>
 		<li class="game game-spacer">&nbsp;</li>
 		<li class="game game-bottom <c:if test="${partido.ganador2}">winner</c:if>"><img alt="${partido.equipo2.nombre}"
-			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" /><span>${partido.resultado2}</span></li>
+			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" class="logoEquipo"/><span>${partido.resultado2}</span></li>
 		</c:forEach>
 		<li class="spacer">&nbsp;</li>
 		</ul>
@@ -68,10 +68,10 @@
 		<c:forEach var="partido" items="${rondaFinal}">
 		<li class="spacer">&nbsp;</li>
 		<li class="game game-top <c:if test="${partido.ganador1}">winner</c:if>"><img alt="${partido.equipo1.nombre}"
-			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" /><span>${partido.resultado1}</span></li>
+			src="${partido.equipo1.logoDraft}" title="${partido.equipo1.nombre}" class="logoEquipo"/><span>${partido.resultado1}</span></li>
 		<li class="game game-spacer">&nbsp;</li>
 		<li class="game game-bottom <c:if test="${partido.ganador2}">winner</c:if>"><img alt="${partido.equipo2.nombre}"
-			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" /><span>${partido.resultado2}</span></li>
+			src="${partido.equipo2.logoDraft}" title="${partido.equipo2.nombre}" class="logoEquipo"/><span>${partido.resultado2}</span></li>
 
 		</c:forEach>
 		<li class="spacer">&nbsp;</li>

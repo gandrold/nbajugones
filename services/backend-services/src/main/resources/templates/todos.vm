@@ -81,7 +81,7 @@
 					</tr>
 					<tr>
 						<td>A&ntilde;os: </td>
-						<td><input id="years" style="width:30px;" 
+						<td><input id="years" style="width:30px;"
 						onchange="javascript:filtrar();"/></td>
 					</tr>
 				</table>
@@ -121,24 +121,24 @@
 									class="filaJugador #if($jugador.obs eq 'FA')bg-info#end">
 									<td style="font-weight: bold; font-size: 1.1em"
 										class='posicion'>$jugador.posicion</td>
-										#set($jpg=".jpg")
+										#set($jpg=".png")
 									<td><img alt="$jugador.nombre"
-										src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto$jpg"
+										src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
 										style="height: 50px;" title="$jugador.nombre" /></td>
 									<td class='nombre'><a
-										href="http://basketball.sports.ws/player/$jugador.nombreFoto?league=160091"
+										href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=220146"
 										target="blank">$jugador.nombre </a></td>
-									<td class='salario'>#if($jugador.obs eq 'FA')-
+									<td class='salario'>#if($jugador.years eq 0)-
 										#else
 										$jugador.salario
 										#end</td>
 									<td class='years'>$jugador.years</td>
-									<td>#if($jugador.puntos)$jugador.puntos#end</td>
-									<td>#if($jugador.promedio)$jugador.promedio#end</td>
+									<td>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos)#end</td>
+									<td>#if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio)#end</td>
 									<td>#if($jugador.jugados)$jugador.jugados#end</td>
-									<td>#if($jugador.minutos)$jugador.minutos#end</td>
+									<td>#if($jugador.minutos)$numberTool.format("#0.00",$jugador.minutos)#end</td>
 									<td>#if($jugador.equipo)$jugador.equipo#end</td>
-									<td>#if($jugador.obs)$jugador.obs#end</td>
+									<td>#if($jugador.obs)#if($jugador.years eq 0) FA #else $jugador.obs#end #end</td>
 									<td>#if($jugador.cortadoPor)$jugador.cortadoPor#end</td>
 								</tr>
 							#end

@@ -1,8 +1,13 @@
 package es.nbajugones.dto;
 
 import es.nbajugones.dto.entities.Jugadores;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class JugadorDTO implements Comparable<JugadorDTO> {
+
 	private Integer idJugador;
 	private Integer activo;
 	private String years;
@@ -18,27 +23,82 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 	private Double salario;
 	private String url;
 	private String equipo;
+	private Integer playerId;
 
 	public JugadorDTO(Jugadores jugador) {
 		this.activo = jugador.getActivo();
 		this.cortadoPor = jugador.getCortadoPor();
-		this.idHoops = jugador.getIdHoops();
 		this.idJugador = jugador.getIdJugador();
 		this.nombre = jugador.getJugador();
 		this.jugados = jugador.getJugados();
 		this.minutos = jugador.getMinutos();
-		this.obs = jugador.getObs();
+		Date fecha = jugador.getFecha();
+		Date today = Calendar.getInstance().getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
+		String obs = "";
+		if (jugador.getStatus() != null) {
+			switch (jugador.getStatus()) {
+				case 1:
+					long diff = today.getTime() - fecha.getTime();
+					long days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					if (days < 5) {
+						Calendar c = Calendar.getInstance();
+						c.setTime(fecha);
+						c.add(Calendar.DATE, 5);
+						obs = String.format("No movible antes del %s (Si se traspasa, se ha de mantener 15 dias en destino)", sdf.format(c.getTime()));
+					} else {
+						if (5 <= days && days < 15) {
+							obs = "Si se traspasa, se ha de mantener 15 dias en destino";
+						}
+					}
+					break;
+				case 2:
+					diff = today.getTime() - fecha.getTime();
+					days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					if (days < 15) {
+						Calendar c = Calendar.getInstance();
+						c.setTime(fecha);
+						c.add(Calendar.DATE, 15);
+						obs = String.format("No movible antes del %s", sdf.format(c.getTime()));
+					}
+					break;
+				case 3:
+					obs = "Jugador no traspasable.";
+					break;
+				default:
+					break;
+			}
+		}
+		if (jugador.getLesionado() != null && jugador.getLesionado() == 1){
+			obs += (obs.equals("")?"":". ") + "Lesionado de larga duracion";
+		}
 		this.posicion = jugador.getPosicion();
 		this.promedio = jugador.getPromedio();
 		this.puntos = jugador.getPuntos();
-		if ("FA".equals(obs)) {
-			this.salario = (double) 0;
+		if (jugador.getRenovar()!= null) {
+			if ( jugador.getRenovar() == 1) {
+				this.salario = (double) 0;
+				obs = "FA";
+			} else {
+				if (jugador.getRenovar() == 2){
+					obs = "Jugador renovado. No puede ser cortado durante regularización";
+				}
+				if (jugador.getRenovar() == 3){
+					obs += "Jugador renovado. No movible hasta el 10-10 a las 22:00";
+				}
+				this.salario = jugador.getSalario();
+			}
 		} else {
 			this.salario = jugador.getSalario();
 		}
-		this.url = jugador.getUrl();
+		this.obs = obs;
 		this.years = jugador.getYears();
 		this.equipo = jugador.getEquipo();
+		this.playerId = jugador.getPlayerId();
+
+	}
+
+	public JugadorDTO() {
 
 	}
 
@@ -162,8 +222,27 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 		this.equipo = equipo;
 	}
 
+	public String getFirstName(){
+		return nombre.substring(0, nombre.indexOf(" "));
+	}
+	public String getLastName(){
+		return nombre.substring(nombre.indexOf(" ")+1);
+	}
+
 	public String getNombreFoto() {
 		return nombre.toLowerCase().replaceAll(" ", "_").replaceAll("\\.", "");
+	}
+
+	public String getNombreLink() {
+		return nombre.toLowerCase().replaceAll(" ", "-").replaceAll("\\.", "");
+	}
+
+	public Integer getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(Integer playerId) {
+		this.playerId = playerId;
 	}
 
 	public int compareTo(JugadorDTO o) {

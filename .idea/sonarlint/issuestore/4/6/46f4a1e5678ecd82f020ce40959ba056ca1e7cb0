@@ -1,0 +1,95 @@
+
+{
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÁÙ÷ƒûÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293I"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293P"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293`"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293g"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293n"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293u"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+{
+java:S2293~"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+|
+java:S2293ˆ"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+|
+java:S2293Ÿ"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+|
+java:S2293·"YReplace the type specification in this constructor call with the diamond operator ("<>").(´›÷şÿÿÿÿ8¹ç…ÌÎ.
+^	java:S125Á"<This block of commented-out lines of code should be removed.(ËšÖÃúÿÿÿÿ8¹ç…ÌÎ.
+Q
+java:S2864Ï"4Iterate over the "entrySet" instead of the "keySet".(Â©Öb8¹ç…ÌÎ.
+W
+java:S2864è"4Iterate over the "entrySet" instead of the "keySet".(¦ÊÈøÿÿÿÿ8¹ç…ÌÎ.
+^	java:S125ß"<This block of commented-out lines of code should be removed.(¼ôÅÄøÿÿÿÿ8¹ç…ÌÎ.
+d
+java:S3457ê"AFormat specifiers should be used instead of string concatenation.(­ƒ½Ëûÿÿÿÿ8¹ç…ÌÎ.
+a
+java:S4719ì">Replace charset name argument with StandardCharsets.ISO_8859_1(é–Ò—şÿÿÿÿ8¹ç…ÌÎ.
+^	java:S125ï"<This block of commented-out lines of code should be removed.(¨…½Úûÿÿÿÿ8¹ç…ÌÎ.
+^	java:S125ÿ"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8¹ç…ÌÎ.
+M
+java:S2093Ş"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¹ç…ÌÎ.
+d
+java:S3457š"AFormat specifiers should be used instead of string concatenation.(­ƒ½Ëûÿÿÿÿ8¹ç…ÌÎ.
+\
+java:S4719œ">Replace charset name argument with StandardCharsets.ISO_8859_1(®ÅØ8¹ç…ÌÎ.
+M
+java:S2093’"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8¹ç…ÌÎ.
+Q
+java:S2864Â"4Iterate over the "entrySet" instead of the "keySet".(ÛùÙ:8¹ç…ÌÎ.
+W
+java:S6213Â":Rename this variable to not match a restricted identifier.(ÛùÙ:8€Ğ‰“œ/
+w
+java:S2293Å"YReplace the type specification in this constructor call with the diamond operator ("<>").(ë»©Ä8¹ç…ÌÎ.
+[
+java:S1128">Remove this unused import 'java.nio.charset.StandardCharsets'.(ï˜ŞÛ8¹ç…ÌÎ.
+h
+java:S1192"JDefine a constant instead of duplicating this literal "temporada" 3 times.(¼© Ù8¹ç…ÌÎ.
+i
+java:S1192ì"FDefine a constant instead of duplicating this literal ".html" 3 times.(é–Ò—şÿÿÿÿ8¹ç…ÌÎ.
+f
+java:S1192h"IDefine a constant instead of duplicating this literal "derechos" 5 times.(í¶÷8¹ç…ÌÎ.
+k
+java:S1192’"HDefine a constant instead of duplicating this literal "ganador" 4 times.(åÜ½Çşÿÿÿÿ8¹ç…ÌÎ.
+o
+java:S1192¿"LDefine a constant instead of duplicating this literal "free_agents" 3 times.(Åşçùşÿÿÿÿ8¹ç…ÌÎ.
+c
+java:S1192b"FDefine a constant instead of duplicating this literal "todos" 4 times.(³ŒñÏ8¹ç…ÌÎ.
+d
+java:S1192o"GDefine a constant instead of duplicating this literal "rondas" 5 times.(¥ÇŠ±8¹ç…ÌÎ.
+~
+java:S1488K"\Immediately return this expression instead of assigning it to the temporary variable "html".(Úô”–øÿÿÿÿ8¹ç…ÌÎ.
+y
+java:S1488["\Immediately return this expression instead of assigning it to the temporary variable "html".( §À8¹ç…ÌÎ.
+y
+java:S1488b"\Immediately return this expression instead of assigning it to the temporary variable "html".(³ŒñÏ8¹ç…ÌÎ.
+y
+java:S1488i"\Immediately return this expression instead of assigning it to the temporary variable "html".(“’ ‹8¹ç…ÌÎ.
+~
+java:S1488p"\Immediately return this expression instead of assigning it to the temporary variable "html".(çÇ¼ğıÿÿÿÿ8¹ç…ÌÎ.
+~
+java:S1488y"\Immediately return this expression instead of assigning it to the temporary variable "html".(Ÿ‹ªŸúÿÿÿÿ8¹ç…ÌÎ.
+z
+java:S1488ƒ"\Immediately return this expression instead of assigning it to the temporary variable "html".(©Àå­8¹ç…ÌÎ.
+y
+java:S1488š"\Immediately return this expression instead of assigning it to the temporary variable "html".(–úí8¹ç…ÌÎ.
+
+java:S1488²"\Immediately return this expression instead of assigning it to the temporary variable "html".(ƒÀŞñıÿÿÿÿ8¹ç…ÌÎ.
+
+java:S1488¹"\Immediately return this expression instead of assigning it to the temporary variable "html".(‹©¹çıÿÿÿÿ8¹ç…ÌÎ.
+Z
+java:S2629ê"7Use the built-in formatting to construct this argument.(­ƒ½Ëûÿÿÿÿ8¹ç…ÌÎ.
+Z
+java:S2629š"7Use the built-in formatting to construct this argument.(­ƒ½Ëûÿÿÿÿ8¹ç…ÌÎ.
+o
+java:S2095ë"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(Ä¾Û‚üÿÿÿÿ8¹ç…ÌÎ.
+p
+java:S2095¢"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(½ãòËûÿÿÿÿ8¹ç…ÌÎ.

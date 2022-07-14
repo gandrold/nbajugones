@@ -2,8 +2,32 @@
 	font-size: 12px !important;
 }
 
+.boxScoreTable {
+	border: 1px solid #D8D8D8;
+    border-radius: 25px;
+}
 
+.roundedDiv {
+	border: 1px solid #D8D8D8;
+    border-radius: 10px !important;
+	margin-top: 10px;
+}
 
+.boxScoreTable table {
+	font-size: 11px !important;
+    padding: 3px;
+}
+
+.boxScoreTable table thead tr td {
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+.boxScoreTable table tbody tr td {
+	padding: 3px;
+	vertical-align: middle;
+	text-align: center;
+}
 
 .panel-body table thead tr td {
 	font-size: 12px !important;
@@ -17,7 +41,7 @@
 }
 
 .panel-body table tbody tr td {
-	font-size: 12px !important;
+	font-size: 12px;
 }
 
 .center {
@@ -63,7 +87,7 @@
 .holder a.jp-previous { margin-right: 15px; }
 .holder a.jp-next { margin-left: 15px; }
 
-.holder a.jp-current, a.jp-current:hover { 
+.holder a.jp-current, a.jp-current:hover {
 	color: #6685C1;
 	font-weight: bold;
 }
@@ -74,7 +98,7 @@
 
 .holder a.jp-current, a.jp-current:hover,
 .holder a.jp-disabled, a.jp-disabled:hover {
-	cursor: default; 
+	cursor: default;
 	background: none;
 }
 
@@ -91,7 +115,7 @@
 	display: block;
 	overflow: hidden;
 	position: absolute;
-	top: 110%; left: 70%;	
+	top: 110%; left: 70%;
 	margin: -2em; /* 2em = 4em/2 */ /* half the width */
 }
 .center-img {width: 141px;margin-left: 30%;}
@@ -172,11 +196,173 @@ li.game{
 
   li.game-top{ border-bottom:1px solid #aaa; }
 
-  li.game-spacer{ 
+  li.game-spacer{
     border-right:1px solid #aaa;
     min-height:40px;
   }
 
-  li.game-bottom{ 
+  li.game-bottom{
     border-top:1px solid #aaa;
   }
+
+   #contenido{
+	width:90% !important;
+}
+
+.grid{
+	padding: 5px;
+
+}
+
+.grid button{
+	width: 100px;
+}
+
+.boxscore{
+    width:auto !important;
+}
+
+.boxscoreCopa {
+    /* new custom width */
+    width: 90%;
+	overflow-y:auto;
+	margin: 10px;
+}
+
+.modal-boxscoreCopa {
+    /* new custom width */
+    width: 100%;
+	overflow-y:auto;
+	margin: 10px;
+}
+
+.modal-dialog-boxscore {
+    /* new custom width */
+    width: 100%;
+	margin: 0px;
+	padding-top:0px !important;
+}
+
+.modal-content-boxscore {
+    /* new custom width */
+    width: 100%;
+
+}
+
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.new_html_code {
+      width:100%;
+      height:100%;
+      min-width:150px;
+      min-height:100px;
+      overflow:hidden;
+      display:block;
+      border:1px solid black;
+    }
+
+	.widget {
+		width:200px;
+	}
+
+.playerStats {
+    min-height: 250px;
+      max-height: 250px;
+      overflow: hidden;
+}
+
+.logoEquipo {
+    width:40%;
+}
+.logoEquipoSchedule {
+    width:50px;
+}
+.logoEquipoGrande {
+    width:95%;
+}
+
+.logoHistorico {
+    width:10%;
+}
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ol {
+  list-style-type: none; }
+ol i.icon-move {
+    cursor: pointer; }
+ol li.highlight {
+    background: #333333;
+    color: #999999; }
+
+ol.vertical {
+  margin: 0 0 9px 0;
+  min-height: 10px; }
+
+ol.vertical li {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    color: #0088cc;
+    width: 90%;}
+
+ol.vertical li.placeholder {
+  position: relative;
+ margin: 0;
+     padding: 0;
+     border: none;
+}
+ol.vertical li.placeholder:before {
+  position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        margin-top: -5px;
+        left: -5px;
+        top: -4px;
+        border: 5px solid transparent;
+        border-left-color: red;
+        border-right: none;
+}

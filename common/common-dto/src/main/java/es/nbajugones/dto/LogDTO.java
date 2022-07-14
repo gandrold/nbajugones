@@ -27,7 +27,6 @@ public class LogDTO implements Comparable<LogDTO> {
 		}
 		if (texto == null){
 			texto=tempText;
-			System.out.println("Log not parseable: "+tempText);
 		}
 
 	}

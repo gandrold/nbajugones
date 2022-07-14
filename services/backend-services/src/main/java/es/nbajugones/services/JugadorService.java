@@ -4,6 +4,7 @@
  */
 package es.nbajugones.services;
 
+import es.nbajugones.datagetter.beans.roster.Player;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,25 +18,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.nbajugones.dbdao.data.DerechosDAO;
+import es.nbajugones.dbdao.data.EquipoDAO;
 import es.nbajugones.dbdao.data.JugadoresDAO;
 import es.nbajugones.dbdao.data.LogDAO;
+import es.nbajugones.dbdao.data.PlayersDAO;
 import es.nbajugones.dbdao.data.RenovacionesDAO;
 import es.nbajugones.dto.DerechoDTO;
 import es.nbajugones.dto.ExportDTO;
 import es.nbajugones.dto.JugadorDTO;
+import es.nbajugones.dto.PlayerStatsDTO;
+import es.nbajugones.dto.SeasonStatsDTO;
 import es.nbajugones.dto.entities.Derecho;
+import es.nbajugones.dto.entities.Equipo;
 import es.nbajugones.dto.entities.Jugadores;
+import es.nbajugones.dto.entities.Players;
 import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.exception.service.ServiceException;
 
 /**
- * 
+ *
  * @author Ignacio Blanco
  */
 public class JugadorService {
 
 	@Autowired
 	JugadoresDAO jugadorDAO;
+
+	@Autowired
+	EquipoDAO equipoDAO;
 
 	@Autowired
 	RenovacionesDAO renovacionesDAO;
@@ -46,11 +56,20 @@ public class JugadorService {
 	@Autowired
 	DerechosDAO derechosDAO;
 
+	@Autowired
+	PlayersDAO playersDAO;
+
+	@Autowired
+	StatsService statsService;
+
+	@Autowired
+	PlayersDAO jugadoresDAO;
+
 	@Transactional
 	public void ficharFA(String destino, int jugador, String salario,
-			String anos) throws ServiceException {
+			String anos, String fecha) throws ServiceException {
 		try {
-			jugadorDAO.ficharFA(destino, jugador, salario, anos);
+			jugadorDAO.ficharFA(destino, jugador, salario, anos, fecha);
 			logDAO.fa(destino, jugador, salario, anos);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
@@ -58,28 +77,19 @@ public class JugadorService {
 
 	}
 
-	@Transactional
-	public void actualizaJug(String obs, String player) throws ServiceException {
+	public void trade(String destino, int player, String fecha) throws ServiceException {
 		try {
-			jugadorDAO.actualizaJug(obs, player);
-		} catch (DaoException e) {
-			throw new ServiceException(e.getFullMessage());
-		}
-	}
-
-	public void trade(String destino, int player) throws ServiceException {
-		try {
-			jugadorDAO.trade(destino, player);
+			jugadorDAO.trade(destino, player, fecha);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
 		}
 	}
 
 	@Transactional
-	public void crearJugador(String nombre, String posicion)
+	public Jugadores crearJugador(String nombre, String posicion)
 			throws ServiceException {
 		try {
-			jugadorDAO.crearJugador(nombre, posicion);
+			return jugadorDAO.crearJugador(nombre, posicion);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
 		}
@@ -97,30 +107,58 @@ public class JugadorService {
 	}
 
 	@Transactional
-	public void activar(String jugador, String equipo) throws ServiceException {
+	public void injured(String idEquipo, int player, boolean injured)
+			throws ServiceException {
+		Equipo e = equipoDAO.getById(idEquipo);
+		Jugadores j = jugadorDAO.getById(player);
+		j.setLesionado(injured ? 1 : 0);
+		try {
+			jugadorDAO.saveOrUpdateEntity(j, player);
+			if (injured){
+				e.setLesionados((e.getLesionados()==null?0:e.getLesionados()) + j.getSalario()/2);
+			} else {
+				e.setLesionados(e.getLesionados() - j.getSalario()/2);
+			}
+			equipoDAO.saveOrUpdateEntity(e, idEquipo);
+		} catch (DaoException ex) {
+			throw new ServiceException(ex.getFullMessage());
+		}
+	}
+
+	@Transactional
+	public void activar(int jugador, String equipo) throws ServiceException {
 		try {
 			Jugadores j = derechosDAO.activarJugador(jugador);
 			logDAO.activar(j.getIdJugador(), equipo);
+			Players p = jugadoresDAO.getPlayer(null, null, j.getJugador(), null);
+			if (p != null) {
+				j.setPlayerId(p.getId());
+				PlayerStatsDTO stats = statsService.getPlayerStats(p.getId());
+				if (stats.getLastSeasonAvg().getSeason().equals("2017-18")) {
+					j.setMinutos(stats.getLastSeasonAvg().getMinutos().doubleValue());
+					j.setPuntos(stats.getHoopsAvg());
+					j.setPromedio(stats.getFppmAvg());
+					j.setJugados(stats.getLastSeasonAvg().getJugados().intValue());
+				}
+				jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+			}
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
 		}
 	}
 
-	
-
-
 	@Transactional
-	public List<JugadorDTO> getAll() {
+	public List<JugadorDTO> getAll() throws ServiceException {
 		return convert(jugadorDAO.getAll());
 	}
 
 	@Transactional
-	public List<JugadorDTO> getAllFA() {
+	public List<JugadorDTO> getAllFA() throws ServiceException {
 		return convert(jugadorDAO.getAllFA());
 	}
 
 	@Transactional
-	public List<JugadorDTO> getFA(String query) {
+	public List<JugadorDTO> getFA(String query) throws ServiceException {
 		return convert(jugadorDAO.getFA(query));
 	}
 
@@ -130,7 +168,20 @@ public class JugadorService {
 	}
 
 	@Transactional
-	public List<JugadorDTO> getTop5FA(String pos) {
+	public JugadorDTO getByPlayerId(int id) throws DaoException {
+		Jugadores j = jugadorDAO.getByPlayerId(id);
+		if (j == null) {
+			JugadorDTO jug = new JugadorDTO();
+			Players p = playersDAO.getById(id);
+			jug.setNombre(p.getDisplayname());
+			return jug;
+		} else {
+			return new JugadorDTO(j);
+		}
+	}
+
+	@Transactional
+	public List<JugadorDTO> getTop5FA(String pos) throws ServiceException {
 		return convert(jugadorDAO.getTop5FA(pos));
 	}
 
@@ -140,7 +191,15 @@ public class JugadorService {
 			List<Derecho> all = derechosDAO.getAll();
 			List<DerechoDTO> result = new ArrayList<DerechoDTO>();
 			for (Derecho d : all) {
-				result.add(new DerechoDTO(d));
+				DerechoDTO derecho = new DerechoDTO(d);
+				Players player = jugadoresDAO.getPlayer(null, null, derecho.getJugador(), null);
+				if (player != null) {
+					SeasonStatsDTO stats = statsService.getPlayerStats(player.getId()).getLastSeasonAvg();
+					if (stats.getSeason().equals("2017-18")) {
+						derecho.setJugados(stats.getMinutos().intValue());
+					}
+				}
+				result.add(derecho);
 			}
 			return result;
 		} catch (DaoException e) {
@@ -148,7 +207,7 @@ public class JugadorService {
 		}
 	}
 
-	private List<JugadorDTO> convert(List<Jugadores> input) {
+	private List<JugadorDTO> convert(List<Jugadores> input) throws ServiceException {
 		List<JugadorDTO> result = new ArrayList<JugadorDTO>();
 		for (Jugadores j : input) {
 			result.add(new JugadorDTO(j));
@@ -170,7 +229,8 @@ public class JugadorService {
 				// cuarto promedio
 				if (st.hasMoreTokens()) {
 					String name = st.nextToken();
-					name = name.replaceAll("'", "");
+					System.out.println(name);
+					//name = name.replaceAll("'", "");
 					int jugados = Integer.parseInt(st.nextToken());
 					Jugadores j = jugadorDAO.getByName(name);
 					if (j != null) {

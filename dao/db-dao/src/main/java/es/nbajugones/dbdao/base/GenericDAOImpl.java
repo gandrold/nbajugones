@@ -37,9 +37,6 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
    
 
-    /* (non-Javadoc)
-	 * @see com.planfisheye.dbdao.dao.base.GenericDAO#getByCriteria(com.planfisheye.dto.search.SearchCriteria, java.util.List)
-	 */
     
 	public List<T> getByCriteria(SearchCriteria searchCriteria, List<String> aliases) throws DaoException
     {

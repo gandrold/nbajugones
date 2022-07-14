@@ -1,0 +1,133 @@
+
+<html>
+<head>
+<title>NBA Jugones - Roster</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-15">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="/css/estilosBootstrap.css"	type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
+</head>
+<body>
+<div class="separadorHorizontal"></div>
+	<div class="cuerpo">
+		<div class="cabecera">
+			<div id="contenido" class="container">
+				<div class="row">
+<div class="col-md-12 col-sd-12 center btn-group btn-group-xs" role="group">
+
+<button type="button" class="btn btn-default" onclick="javascript:show('G');"> TOP 3 G</button>
+<button type="button" class="btn btn-default" onclick="javascript:show('F');"> TOP 3 F</button>
+<button type="button" class="btn btn-default" onclick="javascript:show('C');"> TOP 3 C</button>
+</div>
+<br/>
+<div class="widget center" id ="tableG">
+
+
+    <div>
+        <div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Top3 G</h3>
+			</div>
+			<div class="panel-body table-responsive">
+				<ul style="list-style-type: none;padding:0;">
+
+						#foreach($jugador in $faG)
+							#set($jpg=".jpg")
+							<li >
+
+								<p><img alt="$jugador.nombre"
+									src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
+									style="height: 50px;" title="$jugador.nombre" /></p>
+								<h4><a
+									href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=210086"
+									target="blank">$jugador.nombre</a> ($jugador.posicion)</h4>
+								<p>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos) FPPG#end / #if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio) FPPM#end</p>
+								<p>#if($jugador.jugados)$jugador.jugados jugados#end / #if($jugador.minutos)$numberTool.format("#0.0",$jugador.minutos) minutos#end</p>
+							</li>
+						#end
+				</ul>
+			</div>
+		</div>
+    </div>
+</div>
+		<div class="widget center" id ="tableF" style="display:none;">
+	<div>
+        <div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Top3 F</h3>
+			</div>
+			<div class="panel-body table-responsive">
+				<ul style="list-style-type: none;padding:0;">
+
+						#foreach($jugador in $faF)
+							#set($jpg=".jpg")
+							<li >
+
+								<p><img alt="$jugador.nombre"
+									src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
+									style="height: 50px;" title="$jugador.nombre" /></p>
+								<h4><a
+									href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=210086"
+									target="blank">$jugador.nombre</a> ($jugador.posicion)</h4>
+								<p>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos) FPPG#end / #if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio) FPPM#end</p>
+								<p>#if($jugador.jugados)$jugador.jugados jugados#end / #if($jugador.minutos)$numberTool.format("#0.0",$jugador.minutos) minutos#end</p>
+							</li>
+						#end
+				</ul>
+			</div>
+		</div>
+    </div>
+</div>
+		<div class="widget center" id ="tableC" style="display:none;">
+	<div>
+        <div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Top3 C</h3>
+			</div>
+			<div class="panel-body table-responsive">
+				<ul style="list-style-type: none;padding:0;">
+
+						#foreach($jugador in $faC)
+							#set($jpg=".jpg")
+							<li >
+
+								<p><img alt="$jugador.nombre"
+									src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
+									style="height: 50px;" title="$jugador.nombre" /></p>
+								<h4><a
+									href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=210086"
+									target="blank">$jugador.nombre</a> ($jugador.posicion)</h4>
+								<p>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos) FPPG#end / #if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio) FPPM#end</p>
+								<p>#if($jugador.jugados)$jugador.jugados jugados#end / #if($jugador.minutos)$numberTool.format("#0.0",$jugador.minutos) minutos#end</p>
+							</li>
+						#end
+				</ul>
+			</div>
+		</div>
+    </div>
+</div>
+</div>
+</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+function show(letter){
+	$(".widget").hide();
+	$("#table"+letter).show();
+}
+</script>
+</html>

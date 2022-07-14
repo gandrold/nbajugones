@@ -1,0 +1,146 @@
+
+<html>
+<head>
+<title>NBA Jugones - Copa $temporada</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-15">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="/css/estilosBootstrap.css"	type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/jpages.js"></script>
+</head>
+<body>
+	<div class="cuerpo">
+		<div class="cabecera">
+			<div class="equipos">
+				#parse("cabecera.vm")
+				<!-- /header -->
+			</div>
+			<div class="separadorHorizontal"></div>
+			<div id="contenido" class="container">
+				<div class="row">
+                    <div class="col-md-12 col-sd-12 center">
+                        <h1>Copa $temporada</h1>
+	                </div>
+                </div>
+                <div class="row">
+	            #set ($elemento=0)
+	                <div class="col-md-12 col-sd-12 center">
+	                    <h3>$titulo</h3>
+	                    #foreach($partido in $ronda)
+                        #if ($elemento % 6 == 0)<div class="row">#end
+                            <div class="col-md-2 col-sd-3">
+                                <div class="thumbnail partido" data-toggle="modal" data-target="#boxscore$partido.idPartido" class="btn btn-primary"
+                                    data-ronda="$partido.ronda" data-partido="$partido.idPartido">
+                                    <br/>
+                                    <span> <img alt="$partido.equipoFuera.nombre"
+                                        src="$partido.equipoFuera.logoDraft" title="$partido.equipoFuera.nombre" /> vs <img alt="$partido.equipoCasa.nombre"
+                                        src="$partido.equipoCasa.logoDraft" title="$partido.equipoCasa.nombre" /> </span>
+                                    <br/>
+                                    <span #if ($partido.fueraGanador)class="winner"#end>$partido.puntosFuera</span> -
+                                    <span #if ($partido.casaGanador)class="winner"#end>$partido.puntosCasa</span>
+                                    <br/>
+                                </div>
+                            </div>
+                        #if ($elemento % 6 ==  5)</div>#end
+                        #set ($elemento=$elemento+1)
+                        #end
+		            </div>
+	            </div>
+            </div>
+		</div>
+	</div>
+</div>
+#set($jpg=".jpg")
+#foreach($boxscore in $boxscores)
+    <div class="modal fade modal-boxscore" id="boxscore$boxscore.idPartido" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel">
+	    <div class="modal-dialog modal-dialog-boxscore">
+		    <div class="modal-content modal-content-boxscore">
+			    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Box score</h4>
+			    </div>
+			    <div class="modal-body" id="boxScoreBody">
+			        <div class="row">
+            	        <div class="col-md-12 col-sd-12">
+                            <h3><img alt="$boxscore.away.nombre" src="$boxscore.away.logoDraft" title="$boxscore.away.nombre" />$boxscore.away.nombre $numberTool.format("#0.0",$boxscore.awayHoopsScore)</h3>
+                            <p>Minutos sobrantes: $boxscore.minutesAway['G'] / $boxscore.minutesAway['F'] / $boxscore.minutesAway['C']</p>
+                            <div class="row">
+                                #foreach($stats in $boxscore.awayStarters)
+                                <div class="col-md-1 col-sd-1">
+                                    #if ($stats.minutos > 0)
+                                        <div class="thumbnail center playerStats" data-toggle="tooltip" data-placement="top" title="$stats.jugador.nombre contra $stats.against : $stats.minutos minutos, $stats.puntos pts, $stats.reb reb, $stats.asistencias asist, $stats.robos robos, $stats.tapones tapones, $stats.faltas faltas">
+                                         <img alt="$stats.jugador.nombre" src="http://cdn.basketball.sports.ws/players/$stats.jugador.nombreFoto$jpg"
+                                            style="height: 50px;" title="$stats.jugador.nombre" />
+                                        </a><p><b>$stats.jugador.firstName</b></p><p style="margin-top:-13px;"><b>$stats.jugador.lastName</b></p> <p>$stats.posicionHoops</p>
+                                        <p>$numberTool.format("#0.0",$stats.realPuntuacionHoops) FP</p>
+                                        <p>$numberTool.format("#0.0",$stats.fppm) FPPM</p>
+                                        <p>$stats.minutosG / $stats.minutosF / $stats.minutosC</p>
+                                        </div>
+                                    #end
+                                    #if ($stats.minutos == 0)
+                                        <div class="thumbnail center playerStats" data-toggle="tooltip" data-placement="top" title="$stats.jugador.nombre: DNP">
+                                        <img alt="${stats.jugador.nombre}" src="http://cdn.basketball.sports.ws/players/$stats.jugador.nombreFoto$jpg"
+                                                style="height: 50px;" title="$stats.jugador.nombre" />
+                                        </a><p><b>$stats.jugador.firstName</b></p><p style="margin-top:-13px;"><b>$stats.jugador.lastName</b></p> <p>$stats.posicionHoops</p>
+                                        <p>DNP</p>
+                                        </div>
+                                    #end
+                                </div>
+                                #end
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sd-12">
+                            <h3><img alt="$boxscore.home.nombre" src="$boxscore.home.logoDraft" title="$boxscore.home.nombre" />$boxscore.home.nombre $numberTool.format("#0.0",$boxscore.homeHoopsScore)</h3>
+                            <p>Minutos sobrantes: $boxscore.minutesHome['G'] / $boxscore.minutesHome['F'] / $boxscore.minutesHome['C']</p>
+                            <div class="row">
+                                #foreach($stats in $boxscore.homeStarters)
+                                    <div class="col-md-1 col-sd-1">
+                                    #if ($stats.minutos > 0)
+                                        <div class="thumbnail center playerStats" data-toggle="tooltip" data-placement="top" title="$stats.jugador.nombre contra $stats.against : $stats.minutos minutos, $stats.puntos pts, $stats.reb reb, $stats.asistencias asist, $stats.robos robos, $stats.tapones tapones, $stats.faltas faltas">
+                                             <img alt="$stats.jugador.nombre" src="http://cdn.basketball.sports.ws/players/$stats.jugador.nombreFoto$jpg"
+                                                style="height: 50px;" title="$stats.jugador.nombre" />
+                                            </a><p><b>$stats.jugador.firstName</b></p><p style="margin-top:-13px;"><b>$stats.jugador.lastName</b></p> <p>$stats.posicionHoops</p>
+                                            <p>$numberTool.format("#0.0",$stats.realPuntuacionHoops) FP</p>
+                                            <p>$numberTool.format("#0.0",$stats.fppm) FPPM</p>
+                                            <p>$stats.minutosG / $stats.minutosF / $stats.minutosC</p>
+                                        </div>
+                                    #end
+                                    #if ($stats.minutos == 0)
+                                        <div class="thumbnail center playerStats" data-toggle="tooltip" data-placement="top" title="$stats.jugador.nombre: DNP">
+                                            <img alt="${stats.jugador.nombre}" src="http://cdn.basketball.sports.ws/players/$stats.jugador.nombreFoto$jpg"
+                                                    style="height: 50px;" title="$stats.jugador.nombre" />
+                                            </a><p><b>$stats.jugador.firstName</b></p><p style="margin-top:-13px;"><b>$stats.jugador.lastName</b></p> <p>$stats.posicionHoops</p>
+                                            <p>DNP</p>
+                                        </div>
+                                    #end
+                                    </div>
+                                #end
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+#end
+</body>
+</html>
+<script type="text/javascript">
+$('[data-toggle="tooltip"]').tooltip()
+</script>

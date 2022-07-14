@@ -1,0 +1,16 @@
+
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¢ˆ‘‚ÿÿÿÿÿ
+`
+java:S1192H"JDefine a constant instead of duplicating this literal "startdate" 3 times.(Ÿ³á—
+B
+java:S1144m"-Remove this unused private "getIndex" method.(±ª«`
+t
+java:S2293c"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷×šüúÿÿÿÿ
+b
+java:S1192B"GDefine a constant instead of duplicating this literal "season" 3 times.(¯è£øÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'javax.persistence.Query'.(¢ğö
+t
+java:S2293o"YReplace the type specification in this constructor call with the diamond operator ("<>").(æ¶•úÿÿÿÿ
+t
+java:S2293N"YReplace the type specification in this constructor call with the diamond operator ("<>").(æ¶•úÿÿÿÿ

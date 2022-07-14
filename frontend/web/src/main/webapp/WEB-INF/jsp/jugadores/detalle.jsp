@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12 col-sd-12 center">
 		<img alt="${jugador.nombre}"
-			src="http://cdn.basketball.sports.ws/players/${jugador.nombreFoto}.jpg"
+			src="http://cdn.basketball.sports.ws/players/png/${jugador.nombreFoto}.png"
 			style="height: 50px;" title="${jugador.nombre}" />
 	</div>
 </div>
@@ -17,7 +17,7 @@
 	<div class="col-md-12 col-sd-12 center">Cortado por:
 		${jugador.cortadoPor}</div>
 </div>
-<form id="formFA" action="/jugones-frontend/jugadores/ficharFA.do" method="post" name="formFA">
+<form id="formFA" action="<c:url value="/jugadores/ficharFA.do"/>" method="post" name="formFA">
 	<input type="hidden" id="idJugador" name="idJugador"
 		value="${jugador.idJugador}" />
 	<div class="form-group">
@@ -30,6 +30,12 @@
 		<label for="duracion" class="col-sm-4 col-sd-4 control-label">Duracion</label>
 		<div class="col-md-8 col-sd-8">
 			<input type="text" id="duracion" name="duracion" value="" class="form-control"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="fecha" class="col-sm-4 col-sd-4 control-label">Fecha (yyyy-MM-dd)</label>
+		<div class="col-md-8 col-sd-8">
+			<input type="text" id="fecha" name="fecha" value="" class="form-control"/>
 		</div>
 	</div>
 	<div class="form-group">

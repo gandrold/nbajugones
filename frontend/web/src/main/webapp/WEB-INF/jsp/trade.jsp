@@ -1,20 +1,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div class="row">
 	<div class="col-md-12 col-sd-12 center">
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<button onClick="javascript: checkTrade();" class="btn btn-primary">Enviar
 			trade</button>
-		
+		</sec:authorize>
 		<button class="btn btn-primary" data-toggle="modal"
 			data-target="#evaluador">Evaluar trade</button>
 	</div>
 </div>
 <br />
 <form id="datosTrade" name="datosTrade" method="post" data-async data-target="#contenido"
-	action="/jugones-frontend/equipos/trade.do">
+	action="<c:url value="/equipos/trade.do"/>">
 <div class="row">
 	<div class="col-md-12 col-sd-12 center">
+	<div class="form-group">
+		<label for="fecha" class="col-sm-4 col-sd-4 control-label">Fecha (yyyy-MM-dd)</label>
+		<div class="col-md-8 col-sd-8">
+			<input type="text" id="fecha" name="fecha" value="" class="form-control"/>
+		</div>
+	</div>
 	</div>
 	<div class="col-md-6 col-sd-6">
 		<div class="panel panel-primary tradeBox">
@@ -29,7 +36,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<c:forEach var="equipo" items="${equipos}">
-							<li><a href="javascript:loadTeamTrade('${equipo.key}',1)">
+							<li><a href="javascript:loadTeamTrade('<c:url value="/equipos/rosterMin.do"/>','<c:url value="/ajax/logo.do"/>','${equipo.key}',1)">
 									${equipo.value} </a></li>
 						</c:forEach>
 
@@ -56,7 +63,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<c:forEach var="equipo" items="${equipos}">
-							<li><a href="javascript:loadTeamTrade('${equipo.key}',2)">
+							<li><a href="javascript:loadTeamTrade('<c:url value="/equipos/rosterMin.do"/>','<c:url value="/ajax/logo.do"/>','${equipo.key}',2)">
 									${equipo.value} </a></li>
 						</c:forEach>
 

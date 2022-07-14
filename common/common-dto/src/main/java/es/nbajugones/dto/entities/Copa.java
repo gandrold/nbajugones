@@ -11,6 +11,7 @@ import es.nbajugones.dto.entities.pk.CopaPK;
  * 
  */
 @Entity
+@Table(name = "copa")
 public class Copa implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -1,0 +1,9 @@
+
+f
+java:S1192"KDefine a constant instead of duplicating this literal "dd/MM/yyyy" 3 times.(äÏÔøÿÿÿÿ
+A
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
+b
+java:S1128"LRemove this unused import 'org.codehaus.jackson.map.annotate.JsonSerialize'.(Ï”³´
+o
+java:S1210Q"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(èùÛÁ

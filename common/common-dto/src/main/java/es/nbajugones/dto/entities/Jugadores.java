@@ -1,15 +1,16 @@
 package es.nbajugones.dto.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 
 /**
  * The persistent class for the jugadores database table.
- * 
+ *
  */
 
-@NamedQueries({@NamedQuery(name = "Jugadores.getPlantilla", 
+@NamedQueries({@NamedQuery(name = "Jugadores.getPlantilla",
 query = "SELECT j FROM Jugadores j WHERE j.idJugador IN (:plantilla)") })
 
 @Entity
@@ -33,9 +34,6 @@ public class Jugadores implements Serializable {
 	@Column(name="CORTADO_POR")
 	private String cortadoPor;
 
-	@Column(name="ID_HOOPS")
-	private Integer idHoops;
-
 	@Column(name="JUGADOR")
 	private String jugador;
 
@@ -44,9 +42,6 @@ public class Jugadores implements Serializable {
 
 	@Column(name="MINUTOS")
 	private Double minutos;
-
-	@Column(name="OBS")
-	private String obs;
 
 	@Column(name="POSICION")
 	private String posicion;
@@ -60,9 +55,28 @@ public class Jugadores implements Serializable {
 	@Column(name="SALARIO")
 	private Double salario;
 
-	@Column(name="URL")
-	private String url;
-	
+	@Column(name="player_id")
+	private Integer playerId;
+
+	@Column(name="renovar")
+	private Integer renovar;
+
+	@Column(name="lesionado")
+	private Integer lesionado;
+
+	@Column(name="status")
+	private Integer status;
+
+	@Column(name = "equipo_real")
+	private String equipoReal;
+
+	@Basic(optional = false)
+    @Column(name = "fecha")
+	@Temporal(TemporalType.DATE)
+	private Date fecha;
+
+
+
 	@Transient
 	private String equipo;
 
@@ -93,7 +107,7 @@ public class Jugadores implements Serializable {
 		this.activo = activo;
 	}
 
-	
+
 
 	public String getCortadoPor() {
 		return this.cortadoPor;
@@ -101,14 +115,6 @@ public class Jugadores implements Serializable {
 
 	public void setCortadoPor(String cortadoPor) {
 		this.cortadoPor = cortadoPor;
-	}
-
-	public Integer getIdHoops() {
-		return this.idHoops;
-	}
-
-	public void setIdHoops(Integer idHoops) {
-		this.idHoops = idHoops;
 	}
 
 	public String getJugador() {
@@ -133,14 +139,6 @@ public class Jugadores implements Serializable {
 
 	public void setMinutos(Double minutos) {
 		this.minutos = minutos;
-	}
-
-	public String getObs() {
-		return this.obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
 	}
 
 	public String getPosicion() {
@@ -175,14 +173,6 @@ public class Jugadores implements Serializable {
 		this.salario = salario;
 	}
 
-	public String getUrl() {
-		return this.url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
 	public String getYears() {
 		return years;
 	}
@@ -191,4 +181,74 @@ public class Jugadores implements Serializable {
 		this.years = years;
 	}
 
+	public Integer getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(Integer playerId) {
+		this.playerId = playerId;
+	}
+
+	public Integer getRenovar() {
+		return renovar;
+	}
+
+	public void setRenovar(Integer renovar) {
+		this.renovar = renovar;
+	}
+
+	public Integer getLesionado() {
+		return lesionado;
+	}
+
+	public void setLesionado(Integer lesionado) {
+		this.lesionado = lesionado;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getEquipoReal() {
+		return equipoReal;
+	}
+
+	public void setEquipoReal(String equipoReal) {
+		this.equipoReal = equipoReal;
+	}
+
+	@Override
+	public String toString() {
+		return "Jugadores{" +
+				"idJugador=" + idJugador +
+				", activo=" + activo +
+				", years='" + years + '\'' +
+				", cortadoPor='" + cortadoPor + '\'' +
+				", jugador='" + jugador + '\'' +
+				", jugados=" + jugados +
+				", minutos=" + minutos +
+				", posicion='" + posicion + '\'' +
+				", promedio=" + promedio +
+				", puntos=" + puntos +
+				", salario=" + salario +
+				", playerId=" + playerId +
+				", renovar=" + renovar +
+				", lesionado=" + lesionado +
+				", status=" + status +
+				", fecha=" + fecha +
+				", equipo='" + equipo + '\'' +
+				'}';
+	}
 }

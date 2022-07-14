@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:url value="/" var="urlStatic" />
 <html>
@@ -18,16 +19,21 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<link rel="stylesheet" href="/jugones-frontend/themes/css/estilos.css"
+<link rel="stylesheet" href="<c:url value="/themes/css/estilos.css"/>"
 	type="text/css" />
-
-<script src="/jugones-frontend/themes/js/jquery.min.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/equipos.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/jugadores.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/main.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/jpages.js"></script>
-<script type="text/javascript" src="/jugones-frontend/themes/js/jquery.tablesorter.js"></script>
+<link rel="stylesheet" href="<c:url value="/themes/css/bootstrap-datepicker3.min.css"/>"
+	type="text/css" />
+<script src="<c:url value="/themes/js/jquery.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/equipos.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/jugadores.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/main.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/jpages.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/jquery.tablesorter.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/jquery.flot.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/bootstrap-datepicker.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/themes/js/jquery-sortable-min.js"/>"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -46,12 +52,18 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="/jugones-frontend/index.action">NBA Jugones</a>
+							<sec:authorize access="isAuthenticated()">
+							<a class="navbar-brand" href="<c:url value="/dashboard.action"/>">NBA Jugones</a>
+							</sec:authorize>
+							<sec:authorize access="isAnonymous()">
+							<a class="navbar-brand" href="#">NBA Jugones</a>
+							</sec:authorize>
 						</div>
 
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse"
 							id="bs-example-navbar-collapse-1">
+							<sec:authorize access="isAuthenticated()">
 							<ul class="nav navbar-nav">
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -59,28 +71,56 @@
 									<ul class="dropdown-menu">
 										<c:forEach var="equipo" items="${equipos}">
 											<li><a
-												href="javascript:loadTeam('${equipo.key}')">
+												href="<c:url value="/roster.action"/>?id=${equipo.key}">
 													${equipo.value} </a></li>
 										</c:forEach>
 
-									</ul></li>
-								<li><a href="<c:url value="/jugadores/fa.action"/>">Ver
-												FA's</a></li>
-										<li><a href="<c:url value="/jugadores/todos.action"/>">Ver
-												todos</a></li>
-										<li><a href="<c:url value="/trade.action"/>">Trade</a></li>
-										<li><a href="<c:url value="/evaluar.action"/>">Evaluar</a>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Jugadores <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="<c:url value="/jugadores/fa.action"/>">Ver FA's</a></li>
+                                        <li><a href="<c:url value="/jugadores/todos.action"/>">Ver todos</a></li>
+                                        <li><a href="<c:url value="/jugadores/derechos.action"/>">Derechos</a></li>
+                                        <li><a href="<c:url value="/renovacion.action"/>">Renovaciones</a></li>
+                                        <li><a href="<c:url value="/draft.action"/>">Drafts</a></li>
+									</ul>
+								</li>
+                                <li><a href="<c:url value="/trade.action"/>">Trade</a></li>
+                                <li><a href="<c:url value="/rondas.action"/>">Rondas</a></li>
+								<li><a href="<c:url value="/evaluar.action"/>">Evaluar</a></li>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Admin <span class="caret"></span></a>
+									<ul class="dropdown-menu">
 										<li><a href="<c:url value="/exportar.action"/>">Generar rosters</a></li>
-										<li><a href="<c:url value="/jugadores/new.action"/>">Nuevo jugador</a></li>
-										<li><a href="<c:url value="/import.action"/>">Stats</a></li>
-										<li><a href="<c:url value="/jugadores/derechos.action"/>">Derechos</a></li>
-										<li><a href="<c:url value="/rondas.action"/>">Rondas</a></li>
-										<li><a href="<c:url value="/renovacion.action"/>">Renovaciones</a></li>
-										<li><a href="<c:url value="/draft.action"/>">Drafts</a></li>
+                                        <li><a href="<c:url value="/jugadores/new.action"/>">Nuevo jugador</a></li>
+                                        <li><a href="<c:url value="/import.action"/>">Stats</a></li>
+									</ul>
+								</li>
+								</sec:authorize>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Stats <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="<c:url value="/schedule.action"/>">Schedule</a></li>
+										<li><a href="<c:url value="/seasonStats.action"/>">NBA stats</a></li>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Historico <span class="caret"></span></a>
+									<ul class="dropdown-menu">
 										<li><a href="<c:url value="/copa.action"/>">Copa</a></li>
-										<li><a href="<c:url value="/historico.action"/>">Historico</a></li>
+										<li><a href="<c:url value="/historico.action"/>">NBA Jugones</a></li>
+									</ul>
+								</li>
+								<li><a href="<spring:url value="/j_spring_security_logout" htmlEscape="true" />">Logout</a></li>
 							</ul>
-
+							</sec:authorize>
 						</div>
 						<!-- /.navbar-collapse -->
 					</div>

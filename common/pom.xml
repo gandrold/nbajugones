@@ -9,9 +9,8 @@
   <packaging>pom</packaging>
   <modules>
     <module>common-utils</module>
-	<module>common-dto</module>
   	<module>common-enum</module>
   	<module>common-interfaces</module>
-
+	<module>common-dto</module>
   </modules>
 </project>

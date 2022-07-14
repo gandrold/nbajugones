@@ -12,6 +12,7 @@
 		<module>frontend</module>
 	</modules>
 	<properties>
+        <jdk.version>1.7</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.0.5.RELEASE</spring.version>
 		<spring.security.version>3.0.5.RELEASE</spring.security.version>
@@ -19,7 +20,25 @@
 		<hibernate.core.version>4.1.4.Final</hibernate.core.version>
 		<hibernate.em.version>4.1.4.Final</hibernate.em.version>
 		<hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
+        <logback.version>1.0.13</logback.version>
+        <jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
 	</properties>
+    <build>
+        <plugins>
+            <!-- Set JDK Compiler Level -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
 	<dependencyManagement>
 		<dependencies>
 
@@ -181,17 +200,12 @@
 				<artifactId>mysql-connector-java</artifactId>
 				<version>5.1.9</version>
 			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>1.4.2</version>
-			</dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.4.2</version>
+            </dependency>
 
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>1.4.2</version>
-			</dependency>
 			<dependency>
 				<groupId>commons-dbcp</groupId>
 				<artifactId>commons-dbcp</artifactId>
@@ -296,7 +310,7 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.0.1</version>
+				<version>3.5</version>
 			</dependency>
 
 			<dependency>
@@ -347,7 +361,7 @@
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
-				<version>4.3.3</version>
+				<version>4.3.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -509,9 +523,13 @@
 			<dependency>
 				<groupId>commons-net</groupId>
 				<artifactId>commons-net</artifactId>
-				<version>2.0</version>
+				<version>3.5</version>
 			</dependency>
-
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.7</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 

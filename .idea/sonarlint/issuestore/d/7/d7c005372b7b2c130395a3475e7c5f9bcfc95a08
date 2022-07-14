@@ -1,0 +1,21 @@
+
+j
+java:S11925"HDefine a constant instead of duplicating this literal "equipos" 7 times.(Š³”ıÿÿÿÿ8’¢Ü¢è.
+
+java:S1130j"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.
+W
+java:S1128":Remove this unused import 'es.nbajugones.dto.ScheduleDTO'.(Ò°‘8’¢Ü¢è.
+z
+java:S1192b"XDefine a constant instead of duplicating this literal "text/html;charset=UTF-8" 4 times.(­„£ûÿÿÿÿ8’¢Ü¢è.
+‘
+java:S1130j"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.
+
+java:S1130|"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.
+l
+java:S4488y"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ÎØ‘ñıÿÿÿÿ8’¢Ü¢è.
+‘
+java:S1130|"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.
+
+java:S1130r"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.
+‘
+java:S1130r"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ8’¢Ü¢è.

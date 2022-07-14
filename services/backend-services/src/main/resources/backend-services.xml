@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd
-        http://www.springframework.org/schema/data/mongo
-        http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd"
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 	default-autowire="byName">
+
 	<import resource="classpath:dao-context.xml" />
-
-
-
 
 	<bean id="equipoService" class="es.nbajugones.services.EquipoService" />
 	<bean id="jugadorService" class="es.nbajugones.services.JugadorService" />
@@ -21,4 +16,6 @@
 	<bean id="draftService" class="es.nbajugones.services.DraftService" />
 	<bean id="renovacionService" class="es.nbajugones.services.RenovacionesService" />
 	<bean id="historicoService" class="es.nbajugones.services.HistoricoService" />
+	<bean id="statsService" class="es.nbajugones.services.StatsService" />
+	<bean id="calendarioService" class="es.nbajugones.services.CalendarioService" />
 </beans>

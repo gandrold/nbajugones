@@ -22,6 +22,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 	private static final String FICHA_RENOVACIONES = "%s - %s ficha en renovaciones a %s por %s en %s años ";
 	private static final String ACTIVA = "%s - %s activa a %s (%s) por %,.2f-%s";
 	private static final String TRADE = "%s - %s traspasa a %s a %s cambio de %s ";
+	private static final String DRAFT = "%s - %s elige con el pick %d (ronda %d) a %s (%s)";
 
 	private SimpleDateFormat sdf = new SimpleDateFormat(LogDTO.DATE_FORMATS[0]);
 
@@ -38,6 +39,16 @@ public class LogDAO extends GenericDAOImpl<Log> {
 				jugadoresDAO.getById(jugador).getJugador(), salario, anos);
 		Log log = new Log();
 		log.setIdEquipo(destino);
+		log.setTexto(mensaje);
+		saveOrUpdateEntity(log, null);
+		return log;
+	}
+
+	public Log draft(String equipo, int pick, int y, String jugador, String posicion) throws DaoException{
+		String mensaje = String.format(DRAFT, sdf.format(Calendar.getInstance()
+				.getTime()), equipoDAO.getById(equipo).getNombre(), pick, y, jugador, posicion);
+		Log log = new Log();
+		log.setIdEquipo(equipo);
 		log.setTexto(mensaje);
 		saveOrUpdateEntity(log, null);
 		return log;

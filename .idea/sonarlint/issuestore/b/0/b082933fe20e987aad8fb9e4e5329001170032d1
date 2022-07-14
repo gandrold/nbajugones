@@ -1,0 +1,28 @@
+
+¹
+java:S1192-"–Define a constant instead of duplicating this literal "SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio," 3 times.(§Û¸éúÿÿÿÿ8çÌ¸ËÎ.
+k
+java:S1192Ï"HDefine a constant instead of duplicating this literal "jugador" 3 times.(ßêÆûÿÿÿÿ8•£½Óê.
+d
+java:S2259¿"AA "NullPointerException" could be thrown; "cut" is nullable here.(ÒáÉÙûÿÿÿÿ8çÌ¸ËÎ.
+S
+java:S1128"1Remove this unused import 'java.text.Normalizer'.(‡âÌ€øÿÿÿÿ8çÌ¸ËÎ.
+¡
+java:S1130$"ƒRemove the declaration of thrown exception 'es.nbajugones.exception.dbdao.DaoException', as it cannot be thrown from method's body.(¡‰ÓÓ8çÌ¸ËÎ.
+I
+java:S19055"'Remove this unnecessary cast to "List".(ÌğÒéøÿÿÿÿ8çÌ¸ËÎ.
+I
+java:S1905?"'Remove this unnecessary cast to "List".(ÌğÒéøÿÿÿÿ8çÌ¸ËÎ.
+I
+java:S1905K"'Remove this unnecessary cast to "List".(ÌğÒéøÿÿÿÿ8çÌ¸ËÎ.
+I
+java:S1905V"'Remove this unnecessary cast to "List".(ÌğÒéøÿÿÿÿ8çÌ¸ËÎ.
+J	java:S108b")Either remove or fill this block of code.(âÃƒŠıÿÿÿÿ8çÌ¸ËÎ.
+F	java:S108")Either remove or fill this block of code.(Í½°†8çÌ¸ËÎ.
+F	java:S108Õ")Either remove or fill this block of code.(”ı¾8çÌ¸ËÎ.
+a
+java:S4719ü">Replace charset name argument with StandardCharsets.ISO_8859_1(É›âÿÿÿÿÿ8çÌ¸ËÎ.
+\
+java:S4719ÿ"9Replace charset name argument with StandardCharsets.UTF_8(¯èà¿ùÿÿÿÿ8çÌ¸ËÎ.
+<
+java:S2178‹"Correct this "&" to "&&".(¯ğã»üÿÿÿÿ8çÌ¸ËÎ.

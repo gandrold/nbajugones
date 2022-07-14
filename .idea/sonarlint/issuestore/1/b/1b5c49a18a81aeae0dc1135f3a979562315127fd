@@ -1,0 +1,17 @@
+
+|
+java:S1210ø"YOverride "equals(Object obj)" to comply with the contract of the "compareTo(T o)" method.(ôÚıÿÿÿÿ8•ø¹ËÎ.
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(´ÒÔúÿÿÿÿ8•ø¹ËÎ.
+Y
+java:S1117&"7Rename "obs" which hides the field declared at line 19.(¯Ô—Îıÿÿÿÿ8•ø¹ËÎ.
+k
+java:S5361é"HReplace this call to "replaceAll()" by a call to the "replace()" method.(İ‰ôÆøÿÿÿÿ8½¤ş´İ.
+k
+java:S5361é"HReplace this call to "replaceAll()" by a call to the "replace()" method.(İ‰ôÆøÿÿÿÿ8•ø¹ËÎ.
+f
+java:S5361í"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ª—£Í8½¤ş´İ.
+f
+java:S5361í"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ª—£Í8•ø¹ËÎ.
+u
+java:S3776ø"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ôÚıÿÿÿÿ8•ø¹ËÎ.

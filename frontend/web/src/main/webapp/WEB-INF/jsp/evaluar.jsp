@@ -17,7 +17,7 @@
 				<c:forEach var="eval" items="${evaluacion}">
 					<c:if test="${eval.warning}">
 						<tr class="alert alert-danger">
-							<td><img src="${eval.logo}" alt="Logo" /></td>
+							<td><img src="${eval.logo}" alt="Logo" class="logoEquipo"/></td>
 							<td>${eval.disponible}</td>
 							<td>${eval.jugadores}</td>
 							<td>${eval.fa}</td>

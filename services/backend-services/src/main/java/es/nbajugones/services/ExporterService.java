@@ -1,13 +1,7 @@
 package es.nbajugones.services;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,16 +19,23 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.NumberTool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.CopaDTO;
+import es.nbajugones.dto.MatchDTO;
 import es.nbajugones.dto.PlayoffDTO;
 import es.nbajugones.exception.service.ServiceException;
 
+import java.util.Calendar;
+
 public class ExporterService {
 
-	public static final int LAST_DRAFT = 2015;
+	public static final int LAST_DRAFT = 2021;
+
+	Logger logger = LoggerFactory.getLogger(ExporterService.class.getName());
 
 	@Autowired
 	EquipoService equipoService;
@@ -47,6 +48,9 @@ public class ExporterService {
 
 	@Autowired
 	HistoricoService historicoService;
+
+	@Autowired
+	CalendarioService calendarioService;
 
 	FTPClient ftp;
 
@@ -63,12 +67,29 @@ public class ExporterService {
 		return results;
 	}
 
+
+
 	public String generateFAList() throws ServiceException {
 		Map<String, Object> values = new HashMap<String, Object>();
 		values.put("fa", jugadorService.getAllFA());
 		String html = generateTemplate("fa", values);
 		return html;
+	}
 
+	public String generateWidget() throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("faG", jugadorService.getTop5FA("G"));
+		values.put("faF", jugadorService.getTop5FA("F"));
+		values.put("faC", jugadorService.getTop5FA("C"));
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, -1);
+		List<MatchDTO> data = calendarioService.getWidgetDay(c.getTime());
+		if (!data.isEmpty()) {
+			values.put("schedule", data);
+		}
+		values.put("size", data.size()+3);
+		String html = generateTemplate("widget", values);
+		return html;
 	}
 
 	public String generateAllList() throws ServiceException {
@@ -101,22 +122,32 @@ public class ExporterService {
 		return html;
 	}
 
+	public String generateRondaCopa(String temporada, int ronda) throws ServiceException {
+		Map<String, Object> values = new HashMap<String, Object>();
+		values.put("ronda", equipoService.getRondaCopa(temporada, ronda));
+		values.put("boxscores", equipoService.getBoxscoresRondaCopa(temporada, ronda));
+		values.put("temporada", temporada);
+		values.put("titulo", "Ronda "+ronda);
+		String html = generateTemplate("copaBoxscores", values);
+		return html;
+	}
+
 	public String generateCopa(String temporada) throws ServiceException {
 		Map<String, Object> values = new HashMap<String, Object>();
 		List<CopaDTO> ronda1 = equipoService.getRondaCopa(temporada, 1);
-        values.put("ronda1", ronda1);
+		values.put("ronda1", ronda1);
 		values.put("ronda2", equipoService.getRondaCopa(temporada, 2));
 		values.put("cuartos", equipoService.getRondaCopa(temporada, 3));
 		values.put("semi", equipoService.getRondaCopa(temporada, 4));
 		List<CopaDTO> rondaFinal = equipoService.getRondaCopa(temporada, 5);
 		values.put("rondaFinal", rondaFinal);
-		if (!rondaFinal.isEmpty()){
-			if (rondaFinal.get(0).isCasaGanador()){
+		if (!rondaFinal.isEmpty()) {
+			if (rondaFinal.get(0).isCasaGanador()) {
 				values.put("ganador", rondaFinal.get(0).getEquipoCasa());
 			} else {
-				if (rondaFinal.get(0).isFueraGanador()){
-				values.put("ganador", rondaFinal.get(0).getEquipoFuera());
-			}
+				if (rondaFinal.get(0).isFueraGanador()) {
+					values.put("ganador", rondaFinal.get(0).getEquipoFuera());
+				}
 			}
 		}
 		values.put("temporada", temporada);
@@ -126,19 +157,21 @@ public class ExporterService {
 
 	public String generateHistorico(String temporada) throws ServiceException {
 		Map<String, Object> values = new HashMap<String, Object>();
-        values.put("rs", historicoService.getResultados(temporada));
+		values.put("rs", historicoService.getResultados(temporada));
+
 		values.put("ronda1", historicoService.getPlayOff(temporada, 1));
+		values.put("hasPlayoff", !historicoService.getPlayOff(temporada, 1).isEmpty());
 		values.put("ronda2", historicoService.getPlayOff(temporada, 2));
 		values.put("semis", historicoService.getPlayOff(temporada, 3));
 		List<PlayoffDTO> rondaFinal = historicoService.getPlayOff(temporada, 4);
 		values.put("rondaFinal", rondaFinal);
-		if (!rondaFinal.isEmpty()){
+		if (!rondaFinal.isEmpty()) {
 			if (rondaFinal.get(0).isGanador1()) {
 				values.put("ganador", rondaFinal.get(0).getEquipo1());
 			} else {
-				if (rondaFinal.get(0).isGanador2()){
-				values.put("ganador", rondaFinal.get(0).getEquipo2());
-			}
+				if (rondaFinal.get(0).isGanador2()) {
+					values.put("ganador", rondaFinal.get(0).getEquipo2());
+				}
 			}
 		}
 		values.put("temporada", temporada);
@@ -146,7 +179,7 @@ public class ExporterService {
 		return html;
 	}
 
-	public String generateIndex() throws ServiceException{
+	public String generateIndex() throws ServiceException {
 		Map<String, Object> values = new HashMap<String, Object>();
 		values.put("evaluacion", equipoService.evaluar());
 		String html = generateTemplate("index", values);
@@ -156,6 +189,8 @@ public class ExporterService {
 	public void export(List<String> teams) throws ServiceException {
 		Map<String, String> equipos = generateTeamHTML(teams);
 		equipos.put("free_agents", generateFAList());
+		equipos.put("widget", generateWidget());
+		//equipos.put("schedule", generateMatchWidget());
 		equipos.put("todos", generateAllList());
 		equipos.put("derechos", generateDerechos());
 		equipos.put("rondas", generateRondas());
@@ -182,37 +217,55 @@ public class ExporterService {
 	}
 
 	public void sendMapToFTP(Map<String, String> files) throws ServiceException {
+
 		ftp = new FTPClient();
 		try {
-			ftp.connect("217.160.225.125");
-			ftp.login("u60560404", "Clander123");
-			int reply = ftp.getReplyCode();
-			if (!FTPReply.isPositiveCompletion(reply)) {
-				ftp.disconnect();
-				throw new ServiceException("Error connecting to FTP file ");
-			} else {
+			//ftp.connect("home344607320.1and1-data.host");
+			//ftp.login("u60560404", "Clander123");
+			//int reply = ftp.getReplyCode();
+			//if (!FTPReply.isPositiveCompletion(reply)) {
+			//	ftp.disconnect();
+			//	throw new ServiceException("Error connecting to FTP file ");
+			//} else {
+				//ftp.enterLocalPassiveMode();
+				//ftp.setFileType(FTP.BINARY_FILE_TYPE);
 				for (String fileName : files.keySet()) {
 					String content = files.get(fileName);
-					System.out.println("Uploading " + fileName);
-					File f = new File("C:\\temp\\roster\\"+fileName+".html");
-					Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), "ISO-8859-1"));
-					try {
-						out.write(content);
-					} finally {
-						out.close();
-					}
-					//InputStream in = new FileInputStream(f);
-					//ftp.setFileType(FTP.BINARY_FILE_TYPE);
-					//ftp.storeFile(fileName + ".html", in);
-					//in.close();
+					logger.info("Uploading " + fileName);
+					Writer writer = new BufferedWriter(new OutputStreamWriter(
+						new FileOutputStream("C:\\temp\\Rosters\\"+fileName+".html"), "ISO-8859-1"));
+					writer.write(content);
+					writer.close();
+					//InputStream stream = new ByteArrayInputStream(content.getBytes("ISO-8859-1"));
+					//OutputStream outputStream =  ftp.storeFileStream(fileName + ".html");
+					//byte[] bytesIn = new byte[4096];
+					//int read = 0;
+					//while ((read = stream.read(bytesIn)) != -1) {
+					//	outputStream.write(bytesIn, 0, read);
+					//}
+					//stream.close();
+					//outputStream.close();
+					//boolean completed = ftp.completePendingCommand();
+					//if (completed) {
+					//	logger.info("File is uploaded successfully.");
+					//} else {
+					//	logger.info("Error.");
+					//}
 				}
-				ftp.logout();
-				ftp.disconnect();
-			}
+			//}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException(e);
+		} finally {
+			if (ftp.isConnected()){
+				try {
+					ftp.logout();
+					ftp.disconnect();
+				} catch (IOException e){
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
@@ -226,7 +279,7 @@ public class ExporterService {
 				ftp.disconnect();
 				throw new ServiceException("Error uploading to FTP file " + fileName);
 			} else {
-				System.out.println("Uploading " + fileName);
+				logger.info("Uploading " + fileName);
 				File f = File.createTempFile(fileName, ".html");
 				Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), "ISO-8859-1"));
 				try {
@@ -236,15 +289,23 @@ public class ExporterService {
 				}
 				InputStream in = new FileInputStream(f);
 				ftp.setFileType(FTP.BINARY_FILE_TYPE);
-				ftp.storeFile(fileName + ".html", in);
+				boolean done = ftp.storeFile(fileName + ".html", in);
 				in.close();
-				ftp.logout();
-				ftp.disconnect();
+				logger.info(done?"Upload successful":"Error on upload");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServiceException(e);
+		} finally {
+			if (ftp.isConnected()){
+				try {
+					ftp.logout();
+					ftp.disconnect();
+				} catch (IOException e){
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 

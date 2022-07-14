@@ -4,14 +4,13 @@
  */
 package es.nbajugones.frontend.controllers;
 
+import com.google.gson.Gson;
+import es.nbajugones.dto.BoxScoreDTO;
 import es.nbajugones.dto.EquipoDTO;
 import es.nbajugones.dto.CopaDTO;
 import es.nbajugones.dto.PlayoffDTO;
 import es.nbajugones.exception.service.ServiceException;
-import es.nbajugones.services.EquipoService;
-import es.nbajugones.services.HistoricoService;
-import es.nbajugones.services.JugadorService;
-import es.nbajugones.services.TradeService;
+import es.nbajugones.services.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -47,10 +47,33 @@ public class EquiposControlador {
 	@Autowired
 	HistoricoService historicoService;
 
+	@Autowired
+	StatsService statsService;
+
 	@RequestMapping("/index.action")
 	public void init(Model model) throws ServiceException {
+	}
+
+	@RequestMapping("/dashboard.action")
+	public void dashboard(Model model) throws ServiceException {
 		model.addAttribute("equipos", equipoService.getEquipos());
 		model.addAttribute("evaluacion", equipoService.evaluar());
+	}
+
+	@RequestMapping("/roster.action")
+	public void getEquipo(Model model, @RequestParam("id") String id) throws ServiceException {
+		model.addAttribute("equipos", equipoService.getEquipos());
+		EquipoDTO equipo = equipoService.getEquipo(id);
+		model.addAttribute("equipo", equipo);
+		model.addAttribute("evaluacion", equipoService.evaluar(id));
+
+	}
+
+	@RequestMapping("/ordenar.do")
+	public String ordenar(Model model, @RequestParam("id") String id) throws ServiceException {
+		EquipoDTO equipo = equipoService.getEquipo(id);
+		model.addAttribute("plantilla", equipo.getPlantilla());
+		return "ordenarRoster";
 	}
 
 	@RequestMapping("/trade.action")
@@ -72,7 +95,7 @@ public class EquiposControlador {
 
 	@RequestMapping("/copa.action")
 	public void copa(Model model, @RequestParam(value = "y", required = false) String temp) throws ServiceException {
-		String temporada = temp == null ? "2015-16" : temp;
+		String temporada = temp == null ? "2017-18" : temp;
 		List<CopaDTO> ronda1 = equipoService.getRondaCopa(temporada, 1);
 		model.addAttribute("ronda1", ronda1);
 		model.addAttribute("ronda2", equipoService.getRondaCopa(temporada, 2));
@@ -90,12 +113,46 @@ public class EquiposControlador {
 			}
 		}
 		model.addAttribute("temporada", temporada);
-		buildTemporadas(model, 16);
+		buildTemporadas(model, 17);
+	}
+
+	@RequestMapping("/copaJson.do")
+	public @ResponseBody
+	String copaJson(Model model, @RequestParam(value = "y", required = false) String temp) throws ServiceException {
+		String temporada = temp == null ? "2016-17" : temp;
+		List<CopaDTO> ronda = equipoService.getRondaCopa(temporada, 1);
+		ronda.addAll(equipoService.getRondaCopa(temporada, 2));
+		ronda.addAll(equipoService.getRondaCopa(temporada, 3));
+		ronda.addAll(equipoService.getRondaCopa(temporada, 4));
+		ronda.addAll(equipoService.getRondaCopa(temporada, 5));
+		Gson gson = new Gson();
+		String response = gson.toJson(ronda);
+		return response;
+	}
+
+	@RequestMapping("/copaBoxscore.do")
+	public String copaBoscore(Model model, @RequestParam(value = "y", required = false) String temp, @RequestParam(value = "r", required = false) int ronda
+			, @RequestParam(value = "p", required = false) int partido, HttpServletResponse response) throws ServiceException {
+		model.addAttribute("boxscore", equipoService.getCopaBoxscore(temp, ronda, partido));
+		response.setContentType("text/html;charset=UTF-8");
+		return "copaBox";
+	}
+
+	@RequestMapping("/copaBoxscorejson.do")
+	public @ResponseBody
+	String	copaJson(Model model, @RequestParam(value = "y", required = false) String temp, @RequestParam(value = "r", required = false) int ronda
+			, @RequestParam(value = "p", required = false) int partido) throws ServiceException {
+		BoxScoreDTO dto = equipoService.getCopaBoxscore(temp, ronda, partido);
+		dto.getAwayHoopsScore();
+		dto.getHomeHoopsScore();
+		Gson gson = new Gson();
+		String response = gson.toJson(dto);
+		return response;
 	}
 
 	@RequestMapping("/historico.action")
 	public void historico(Model model, @RequestParam(value = "y", required = false) String temp) throws ServiceException {
-		String temporada = temp == null ? "2014-15" : temp;
+		String temporada = temp == null ? "2017-18" : temp;
 		model.addAttribute("temporada", temporada);
 		model.addAttribute("rs", historicoService.getResultados(temporada));
 		model.addAttribute("ronda1", historicoService.getPlayOff(temporada, 1));
@@ -112,46 +169,36 @@ public class EquiposControlador {
 				}
 			}
 		}
-		buildTemporadas(model, 15);
+		buildTemporadas(model, 17);
 	}
 
-	@RequestMapping("/equipos/roster.do")
-	public String getEquipo(Model model, @RequestParam("id") String id,
-			HttpServletResponse response) throws JSONException, IOException {
+	@RequestMapping("/equipos/accion.do")
+	public String accion(Model model, @RequestParam("idJugador") int id, @RequestParam("idEquipo") String equipo,
+			@RequestParam("factor") double factor, @RequestParam(value = "lesionado", required=false) boolean lesionado, HttpServletResponse response) throws JSONException, IOException {
 		try {
-			EquipoDTO equipo = equipoService.getEquipo(id);
-			model.addAttribute("equipo", equipo);
-			model.addAttribute("evaluacion", equipoService.evaluar(id));
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-		response.setContentType("text/html;charset=UTF-8");
-		return "equipos/roster";
-	}
-
-	@RequestMapping("/equipos/cortar.do")
-	public String cortar(Model model, @RequestParam("id") int id, @RequestParam("equipo") String equipo,
-			@RequestParam("factor") double factor, HttpServletResponse response) throws JSONException, IOException {
-		try {
-			jugadorService.cut(equipo, id, factor);
 			EquipoDTO e = equipoService.getEquipo(equipo);
+			if (factor >= 0) {
+				jugadorService.cut(equipo, id, factor);
+			} else {
+				jugadorService.injured(equipo, id, lesionado);
+			}
 			model.addAttribute("equipo", e);
 			model.addAttribute("evaluacion", equipoService.evaluar(equipo));
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 		response.setContentType("text/html;charset=UTF-8");
-		return "equipos/roster";
+		return "redirect:/roster.action?id=" + equipo;
 	}
 
 	@RequestMapping("/equipos/trade.do")
-	public String trade(Model model, @RequestParam(value = "players1", required = false) List<String> players1,
+	public String trade(Model model, @RequestParam(value = "fecha", required = false) String fecha, @RequestParam(value = "players1", required = false) List<String> players1,
 			@RequestParam(value = "players2", required = false) List<String> players2, @RequestParam(value = "rondas1", required = false) List<String> rondas1,
 			@RequestParam(value = "rondas2", required = false) List<String> rondas2, @RequestParam(value = "derechos1", required = false) List<String> derechos1,
 			@RequestParam(value = "derechos2", required = false) List<String> derechos2, @RequestParam("equipo1") String equipo1, @RequestParam("equipo2") String equipo2,
 			HttpServletResponse response) throws JSONException, IOException {
 		try {
-			tradeService.trade(players1, players2, rondas1, rondas2, derechos1, derechos2, equipo1, equipo2);
+			tradeService.trade(players1, players2, rondas1, rondas2, derechos1, derechos2, equipo1, equipo2, fecha);
 			response.setContentType("text/html;charset=UTF-8");
 		} catch (ServiceException e) {
 			e.printStackTrace();
@@ -160,18 +207,19 @@ public class EquiposControlador {
 	}
 
 	@RequestMapping("/equipos/activar.do")
-	public String activar(Model model, @RequestParam("jugador") String jugador, @RequestParam("equipo") String equipo,
+	public String activar(Model model, @RequestParam("jugador") int jugador, @RequestParam("equipo") String equipo,
 			HttpServletResponse response) throws JSONException, IOException {
 		try {
 			jugadorService.activar(jugador, equipo);
 			EquipoDTO e = equipoService.getEquipo(equipo);
+			model.addAttribute("equipos", equipoService.getEquipos());
 			model.addAttribute("equipo", e);
 			model.addAttribute("evaluacion", equipoService.evaluar(equipo));
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 		response.setContentType("text/html;charset=UTF-8");
-		return "equipos/roster";
+		return "roster";
 	}
 
 	@RequestMapping("/equipos/rosterMin.do")
@@ -188,8 +236,11 @@ public class EquiposControlador {
 	@RequestMapping("/ajax/logo.do")
 	public void getLogo(Model model, @RequestParam("id") String id,
 			HttpServletResponse response) throws JSONException, IOException, ServiceException {
-		String logo = equipoService.getEquipo(id).getLogoDraft();
-		response.setContentType("text/html;charset=UTF-8");
+		String logo = "";
+		if (!"FA".equals(id)) {
+			logo = equipoService.getEquipo(id).getLogoDraft();
+		}
+		response.setContentType("application/json;charset=UTF-8");
 		JSONObject eq = new JSONObject();
 		eq.put("logo", logo);
 		PrintWriter out = response.getWriter();
@@ -197,12 +248,12 @@ public class EquiposControlador {
 		out.close();
 	}
 
-	private void buildTemporadas(Model model, int limit){
+	private void buildTemporadas(Model model, int limit) {
 		List<String> temporadas = new ArrayList<String>();
-		for (int i=limit;i>3;i--){
-			int next = i+1;
+		for (int i = limit; i > 3; i--) {
+			int next = i + 1;
 			String t = "20";
-			t = t +(i<10?"0"+i:i)+"-"+(next<10?"0"+next:next);
+			t = t + (i < 10 ? "0" + i : i) + "-" + (next < 10 ? "0" + next : next);
 			temporadas.add(t);
 		}
 		model.addAttribute("tempList", temporadas);

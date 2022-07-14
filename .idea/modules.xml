@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/services/backend-services/backend-services.iml" filepath="$PROJECT_DIR$/services/backend-services/backend-services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-dto/common-dto.iml" filepath="$PROJECT_DIR$/common/common-dto/common-dto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-enum/common-enum.iml" filepath="$PROJECT_DIR$/common/common-enum/common-enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-interfaces/common-interfaces.iml" filepath="$PROJECT_DIR$/common/common-interfaces/common-interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-utils/common-utils.iml" filepath="$PROJECT_DIR$/common/common-utils/common-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao/dao.iml" filepath="$PROJECT_DIR$/dao/dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao/data-getter/data-getter.iml" filepath="$PROJECT_DIR$/dao/data-getter/data-getter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao/db-dao/db-dao.iml" filepath="$PROJECT_DIR$/dao/db-dao/db-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/frontend-common/frontend-common.iml" filepath="$PROJECT_DIR$/frontend/frontend-common/frontend-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/integration-client/integration-client.iml" filepath="$PROJECT_DIR$/services/integration-client/integration-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/web/jugones-frontend.iml" filepath="$PROJECT_DIR$/frontend/web/jugones-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/webservices/webservices.iml" filepath="$PROJECT_DIR$/services/webservices/webservices.iml" />
+    </modules>
+  </component>
+</project>

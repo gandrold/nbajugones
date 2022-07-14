@@ -20,7 +20,13 @@
 
     <context:annotation-config/>
 
-	<import resource="classpath:db-config.xml"/>
+    <bean id="dataSource" destroy-method="close"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost/bd1?autoReconnect=true" />
+        <property name="username" value="jugones" />
+        <property name="password" value="jugones" />
+    </bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
@@ -71,4 +77,14 @@
 	<bean id="playoffDAO" class="es.nbajugones.dbdao.data.PlayoffDAO" />
 	<bean id="conferenciaDAO" class="es.nbajugones.dbdao.data.ConferenciaDAO" />
 	<bean id="divisionDAO" class="es.nbajugones.dbdao.data.DivisionDAO" />
+	<bean id="scheduleDAO" class="es.nbajugones.dbdao.data.ScheduleDAO" />
+	<bean id="statsDAO" class="es.nbajugones.dbdao.data.StatsDAO" />
+	<bean id="playersDAO" class="es.nbajugones.dbdao.data.PlayersDAO" />
+	<bean id="seasonDAO" class="es.nbajugones.dbdao.data.SeasonDAO" />
+	<bean id="adminDAO" class="es.nbajugones.dbdao.data.AdminDAO" />
+    <bean id="calendarioLigaDAO" class="es.nbajugones.dbdao.data.CalendarioLigaDAO" />
+    <bean id="scheduleOrderDAO" class="es.nbajugones.dbdao.data.ScheduleOrderDAO" />
+    <bean id="rosterDAO" class="es.nbajugones.dbdao.data.RosterDAO" />
+    <bean id="tokenDAO" class="es.nbajugones.dbdao.data.TokenDAO" />
+    <bean id="deadlinesDAO" class="es.nbajugones.dbdao.data.DeadlinesDAO" />
 </beans>

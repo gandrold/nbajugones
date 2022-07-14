@@ -8,8 +8,7 @@
   <artifactId>dao</artifactId>
   <packaging>pom</packaging>
   <modules>
-  	<module>db-dao</module>
-
-  	<!--  <module>db-schema</module>-->
+	  <module>data-getter</module>
+		<module>db-dao</module>
   </modules>
 </project>

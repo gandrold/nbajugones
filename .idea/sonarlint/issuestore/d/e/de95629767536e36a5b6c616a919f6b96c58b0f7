@@ -1,0 +1,17 @@
+
+X
+java:S4719ß":Replace Charset.forName() call with StandardCharsets.UTF_8(¬ä¥È8áî×ğì.
+p
+java:S2095İ"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(ü˜¯§ıÿÿÿÿ8áî×ğì.
+w
+java:S2293Ó"YReplace the type specification in this constructor call with the diamond operator ("<>").(®äº8áî×ğì.
+f
+java:S1128"IRemove this unused import 'es.nbajugones.datagetter.beans.roster.Player'.(İ™åê8ÅÌÓê.
+V	java:S106è"9Replace this use of System.out or System.err by a logger.(«‹Îõ8Íé¥’î.
+|
+java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").( ªÈ†ıÿÿÿÿ8áî×ğì.
+Y	java:S125é"<This block of commented-out lines of code should be removed.(ç±¡¼8áî×ğì.
+o
+java:S2095Ş"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(‹×‘øÿÿÿÿ8áî×ğì.
+¨
+java:S1130Ò"‰Remove the declaration of thrown exception 'es.nbajugones.exception.service.ServiceException', as it cannot be thrown from method's body.(¾ÖÖÔ8áî×ğì.

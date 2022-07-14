@@ -1,0 +1,17 @@
+
+s	java:S117è"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Àé©üÿÿÿÿ8ö–ÝÎà.
+n	java:S117ð"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¦‘õ8ö–ÝÎà.
+s	java:S117ø"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÎæ©þÿÿÿÿ8ö–ÝÎà.
+q	java:S116B"URename this field "id_jugador" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þ¥ï€8ö–ÝÎà.
+p	java:S116D"TRename this field "id_equipo" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï—É‰8ö–ÝÎà.
+v	java:S116F"URename this field "id_partido" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ…ç¬ùÿÿÿÿ8ö–ÝÎà.
+k	java:S100ä"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄŒÃÖ8ö–ÝÎà.
+p	java:S100è"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Àé©üÿÿÿÿ8ö–ÝÎà.
+p	java:S100ì"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê Þðýÿÿÿÿ8ö–ÝÎà.
+k	java:S100ð"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼¦‘õ8ö–ÝÎà.
+p	java:S100ô"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µñª—ýÿÿÿÿ8ö–ÝÎà.
+p	java:S100ø"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÎæ©þÿÿÿÿ8ö–ÝÎà.
+P
+java:S1135…"2Complete the task associated to this TODO comment.(ª‚Ù•8ö–ÝÎà.
+d
+java:S1126Š"AReplace this if-then-else statement by a single return statement.(‰×ó‹þÿÿÿÿ8ö–ÝÎà.

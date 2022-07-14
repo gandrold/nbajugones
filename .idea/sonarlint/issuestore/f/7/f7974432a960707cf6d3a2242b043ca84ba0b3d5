@@ -1,0 +1,11 @@
+
+Š
+java:S11300"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(§Þø¡üÿÿÿÿ
+‡
+java:S11300"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§Þø¡üÿÿÿÿ
+S
+java:S1128"8Remove this unused import 'es.nbajugones.dto.EquipoDTO'.(Ã¯õ‹øÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.io.PrintWriter'.(ÓÞÏÛ
+K
+java:S1128"0Remove this unused import 'org.json.JSONObject'.(œÖ´üþÿÿÿÿ

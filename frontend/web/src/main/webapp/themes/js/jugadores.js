@@ -1,11 +1,11 @@
-function seleccionar(jugador){
+function seleccionar(seleccionarUrl, loaderUrl,jugador){
 	$("#detalleJugador").show();
 	$("html, body").animate({ scrollTop: 0 }, "fast");
-	$("#datosJugador").html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
+	$("#datosJugador").html("<img src='/"+loaderUrl+"' class='center'/>");
 
 	$.ajax({
 		type : "POST",
-		url : "/jugones-frontend/jugadores/seleccionar.do",
+		url : seleccionarUrl,
 		data : "jugador="+jugador,
 		success : function (data){
 	        $("#datosJugador").html(data);
@@ -18,16 +18,16 @@ function seleccionar(jugador){
 	    error:function(data){
 	    	$("#datosJugador").html("<p class='bg-danger'>Se ha producido un error al cargar al jugador</p>");
 	    }
-	});	
+	});
 }
 
 
-function activar(jugador, equipo){
-	$("#contenido").html("<img src='/jugones-frontend/themes/img/loader.gif' class='center'/>");
+function activar(activarUrl, loaderUrl, jugador, equipo){
+	$("#contenido").html("<img src='"+loaderUrl+"' class='center'/>");
 
 	$.ajax({
 		type : "POST",
-		url : "/jugones-frontend/equipos/activar.do",
+		url : activarUrl,
 		data : "jugador="+jugador+"&equipo="+equipo,
 		success : function (data){
 	        $("#contenido").html(data);
@@ -36,7 +36,7 @@ function activar(jugador, equipo){
 	    error:function(data){
 	    	loadTeam(equipo);
 	    }
-	});	
+	});
 }
 
 function filtrar(){
@@ -56,7 +56,7 @@ function filtrar(){
 			}
 		}
 		if (!hide){
-			if(posicion!=""){		
+			if(posicion!=""){
 				var valor=$(this).children(".posicion").html().toLowerCase();
 				if (valor != posicion){
 					hide=true;

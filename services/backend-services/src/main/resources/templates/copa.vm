@@ -40,7 +40,8 @@
 	<div class="col-md-12 col-sd-12 center">
 	#if ($ganador)
 	<h3>Ganador</h3>
-	$ganador.logo
+	<img alt="$ganador.nombre"
+    			src="$ganador.logoDraft" title="$ganador.nombre" />
 			<br/>
 	<b>$ganador.nombre</b>
 	#end

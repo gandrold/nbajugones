@@ -12,7 +12,7 @@ public class RondasDraftDAO extends GenericDAOImpl<RondasDraft> {
 
 	public void trade(String idEquipoOrigen, String idEquipoDestino, int ano, int ronda) throws DaoException{
 		SearchCriteria criteria = new SearchCriteria();
-		criteria.addFilter("idEquipoProp", idEquipoOrigen, FilterType.EQUALS);
+		criteria.addFilter("id.idEquipo", idEquipoOrigen, FilterType.EQUALS);
 		criteria.addFilter("id.ano", ano, FilterType.EQUALS);
 		criteria.addFilter("id.ronda", ronda, FilterType.EQUALS);
 		RondasDraft rondaDraft = getByCriteria(criteria).get(0);

@@ -41,8 +41,10 @@
 							<a href="$eval.equipo$html"> <img
 								src="$eval.logo"></a>
 							<div class="caption">
-								<p>Cap disponible: $numberTool.format("#0.00",$eval.disponible)</p>
-								<p>Jugadores: $eval.totalJugadores</p>
+							    <p style="text-align: center;">GM: <a
+                                				href="http://privados.miarroba.es/#!new&to=$eval.propietario"
+                                				target="blank">$eval.propietario</a></p>
+								<p style="text-align: center;">Cap: $numberTool.format("#0.00",$eval.disponible) / Jugadores: $eval.totalJugadores</p>
 							</div>
 						</div>
 
@@ -53,7 +55,7 @@
 
 		</div>
 				</div>
-
+            <p>Actualizado el $dateTool.format('dd/MM/yyyy HH:mm', $dateTool.getDate())</p>
 			</div>
 		</div>
 	</div>

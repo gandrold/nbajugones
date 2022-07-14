@@ -23,6 +23,8 @@ public class CopaDTO implements Serializable {
 
 	private String url;
 
+	private String json;
+
 	public CopaDTO(Copa copa, EquipoDTO equipoCasa, EquipoDTO equipoFuera) {
 		idPartido = copa.getId().getPartido();
 		ronda = copa.getId().getRonda();
@@ -65,7 +67,13 @@ public class CopaDTO implements Serializable {
 		this.equipoFuera = equipoFuera;
 	}
 
+	public String getJson() {
+		return json;
+	}
 
+	public void setJson(String json) {
+		this.json = json;
+	}
 
 	public Double getPuntosCasa() {
 		return this.puntosCasa;

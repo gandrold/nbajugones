@@ -24,7 +24,7 @@
 
 	<div class="cuerpo">
 		<div class="cabecera">
-			<div class="equipos">				
+			<div class="equipos">
 				#parse("cabecera.vm")
 				<!-- /header -->
 			</div>
@@ -32,13 +32,13 @@
 			<div id="contenido" class="container">
 				<div class="row">
 	<div class="col-md-12 col-sd-12 center">
-		
+
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-2 col-sd-2">
 		<div class="center">
-		$equipo.logo
+		<img src="$equipo.logo" class="logoEquipoGrande"/>
 		<p>
 			<b>GM:</b> <a
 				href="http://privados.miarroba.es/#!new&to=$equipo.propietario"
@@ -104,11 +104,11 @@
 					<p>
 						<b>$hist.temporada:</b> <br />
 						$hist.ganados - $hist.perdidos ( $hist.media ) <br />
-						#if ($hist.logros) 
+						#if ($hist.logros)
 						$hist.logros
 						#end
 					</p>
-					
+
 				#end
 				<div class="page_navigation"></div>
 			</div>
@@ -120,7 +120,7 @@
 				<h3 class="panel-title">Roster</h3>
 			</div>
 			<div class="panel-body table-responsive">
-				<table id="tablaJugadores" class="sort-table table">
+				<table id="tablaJugadores" class="table sort-table">
 					<thead>
 						<tr>
 							<th>&nbsp;</th>
@@ -137,13 +137,13 @@
 					<tbody>
 
 						#foreach( $jugador in $equipo.plantilla)
-							<tr #if($jugador.obs == 'FA') class="bg-info"#end >	
-								#set($jpg=".jpg")
+							<tr #if($jugador.obs == 'FA') class="bg-info"#end >
+								#set($jpg=".png")
 								<td><img alt="$jugador.nombre"
-									src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto$jpg"
+									src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
 									style="height: 40px;" title="$jugador.nombre" /></td>
 								<td><a
-									href="http://basketball.sports.ws/player/$jugador.nombreFoto?league=160091"
+									href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=220146"
 									target="blank">$jugador.nombre ($jugador.posicion)</a></td>
 								<td>#if( $jugador.obs == 'FA')
 										-
@@ -151,10 +151,10 @@
 										$jugador.salario</td>
 									#end
 								<td>$jugador.years </td>
-								<td>#if($jugador.puntos)$jugador.puntos#end</td>
-									<td>#if($jugador.promedio)$jugador.promedio#end</td>
+								<td>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos)#end</td>
+									<td>#if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio)#end</td>
 									<td>#if($jugador.jugados)$jugador.jugados#end</td>
-									<td>#if($jugador.minutos)$jugador.minutos#end</td>
+									<td>#if($jugador.minutos)$numberTool.format("#0.00",$jugador.minutos)#end</td>
 
 								<td>#if($jugador.obs)$jugador.obs#end</td>
 							</tr>
@@ -233,7 +233,7 @@
 					<h3 class="panel-title">Movimientos</h3>
 				</div>
 				<div class="panel-body">
-					
+
 					<ul class="content" id="historicos">
 						#foreach($log in $equipo.log)
 							<li><b>$dateTool.format('dd/MM/yyyy HH:mm', $log.fecha): </b>

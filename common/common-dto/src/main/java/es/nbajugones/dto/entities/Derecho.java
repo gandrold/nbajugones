@@ -3,20 +3,27 @@ package es.nbajugones.dto.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import es.nbajugones.dto.entities.pk.DerechoPK;
 
 
 /**
  * The persistent class for the derechos database table.
- * 
+ *
  */
 @Entity
 @Table(name="derechos")
 public class Derecho implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private DerechoPK id;
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Integer id;
+
+	@Column(name="id_equipo")
+	private String idEquipo;
+
+	@Column(name="jugador")
+	private String jugador;
 
 	@Column(name="ano_eleccion")
 	private Integer anoEleccion;
@@ -33,13 +40,31 @@ public class Derecho implements Serializable {
 	public Derecho() {
 	}
 
-	public DerechoPK getId() {
-		return this.id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(DerechoPK id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public String getIdEquipo() {
+		return idEquipo;
+	}
+
+	public void setIdEquipo(String idEquipo) {
+		this.idEquipo = idEquipo;
+	}
+
+	public String getJugador() {
+		return jugador;
+	}
+
+	public void setJugador(String jugador) {
+		this.jugador = jugador;
+	}
+
+
 
 	public Integer getAnoEleccion() {
 		return this.anoEleccion;

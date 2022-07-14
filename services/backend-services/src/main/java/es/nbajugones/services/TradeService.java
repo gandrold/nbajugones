@@ -29,17 +29,17 @@ public class TradeService {
 	@Transactional
 	public void trade(List<String> players1, List<String> players2,
 			List<String> rondas1, List<String> rondas2, List<String> derechos1,
-			List<String> derechos2, String equipo1, String equipo2)
+			List<String> derechos2, String equipo1, String equipo2, String fecha)
 			throws ServiceException {
 		try {
 			if (players1 != null) {
 				for (String p : players1) {
-					jugadoresDAO.trade(equipo2, Integer.parseInt(p));
+					jugadoresDAO.trade(equipo2, Integer.parseInt(p), fecha);
 				}
 			}
 			if (players2 != null) {
 				for (String p : players2) {
-					jugadoresDAO.trade(equipo1, Integer.parseInt(p));
+					jugadoresDAO.trade(equipo1, Integer.parseInt(p), fecha);
 				}
 			}
 			if (rondas1 != null) {
@@ -47,7 +47,8 @@ public class TradeService {
 					String[] trozos = r.split("_");
 					int ano = Integer.parseInt(trozos[0]);
 					int ronda = Integer.parseInt(trozos[1]);
-					rondasDraftDAO.trade(equipo1, equipo2, ano, ronda);
+					String equipo = trozos[2];
+					rondasDraftDAO.trade(equipo, equipo2, ano, ronda);
 				}
 			}
 			if (rondas2 != null) {
@@ -55,7 +56,8 @@ public class TradeService {
 					String[] trozos = r.split("_");
 					int ano = Integer.parseInt(trozos[0]);
 					int ronda = Integer.parseInt(trozos[1]);
-					rondasDraftDAO.trade(equipo2, equipo1, ano, ronda);
+					String equipo = trozos[2];
+					rondasDraftDAO.trade(equipo, equipo1, ano, ronda);
 				}
 			}
 			if (derechos1 != null) {

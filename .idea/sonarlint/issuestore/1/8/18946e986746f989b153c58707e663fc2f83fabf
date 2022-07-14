@@ -1,0 +1,37 @@
+
+t
+java:S4144["YUpdate this method so that its implementation is not identical to "dashboard" on line 58.(ÖÄ˜£úÿÿÿÿ
+c
+java:S1192;"HDefine a constant instead of duplicating this literal "equipos" 6 times.(Š³”ıÿÿÿÿ
+ˆ
+java:S1130Ç"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(şÑ†¾şÿÿÿÿ
+‹
+java:S1130Ó"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(şÑ†¾şÿÿÿÿ
+|
+java:S1488"`Immediately return this expression instead of assigning it to the temporary variable "response".(•©¬åûÿÿÿÿ
+u
+java:S2293ü"YReplace the type specification in this constructor call with the diamond operator ("<>").(ø—­˜ùÿÿÿÿ
+w
+java:S1488•"`Immediately return this expression instead of assigning it to the temporary variable "response".(ãÀı¸
+ˆ
+java:S1130Ó"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(şÑ†¾şÿÿÿÿ
+ˆ
+java:S1130±"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(¾­€ºøÿÿÿÿ
+t
+java:S1192‰"XDefine a constant instead of duplicating this literal "text/html;charset=UTF-8" 5 times.(­„£ûÿÿÿÿ
+—
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©÷
+‹
+java:S1130±"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(¾­€ºøÿÿÿÿ
+‹
+java:S1130ã"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ
+‹
+java:S1130Ç"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(şÑ†¾şÿÿÿÿ
+ˆ
+java:S1130ã"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(§Şø¡üÿÿÿÿ
+^
+java:S1192l"HDefine a constant instead of duplicating this literal "ganador" 4 times.(É¤ñ
+f
+java:S1192<"KDefine a constant instead of duplicating this literal "evaluacion" 5 times.(Øìˆ”øÿÿÿÿ
+]
+java:S1192C"GDefine a constant instead of duplicating this literal "equipo" 4 times.(±Œ½ü

@@ -13,9 +13,12 @@ public class ExportDTO {
 	
 	private List<DerechoDTO> derechos;
 
+	private List<String> sospechosos;
+
 	public ExportDTO(){
-		jugadoresNuevos = new ArrayList<String>();
-		derechos = new ArrayList<DerechoDTO>();
+		jugadoresNuevos = new ArrayList<>();
+		derechos = new ArrayList<>();
+		sospechosos = new ArrayList<>();
 	}
 	
 	public List<String> getJugadoresNuevos() {
@@ -33,7 +36,15 @@ public class ExportDTO {
 	public void setDerechos(List<DerechoDTO> derechos) {
 		this.derechos = derechos;
 	}
-	
+
+	public List<String> getSospechosos() {
+		return sospechosos;
+	}
+
+	public void setSospechosos(List<String> sospechosos) {
+		this.sospechosos = sospechosos;
+	}
+
 	public void sortDerechos(){
 		Collections.sort(derechos, new Comparator<DerechoDTO>() {
 			public int compare(DerechoDTO o1, DerechoDTO o2) {

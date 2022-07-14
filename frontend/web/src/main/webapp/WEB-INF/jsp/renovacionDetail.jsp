@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form id="formRenovacion" action="/jugones-frontend/renovacion.do"
+<form id="formRenovacion" action="<c:url value="/renovacion.do"/>"
 	method="post" name="formRenovacion">
 	<input type="hidden" id="idJugador" name="idJugador"
-		value="${renovacion.idJugador}" /> 
+		value="${renovacion.idJugador}" />
 	<input type="hidden" id="year"
 		name="year" value="${renovacion.year}" />
 	<input type="hidden" id="tanda"
@@ -50,9 +50,9 @@
 				<option value="">---</option>
 				<option value="RENUEVA"
 					<c:if test="${renovacion.renueva eq 'RENUEVA'}">selected</c:if>>RENUEVA</option>
-				<option value="FICHADO" 
+				<option value="FICHADO"
 					<c:if test="${renovacion.renueva eq 'FICHADO'}">selected</c:if>>FICHADO</option>
-				<option value="FA" 
+				<option value="FA"
 					<c:if test="${renovacion.renueva eq 'FA'}">selected</c:if>>FA</option>
 			</select>
 		</div>

@@ -6,27 +6,40 @@ import es.nbajugones.dto.entities.Derecho;
 public class DerechoDTO {
 
 	private String jugador;
-	
+
 	private Integer anoEleccion;
 
 	private Integer anos;
 
+	private Integer id;
+
 	private String posicion;
 
 	private Double salario;
-	
+
 	private String equipo;
-	
+
 	private int jugados;
-	
+
 	public DerechoDTO(Derecho derecho){
+		id = derecho.getId();
 		this.anoEleccion = derecho.getAnoEleccion();
 		this.anos = derecho.getAnos();
-		this.jugador = derecho.getId().getJugador();
-		this.setEquipo(derecho.getId().getIdEquipo());
+		this.jugador = derecho.getJugador();
+		this.equipo = derecho.getIdEquipo();
 		this.posicion = derecho.getPosicion();
 		this.salario = derecho.getSalario();
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 
 	public String getJugador() {
 		return jugador;
@@ -83,7 +96,7 @@ public class DerechoDTO {
 	public void setEquipo(String equipo) {
 		this.equipo = equipo;
 	}
-	
-	
-	
+
+
+
 }

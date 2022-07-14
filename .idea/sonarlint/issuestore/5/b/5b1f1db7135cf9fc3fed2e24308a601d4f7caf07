@@ -1,0 +1,21 @@
+
+T
+squid:S106C"9Replace this use of System.out or System.err by a logger.(ÿ»Ëùÿÿÿÿ
+bsquid:S1192."KDefine a constant instead of duplicating this literal "User-agent" 3 times.(ò¼‡
+Xsquid:UselessImportCheck"/Remove this unused import 'org.w3c.dom.Entity'.(ËŸıÚÿÿÿÿÿ
+Gsquid:S1481M"+Remove this unused "config" local variable.(ÜŒÕÿÿÿÿÿ
+‚squid:S1192."kDefine a constant instead of duplicating this literal "fantasystats/0.0.1 iblancogarcia@gmail.com" 3 times.(ò¼‡
+U
+squid:S106ƒ"9Replace this use of System.out or System.err by a logger.(÷Ò€şÿÿÿÿ
+;squid:S1148„"#Use a logger to log this exception.(Ç’Çê
+jsquid:S11922"NDefine a constant instead of duplicating this literal "Authorization" 3 times.(”’¢ûÿÿÿÿ
+Gsquid:S1481d"+Remove this unused "config" local variable.(ÜŒÕÿÿÿÿÿ
+Bsquid:S1168x"+Return an empty collection instead of null.(¥¹ï
+Vsquid:S1854M":Remove this useless assignment to local variable "config".(ÜŒÕÿÿÿÿÿ
+dsquid:S11921"HDefine a constant instead of duplicating this literal "Bearer " 3 times.(ãéŸøÿÿÿÿ
+N
+squid:S106?"9Replace this use of System.out or System.err by a logger.(—óÓ/
+U
+squid:S106"9Replace this use of System.out or System.err by a logger.(®Ö•–ıÿÿÿÿ
+?squid:S1068'")Remove this unused "TOKEN" private field.(ÚšÊ5
+;squid:S1148"#Use a logger to log this exception.(Ç’Çê

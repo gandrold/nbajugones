@@ -2,7 +2,7 @@
 <br />
 <div class="row">
 	<div class="col-md-6 col-sd-6 center">
-	<form id="exportFA" action="/jugones-frontend/export.do" method="post" name="exportFA">
+	<form id="exportFA" action="<c:url value="/export.do"/>" method="post" name="exportFA">
 	<div class="form-group">
 		<label for="equipos" class="col-sm-4 col-sd-4 control-label">
 		Elige los equipos a exportar:</label>

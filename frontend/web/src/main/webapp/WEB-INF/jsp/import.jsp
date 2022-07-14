@@ -2,7 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="row">
 	<div class="col-md-6 col-sd-6">
-		<form id="formFA" action="/jugones-frontend/upload.do" method="post"
+		<form id="formFA" action="<c:url value="/upload.do"/>" method="post"
 			data-async data-target="#contenido"
 			enctype="multipart/form-data" name="formFA">
 
@@ -45,6 +45,14 @@
 							</c:forEach>
 						</ul>
 					</c:if>
+					<c:if test="${fn:length(export.sospechosos) gt 0}">
+                    						<b>Jugadores sospechosos</b>
+                    						<ul>
+                    							<c:forEach var="jugador" items="${export.sospechosos}">
+                    								<li>${jugador}</li>
+                    							</c:forEach>
+                    						</ul>
+                    					</c:if>
 				</c:otherwise>
 			</c:choose>
 		</div>

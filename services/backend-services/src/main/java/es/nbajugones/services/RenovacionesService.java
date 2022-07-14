@@ -32,16 +32,9 @@ public class RenovacionesService {
 			for (Renovacione r : list) {
 				result.add(new RenovacionDTO(r));
 			}
-			Collections.sort(result, new Comparator<RenovacionDTO>() {
+			Collections.sort(result, Comparator.comparing(RenovacionDTO::getPuntos, Comparator.reverseOrder())
+					.thenComparing(RenovacionDTO::getPromedio, Comparator.reverseOrder()));
 
-				public int compare(RenovacionDTO o1, RenovacionDTO o2) {
-					if (o1.getPuntos() == o2.getPuntos()) {
-						return (int) (o2.getPromedio() - o1.getPromedio());
-					}
-					return (int) (o2.getPuntos() - o1.getPuntos());
-				}
-
-			});
 			return result;
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -65,11 +58,10 @@ public class RenovacionesService {
 		}
 	}
 	@Transactional
-	public void renovar(int player, String origen, String destino, double salario, int anos) throws ServiceException {
+	public void renovar(int player, String origen, String destino, double salario, int anos, boolean fichado) throws ServiceException {
 		try {
-			
 			if (origen.equals(destino)){				
-				if (salario < 2){
+				if (salario < 2 && !fichado){
 					salario =2;
 				}
 				logDAO.renovar(player, destino, salario, ""+anos);

@@ -1,0 +1,30 @@
+
+u
+java:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ‰œ8Ó‡¹ËÎ.
+W	java:S1259"<This block of commented-out lines of code should be removed.(Ò‡Ãf8Ó‡¹ËÎ.
+§
+java:S1130N"‰Remove the declaration of thrown exception 'es.nbajugones.exception.service.ServiceException', as it cannot be thrown from method's body.(ÿâóŞ8Ó‡¹ËÎ.
+§
+java:S1130p"‰Remove the declaration of thrown exception 'es.nbajugones.exception.service.ServiceException', as it cannot be thrown from method's body.(ìõÕ8Ó‡¹ËÎ.
+{
+java:S2293s"YReplace the type specification in this constructor call with the diamond operator ("<>").(éÿ… şÿÿÿÿ8Ó‡¹ËÎ.
+¨
+java:S1130‹"‰Remove the declaration of thrown exception 'es.nbajugones.exception.service.ServiceException', as it cannot be thrown from method's body.(ìõÕ8Ó‡¹ËÎ.
+w
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(“Ÿ©8Ó‡¹ËÎ.
+|
+java:S2293™"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘ƒÊÿÿÿÿÿ8Ó‡¹ËÎ.
+¨
+java:S1130´"‰Remove the declaration of thrown exception 'es.nbajugones.exception.service.ServiceException', as it cannot be thrown from method's body.(ìõÕ8Ó‡¹ËÎ.
+w
+java:S2293·"YReplace the type specification in this constructor call with the diamond operator ("<>").(á‡ú¼8Ó‡¹ËÎ.
+|
+java:S2293Ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹Ñàâıÿÿÿÿ8Ó‡¹ËÎ.
+w
+java:S2293á"YReplace the type specification in this constructor call with the diamond operator ("<>").(é¯¼8Ó‡¹ËÎ.
+|
+java:S2293ö"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹Ñàâıÿÿÿÿ8Ó‡¹ËÎ.
+K
+java:S1604Ÿ"(Make this anonymous inner class a lambda(§ß÷Öüÿÿÿÿ8“ˆĞ…¨/
+{
+java:S1488P"^Immediately return this expression instead of assigning it to the temporary variable "equipo".(ıÂÒå8Ó‡¹ËÎ.

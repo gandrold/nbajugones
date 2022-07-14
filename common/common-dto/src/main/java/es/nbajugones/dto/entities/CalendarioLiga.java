@@ -20,6 +20,7 @@ public class CalendarioLiga implements Serializable {
 	@EmbeddedId
 	private CalendarioLigaPK id;
 
+	@Column(name = "fecha")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
@@ -32,7 +33,7 @@ public class CalendarioLiga implements Serializable {
 
 	//bi-directional many-to-one association to Equipo
 	@ManyToOne
-	@JoinColumn(name="id_equipo_fuera")
+	@JoinColumn(name="id_equipo_fuera", insertable=false, updatable=false)
 	private Equipo equipo2;
 
 	public CalendarioLiga() {

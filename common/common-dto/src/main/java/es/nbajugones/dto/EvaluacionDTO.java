@@ -14,6 +14,7 @@ public class EvaluacionDTO {
     private String equipo;
     private String nombre;
     private String logo;
+	private String propietario;
     private Double conContrato;
     private Double sanciones;
     private Double bonusAct;
@@ -161,5 +162,12 @@ public class EvaluacionDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-    
+
+	public String getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(String propietario) {
+		this.propietario = propietario;
+	}
 }

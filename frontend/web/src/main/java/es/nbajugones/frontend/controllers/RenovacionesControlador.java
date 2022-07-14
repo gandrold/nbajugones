@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RenovacionesControlador {
 
-	int LAST_RENOVACION = 2015;
+	int LAST_RENOVACION = 2021;
 
 	@Autowired
 	RenovacionesService renovacionesService;
@@ -82,10 +82,10 @@ public class RenovacionesControlador {
 				renovacionesService.noRenovar(jugador, idEquipoProp);
 			}
 			if("RENUEVA".equals(renueva)) {
-				renovacionesService.renovar(jugador, idEquipoProp, idEquipoProp, salario, years);
+				renovacionesService.renovar(jugador, idEquipoProp, idEquipoProp, salario, years, false);
 			}
 			if("FICHADO".equals(renueva)) {
-				renovacionesService.renovar(jugador, idEquipoProp, idEquipoGanador, salario, years);				
+				renovacionesService.renovar(jugador, idEquipoProp, idEquipoGanador, salario, years, true);
 			}
 		}
 		response.setContentType("text/html;charset=UTF-8");

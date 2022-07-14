@@ -2,14 +2,10 @@ package es.nbajugones.dto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-import es.nbajugones.dto.entities.Derecho;
-import es.nbajugones.dto.entities.Equipo;
-import es.nbajugones.dto.entities.Historico;
-import es.nbajugones.dto.entities.Jugadores;
-import es.nbajugones.dto.entities.Log;
-import es.nbajugones.dto.entities.RondasDraft;
+import es.nbajugones.dto.entities.*;
 
 public class EquipoDTO {
 
@@ -45,7 +41,11 @@ public class EquipoDTO {
 
 	private List<LogDTO> log;
 
-	public EquipoDTO(Equipo equipo, List<Jugadores> plantilla) {
+	private List<CalendarioLigaDTO> past;
+
+	private List<CalendarioLigaDTO> future;
+
+	public EquipoDTO(Equipo equipo, List<Jugadores> plantilla, List<CalendarioLiga> past, List<CalendarioLiga> future) {
 		this.bonusAct = equipo.getBonusAct() == null ? 0 : equipo.getBonusAct();
 		this.bonusAnt = equipo.getBonusAnt() == null ? 0 : equipo.getBonusAnt();
 		this.cortes = equipo.getCortes() == null ? 0 : equipo.getCortes();
@@ -82,7 +82,67 @@ public class EquipoDTO {
 		for (Log l : equipo.getLog()) {
 			log.add(new LogDTO(l));
 		}
-		Collections.sort(log);
+		Collections.sort(log, new Comparator<LogDTO>() {
+			@Override
+			public int compare(LogDTO o1, LogDTO o2) {
+				if (o2.getFecha() == null) {
+					return -1;
+				}
+				if (o1.getFecha() == null) {
+					return 1;
+				}
+				return o2.getFecha().compareTo(o1.getFecha());
+			}
+		});
+		Collections.sort(past, new Comparator<CalendarioLiga>() {
+			public int compare(CalendarioLiga o1, CalendarioLiga o2) {
+				return o2.getFecha().compareTo(o1.getFecha());
+			}
+		});
+		this.past = new ArrayList<CalendarioLigaDTO>();
+		int i = 0;
+		for (CalendarioLiga cal: past) {
+			this.past.add(new CalendarioLigaDTO(cal));
+			i++;
+			if (i > 5){
+				break;
+			}
+		}
+		Collections.sort(future, new Comparator<CalendarioLiga>() {
+			public int compare(CalendarioLiga o1, CalendarioLiga o2) {
+				return o1.getFecha().compareTo(o2.getFecha());
+			}
+		});
+		this.future = new ArrayList<CalendarioLigaDTO>();
+		i =0;
+		for (CalendarioLiga cal: future) {
+			this.future.add(new CalendarioLigaDTO(cal));
+			i++;
+			if (i > 5){
+				break;
+			}
+		}
+	}
+
+	public EquipoDTO(String idEquipo, String logoDraft, String nombre) {
+		this.idEquipo = idEquipo;
+		this.logoDraft = logoDraft;
+		this.nombre = nombre;
+	}
+
+	public EquipoDTO(Equipo equipo) {
+		this.bonusAct = equipo.getBonusAct() == null ? 0 : equipo.getBonusAct();
+		this.bonusAnt = equipo.getBonusAnt() == null ? 0 : equipo.getBonusAnt();
+		this.cortes = equipo.getCortes() == null ? 0 : equipo.getCortes();
+		this.email = equipo.getEmail();
+		this.idEquipo = equipo.getIdEquipo();
+		this.lesionados = equipo.getLesionados() == null ? 0 : equipo.getLesionados();
+		this.logo = equipo.getLogo();
+		this.logoDraft = equipo.getLogoDraft();
+		this.nombre = equipo.getNombre();
+		this.propietario = equipo.getPropietario();
+		this.sanciones = equipo.getSanciones() == null ? 0 : equipo.getSanciones();
+		this.plantilla = new ArrayList<JugadorDTO>();
 	}
 
 	public String getIdEquipo() {
@@ -231,4 +291,19 @@ public class EquipoDTO {
 		this.log = log;
 	}
 
+	public List<CalendarioLigaDTO> getPast() {
+		return past;
+	}
+
+	public void setPast(List<CalendarioLigaDTO> past) {
+		this.past = past;
+	}
+
+	public List<CalendarioLigaDTO> getFuture() {
+		return future;
+	}
+
+	public void setFuture(List<CalendarioLigaDTO> future) {
+		this.future = future;
+	}
 }

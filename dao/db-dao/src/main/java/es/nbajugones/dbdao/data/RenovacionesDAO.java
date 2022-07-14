@@ -61,7 +61,7 @@ public class RenovacionesDAO extends GenericDAOImpl<Renovacione> {
 		e2.getPlantilla().add(p);
 		plantillaDAO.saveOrUpdateEntity(p, null);
 		j.setSalario(salario);
-		j.setObs(null);
+		j.setRenovar(2);
 		j.setYears("" + anos);
 		jugadoresDAO.saveOrUpdateEntity(j, player);
 		equipoDAO.saveOrUpdateEntity(e1, e1.getIdEquipo());
@@ -88,7 +88,7 @@ public class RenovacionesDAO extends GenericDAOImpl<Renovacione> {
 		List<Plantilla> plant = e1.getPlantilla();
 		plant.remove(cut);
 		j.setYears("-");
-		j.setObs(null);
+		j.setRenovar(0);
 		jugadoresDAO.saveOrUpdateEntity(j, player);
 		equipoDAO.saveOrUpdateEntity(e1, origen);
 		Calendar c = Calendar.getInstance();

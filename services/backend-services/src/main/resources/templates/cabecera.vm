@@ -51,6 +51,15 @@
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Copa <span class="caret"></span></a>
 									<ul class="dropdown-menu">
+									<li><a
+                                                                                												href="copa1819.html">
+                                                                                													2018-19 </a></li>
+									        <li><a
+                                            												href="copa1718.html">
+                                            													2017-18 </a></li>
+											<li><a
+												href="copa1617.html">
+													2016-17 </a></li>
 											<li><a
 												href="copa1516.html">
 													2015-16 </a></li>
@@ -72,6 +81,16 @@
 									data-toggle="dropdown" role="button" aria-haspopup="true"
 									aria-expanded="false">Historico <span class="caret"></span></a>
 									<ul class="dropdown-menu">
+									        <li><a href="temp2021.html">2020-21 </a></li>
+									        <li><a href="temp1920.html">2019-20 </a></li>
+									        <li><a href="temp1819.html">2018-19 </a></li>
+									        <li><a href="temp1718.html">2017-18 </a></li>
+											<li><a
+												href="temp1617.html">
+													2016-17 </a></li>
+											<li><a
+												href="temp1516.html">
+													2015-16 </a></li>
 											<li><a
 												href="temp1415.html">
 													2014-15 </a></li>
@@ -106,6 +125,7 @@
 												href="temp0405.html">
 													2004-05 </a></li>
 									</ul></li>
+									<li><a href="http://nbajugones.mforos.com">Foro</a></li>
 							</ul>
 
 						</div>

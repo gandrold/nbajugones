@@ -57,19 +57,19 @@
 					<tbody>
 
 						#foreach($jugador in $fa)
-							#set($jpg=".jpg")
-							<tr >								
+							#set($jpg=".png")
+							<tr >
 							<td style="font-weight: bold; font-size: 1.1em">$jugador.posicion</td>
 								<td><img alt="$jugador.nombre"
-									src="http://cdn.basketball.sports.ws/players/$jugador.nombreFoto$jpg"
+									src="http://sports.ws/img/headshots/png/$jugador.nombreFoto$jpg"
 									style="height: 50px;" title="$jugador.nombre" /></td>
 								<td><a
-									href="http://basketball.sports.ws/player/$jugador.nombreFoto?league=160091"
-									target="blank">$jugador.nombre</a></td>								
-								<td>#if($jugador.puntos)$jugador.puntos#end</td>
-								<td>#if($jugador.promedio)$jugador.promedio#end</td>
+									href="http://basketball.sports.ws/fantasy/$jugador.nombreLink?league=220146"
+									target="blank">$jugador.nombre</a></td>
+								<td>#if($jugador.puntos)$numberTool.format("#0.00",$jugador.puntos)#end</td>
+								<td>#if($jugador.promedio)$numberTool.format("#0.00",$jugador.promedio)#end</td>
 								<td>#if($jugador.jugados)$jugador.jugados#end</td>
-								<td>#if($jugador.minutos)$jugador.minutos#end</td>
+								<td>#if($jugador.minutos)$numberTool.format("#0.0",$jugador.minutos)#end</td>
 								<td>#if($jugador.obs)$jugador.obs#end</td>
 								<td>$jugador.cortadoPor</td>
 							</tr>
@@ -77,10 +77,10 @@
 					</tbody>
 				</table>
 			</div>
-		</div>  
+		</div>
     </div>
-    
-</div>        
+
+</div>
 </div>
 			</div>
 		</div>
