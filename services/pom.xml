@@ -9,7 +9,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>backend-services</module>
-  	<module>webservices</module>
   	<module>integration-client</module>
   </modules>
 </project>
