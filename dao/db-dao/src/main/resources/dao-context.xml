@@ -24,8 +24,8 @@
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="${HEROKU_POSTGRESQL_PURPLE_URL}" />
-        <property name="username" value="qvcwjgijxuxpch" />
-        <property name="password" value="c82267d270f9b234e1567595beb5b9b9b5f5f0b83b1f57d66d6cee5aabd1995b" />
+        <property name="username" value="${HEROKU_POSTGRESQL_PURPLE_USER}" />
+        <property name="password" value="${HEROKU_POSTGRESQL_PURPLE_PWD}" />
     </bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
