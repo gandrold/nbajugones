@@ -64,7 +64,7 @@ public class JugadorService {
 	@Autowired
 	PlayersDAO jugadoresDAO;
 
-	@Transactional
+	@Transactional(propagation=Propagation.SUPPORT)
 	public void ficharFA(String destino, int jugador, String salario,
 			String anos, String fecha) throws ServiceException {
 		try {
