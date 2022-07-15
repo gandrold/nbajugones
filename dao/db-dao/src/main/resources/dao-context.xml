@@ -23,9 +23,9 @@
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="${HEROKU_POSTGRESQL_PURPLE_URL}" />
-        <property name="username" value="${HEROKU_POSTGRESQL_PURPLE_USER}" />
-        <property name="password" value="${HEROKU_POSTGRESQL_PURPLE_PWD}" />
+        <property name="url" value="${HEROKU_POSTGRESQL_URL}" />
+        <property name="username" value="${HEROKU_POSTGRESQL_USER}" />
+        <property name="password" value="${HEROKU_POSTGRESQL_PWD}" />
     </bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
