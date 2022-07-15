@@ -4,7 +4,6 @@
  */
 package es.nbajugones.services;
 
-import es.nbajugones.datagetter.beans.roster.Player;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -129,10 +128,10 @@ public class JugadorService {
 	public void activar(int jugador, String equipo) throws ServiceException {
 		try {
 			Jugadores j = derechosDAO.activarJugador(jugador);
-			logDAO.activar(j.getIdJugador(), equipo);
+			logDAO.activar(j.getIdjugador(), equipo);
 			Players p = jugadoresDAO.getPlayer(null, null, j.getJugador(), null);
 			if (p != null) {
-				j.setPlayerId(p.getId());
+				j.setPlayerid(p.getId());
 				PlayerStatsDTO stats = statsService.getPlayerStats(p.getId());
 				if (stats.getLastSeasonAvg().getSeason().equals("2017-18")) {
 					j.setMinutos(stats.getLastSeasonAvg().getMinutos().doubleValue());
@@ -140,7 +139,7 @@ public class JugadorService {
 					j.setPromedio(stats.getFppmAvg());
 					j.setJugados(stats.getLastSeasonAvg().getJugados().intValue());
 				}
-				jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+				jugadorDAO.saveOrUpdateEntity(j, j.getIdjugador());
 			}
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
@@ -239,7 +238,7 @@ public class JugadorService {
 						j.setPromedio(Double.parseDouble(st.nextToken()));
 						j.setJugados(jugados);
 						j.setActivo(1);
-						jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+						jugadorDAO.saveOrUpdateEntity(j, j.getIdjugador());
 					} else {
 						Derecho d = derechosDAO.getByName(name);
 						if (d != null) {

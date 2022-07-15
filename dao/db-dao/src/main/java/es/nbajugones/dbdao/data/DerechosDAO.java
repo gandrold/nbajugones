@@ -36,7 +36,7 @@ public class DerechosDAO extends GenericDAOImpl<Derecho> {
 		Plantilla p = new Plantilla();
 		PlantillaPK pk = new PlantillaPK();
 		pk.setIdEquipo(d.getIdEquipo());
-		pk.setIdJugador(j.getIdJugador());
+		pk.setIdJugador(j.getIdjugador());
 		p.setId(pk);
 		plantillaDAO.saveOrUpdateEntity(p, null);
 		removeEntity(d.getId());

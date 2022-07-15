@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 
 @NamedQueries({@NamedQuery(name = "Jugadores.getPlantilla",
-query = "SELECT j FROM Jugadores j WHERE j.idJugador IN (:plantilla)") })
+query = "SELECT j FROM Jugadores j WHERE j.idjugador IN (:plantilla)") })
 
 @Entity
 @Table(name="jugadores")
@@ -23,7 +23,7 @@ public class Jugadores implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="ID_JUGADOR")
-	private Integer idJugador;
+	private Integer idjugador;
 
 	@Column(name="ACTIVO")
 	private Integer activo;
@@ -32,7 +32,7 @@ public class Jugadores implements Serializable {
 	private String years;
 
 	@Column(name="CORTADO_POR")
-	private String cortadoPor;
+	private String cortadopor;
 
 	@Column(name="JUGADOR")
 	private String jugador;
@@ -56,7 +56,7 @@ public class Jugadores implements Serializable {
 	private Double salario;
 
 	@Column(name="player_id")
-	private Integer playerId;
+	private Integer playerid;
 
 	@Column(name="renovar")
 	private Integer renovar;
@@ -68,7 +68,7 @@ public class Jugadores implements Serializable {
 	private Integer status;
 
 	@Column(name = "equipo_real")
-	private String equipoReal;
+	private String equiporeal;
 
     @Column(name = "fecha")
 	@Temporal(TemporalType.DATE)
@@ -90,12 +90,12 @@ public class Jugadores implements Serializable {
 	public Jugadores() {
 	}
 
-	public Integer getIdJugador() {
-		return this.idJugador;
+	public Integer getIdjugador() {
+		return this.idjugador;
 	}
 
-	public void setIdJugador(Integer idJugador) {
-		this.idJugador = idJugador;
+	public void setIdjugador(Integer idjugador) {
+		this.idjugador = idjugador;
 	}
 
 	public Integer getActivo() {
@@ -108,12 +108,12 @@ public class Jugadores implements Serializable {
 
 
 
-	public String getCortadoPor() {
-		return this.cortadoPor;
+	public String getCortadopor() {
+		return this.cortadopor;
 	}
 
-	public void setCortadoPor(String cortadoPor) {
-		this.cortadoPor = cortadoPor;
+	public void setCortadopor(String cortadopor) {
+		this.cortadopor = cortadopor;
 	}
 
 	public String getJugador() {
@@ -180,12 +180,12 @@ public class Jugadores implements Serializable {
 		this.years = years;
 	}
 
-	public Integer getPlayerId() {
-		return playerId;
+	public Integer getPlayerid() {
+		return playerid;
 	}
 
-	public void setPlayerId(Integer playerId) {
-		this.playerId = playerId;
+	public void setPlayerid(Integer playerid) {
+		this.playerid = playerid;
 	}
 
 	public Integer getRenovar() {
@@ -220,21 +220,21 @@ public class Jugadores implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public String getEquipoReal() {
-		return equipoReal;
+	public String getEquiporeal() {
+		return equiporeal;
 	}
 
-	public void setEquipoReal(String equipoReal) {
-		this.equipoReal = equipoReal;
+	public void setEquiporeal(String equiporeal) {
+		this.equiporeal = equiporeal;
 	}
 
 	@Override
 	public String toString() {
 		return "Jugadores{" +
-				"idJugador=" + idJugador +
+				"idJugador=" + idjugador +
 				", activo=" + activo +
 				", years='" + years + '\'' +
-				", cortadoPor='" + cortadoPor + '\'' +
+				", cortadoPor='" + cortadopor + '\'' +
 				", jugador='" + jugador + '\'' +
 				", jugados=" + jugados +
 				", minutos=" + minutos +
@@ -242,7 +242,7 @@ public class Jugadores implements Serializable {
 				", promedio=" + promedio +
 				", puntos=" + puntos +
 				", salario=" + salario +
-				", playerId=" + playerId +
+				", playerId=" + playerid +
 				", renovar=" + renovar +
 				", lesionado=" + lesionado +
 				", status=" + status +

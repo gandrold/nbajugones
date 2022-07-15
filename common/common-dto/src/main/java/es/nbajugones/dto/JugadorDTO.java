@@ -27,8 +27,8 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 
 	public JugadorDTO(Jugadores jugador) {
 		this.activo = jugador.getActivo();
-		this.cortadoPor = jugador.getCortadoPor();
-		this.idJugador = jugador.getIdJugador();
+		this.cortadoPor = jugador.getCortadopor();
+		this.idJugador = jugador.getIdjugador();
 		this.nombre = jugador.getJugador();
 		this.jugados = jugador.getJugados();
 		this.minutos = jugador.getMinutos();
@@ -94,7 +94,7 @@ public class JugadorDTO implements Comparable<JugadorDTO> {
 		this.obs = obs;
 		this.years = jugador.getYears();
 		this.equipo = jugador.getEquipo();
-		this.playerId = jugador.getPlayerId();
+		this.playerId = jugador.getPlayerid();
 
 	}
 

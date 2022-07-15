@@ -287,7 +287,7 @@ public class StatsService {
 				for (ScheduleOrder o : order) {
 					List<Stats> stats = statsDAO.getMatchStats(o.getScheduleId());
 					for (Stats s : stats) {
-						if (s.getPlayers().getId().equals(j.getPlayerId())) {
+						if (s.getPlayers().getId().equals(j.getPlayerid())) {
 							//Tengo que revisar que el partido es el que realmente nos importa
 							boolean valid = false;
 							for (ScheduleOrder o2 : order) {
@@ -297,7 +297,7 @@ public class StatsService {
 								}
 							}
 							if (valid) {
-								StatsDTO dto = new StatsDTO(s, j.getJugador(), j.getPosicion(), j.getIdJugador(), j.getPlayerId());
+								StatsDTO dto = new StatsDTO(s, j.getJugador(), j.getPosicion(), j.getIdjugador(), j.getPlayerid());
 								dto.setPosicionHoops(r.getPosicion());
 								homeStats.add(dto);
 								found = true;
@@ -310,7 +310,7 @@ public class StatsService {
 					}
 				}
 				if (!found) {
-					StatsDTO dto = new StatsDTO(j.getJugador(), j.getPosicion(), j.getIdJugador(), j.getPlayerId()==null?0:j.getPlayerId());
+					StatsDTO dto = new StatsDTO(j.getJugador(), j.getPosicion(), j.getIdjugador(), j.getPlayerid()==null?0:j.getPlayerid());
 					dto.setPosicionHoops(r.getPosicion());
 					homeStats.add(dto);
 				}
@@ -322,7 +322,7 @@ public class StatsService {
 				for (ScheduleOrder o : order) {
 					List<Stats> stats = statsDAO.getMatchStats(o.getScheduleId());
 					for (Stats s : stats) {
-						if (s.getPlayers().getId().equals(j.getPlayerId())) {
+						if (s.getPlayers().getId().equals(j.getPlayerid())) {
 							//Tengo que revisar que el partido es el que realmente nos importa
 							boolean valid = false;
 							for (ScheduleOrder o2 : order) {
@@ -332,7 +332,7 @@ public class StatsService {
 								}
 							}
 							if (valid) {
-								StatsDTO dto = new StatsDTO(s, j.getJugador(), j.getPosicion(), j.getIdJugador(), j.getPlayerId());
+								StatsDTO dto = new StatsDTO(s, j.getJugador(), j.getPosicion(), j.getIdjugador(), j.getPlayerid());
 								dto.setPosicionHoops(r.getPosicion());
 								awayStats.add(dto);
 								found = true;
@@ -345,7 +345,7 @@ public class StatsService {
 					}
 				}
 				if (!found) {
-					StatsDTO dto = new StatsDTO(j.getJugador(), j.getPosicion(), j.getIdJugador(), j.getPlayerId());
+					StatsDTO dto = new StatsDTO(j.getJugador(), j.getPosicion(), j.getIdjugador(), j.getPlayerid());
 					dto.setPosicionHoops(r.getPosicion());
 					awayStats.add(dto);
 				}
@@ -490,13 +490,13 @@ public class StatsService {
 								}
 								try {
 									j = jugadorService.crearJugador(stats.getDisplayName(), position);
-									j.setPlayerId(p.getId());
+									j.setPlayerid(p.getId());
 								} catch (Exception e) {
 									System.err.println(stats.getDisplayName() + " with id " + p.getId() + " is a troublemaker");
 								}
 							}
 							if (j != null) {
-								j.setPlayerId(p.getId());
+								j.setPlayerid(p.getId());
 								j.setPuntos(dto.getHoopsAvg());
 								j.setPromedio(dto.getFppmAvg());
 								if (dto.getLastSeasonAvg() != null) {
@@ -504,7 +504,7 @@ public class StatsService {
 									j.setMinutos(dto.getLastSeasonAvg().getMinutos().doubleValue());
 								}
 								j.setActivo(1);
-								jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+								jugadorDAO.saveOrUpdateEntity(j, j.getIdjugador());
 							}
 
 						}
@@ -525,10 +525,10 @@ public class StatsService {
 									position = position + "C";
 								}
 								j = jugadorService.crearJugador(p.getDisplayname(), position);
-								j.setPlayerId(p.getId());
+								j.setPlayerid(p.getId());
 							}
 							if (j != null) {
-								j.setPlayerId(p.getId());
+								j.setPlayerid(p.getId());
 								j.setPuntos(dto.getHoopsAvg());
 								j.setPromedio(dto.getFppmAvg());
 								if (dto.getLastSeasonAvg() != null) {
@@ -536,7 +536,7 @@ public class StatsService {
 									j.setMinutos(dto.getLastSeasonAvg().getMinutos().doubleValue());
 								}
 								j.setActivo(1);
-								jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+								jugadorDAO.saveOrUpdateEntity(j, j.getIdjugador());
 							}
 						}
 						s.setProcessed(1);
@@ -575,11 +575,11 @@ public class StatsService {
 						position = position + "C";
 					}
 					j = jugadorService.crearJugador(p.getDisplayname(), position);
-					j.setPlayerId(p.getId());
+					j.setPlayerid(p.getId());
 				}
 				if (j != null) {
 					logger.info(j.getJugador());
-					j.setPlayerId(p.getId());
+					j.setPlayerid(p.getId());
 					j.setPuntos(dto.getHoopsAvg());
 					j.setPromedio(dto.getFppmAvg());
 					if (dto.getLastSeasonAvg() != null) {
@@ -587,7 +587,7 @@ public class StatsService {
 						j.setMinutos(dto.getLastSeasonAvg().getMinutos().doubleValue());
 					}
 					j.setActivo(1);
-					jugadorDAO.saveOrUpdateEntity(j, j.getIdJugador());
+					jugadorDAO.saveOrUpdateEntity(j, j.getIdjugador());
 				}
 			}
 
