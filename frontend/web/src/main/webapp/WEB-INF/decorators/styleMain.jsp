@@ -11,7 +11,7 @@
 <title>NBA Jugones</title>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-15">
-
+<link rel="shortcut icon" href="#">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
