@@ -1,5 +1,7 @@
 package es.nbajugones.dto.entities;
 
+import org.hibernate.annotations.Type;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -23,6 +25,7 @@ public class Log implements Serializable {
 	private String idEquipo;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	private String texto;
 
 	public Log() {

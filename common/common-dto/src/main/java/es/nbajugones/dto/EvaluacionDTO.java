@@ -15,11 +15,11 @@ public class EvaluacionDTO {
     private String nombre;
     private String logo;
 	private String propietario;
-    private Double conContrato;
+    private Double concontrato;
     private Double sanciones;
-    private Double bonusAct;
+    private Double bonusact;
 
-	private Double bonusAnt;
+	private Double bonusant;
 
 	private Double cortes;
 	private Double lesionados;
@@ -58,8 +58,8 @@ public class EvaluacionDTO {
 
     public double getLimite() {
     	if (limite == 0){
-    		limite=61-(sanciones!=null?sanciones:0)+(bonusAnt!=null?bonusAnt:0)+
-    				(bonusAct!=null?bonusAct:0);
+    		limite=61-(sanciones!=null?sanciones:0)+(bonusant !=null? bonusant :0)+
+    				(bonusact !=null? bonusact :0);
     	}
         return Math.round((limite) * 100.0) / 100.0;
     }
@@ -97,23 +97,23 @@ public class EvaluacionDTO {
 		this.sanciones = sanciones;
 	}
 
-	public double getBonusAct() {
-		return bonusAct;
+	public Double getBonusact() {
+		return bonusact;
 	}
 
-	public void setBonusAct(Double bonusAct) {
-		this.bonusAct = bonusAct;
+	public void setBonusact(Double bonusact) {
+		this.bonusact = bonusact;
 	}
 
-	public double getBonusAnt() {
-		return bonusAnt;
+	public Double getBonusant() {
+		return bonusant;
 	}
 
-	public void setBonusAnt(Double bonusAnt) {
-		this.bonusAnt = bonusAnt;
+	public void setBonusant(Double bonusant) {
+		this.bonusant = bonusant;
 	}
 
-	public double getCortes() {
+	public Double getCortes() {
 		return cortes;
 	}
 
@@ -121,7 +121,7 @@ public class EvaluacionDTO {
 		this.cortes = cortes;
 	}
 
-	public double getLesionados() {
+	public Double getLesionados() {
 		return lesionados;
 	}
 
@@ -129,12 +129,12 @@ public class EvaluacionDTO {
 		this.lesionados = lesionados;
 	}
 
-	public Double getConContrato() {
-		return conContrato;
+	public Double getConcontrato() {
+		return concontrato;
 	}
 
-	public void setConContrato(Double conContrato) {
-		this.conContrato = conContrato;
+	public void setConcontrato(Double concontrato) {
+		this.concontrato = concontrato;
 	}
 
 	public double getDisponible(){

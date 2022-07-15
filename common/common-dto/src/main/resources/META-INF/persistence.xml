@@ -8,7 +8,7 @@
     <class>es.nbajugones.dto.entities.Season</class>
     <properties>
       <property name="driverClassName" value="org.postgresql.Driver" />
-      <property name="url" value="postgres:postgres://ec2-34-235-198-25.compute-1.amazonaws.com:5432/d1bhhk1a6ch76s" />
+      <property name="url" value="jdbc:postgresql://ec2-34-235-198-25.compute-1.amazonaws.com:5432/d1bhhk1a6ch76s" />
       <property name="username" value="upsljqghwmbbzb" />
       <property name="password" value="8c2270a04d95a8bba2fdfa8428364ffe579f389c962dc9e3a736b872e142dbae" />
     </properties>

@@ -39,7 +39,7 @@ public class EquipoDAO extends GenericDAOImpl<Equipo> {
 
 	@SuppressWarnings("unchecked")
 	public List<KeyValue> getEquipos() throws DaoException {
-		String sqlQuery = "SELECT e.id_equipo as 'key', e.nombre as 'value' from equipos e";
+		String sqlQuery = "SELECT e.id_equipo as key, e.nombre as value from equipos e";
 		SQLQuery query = getSQLQuery(sqlQuery);
 		query.setResultTransformer(Transformers.aliasToBean(KeyValue.class));
 		return query.list();
@@ -47,7 +47,7 @@ public class EquipoDAO extends GenericDAOImpl<Equipo> {
 
 	@SuppressWarnings("unchecked")
 	public KeyValue getEquipo(int idJugador) throws DaoException {
-		String sqlQuery = "SELECT e.id_equipo as 'key', e.nombre as 'value' from equipos e join plantillas p on p.id_equipo=e.id_equipo where p.id_jugador=" + idJugador;
+		String sqlQuery = "SELECT e.id_equipo as key, e.nombre as value from equipos e join plantillas p on p.id_equipo=e.id_equipo where p.id_jugador=" + idJugador;
 		SQLQuery query = getSQLQuery(sqlQuery);
 		query.setResultTransformer(Transformers.aliasToBean(KeyValue.class));
 		List l = query.list();

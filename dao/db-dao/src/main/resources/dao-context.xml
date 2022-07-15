@@ -23,9 +23,9 @@
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgres://ec2-34-235-198-25.compute-1.amazonaws.com:5432/d1bhhk1a6ch76s" />
-        <property name="username" value="upsljqghwmbbzb" />
-        <property name="password" value="8c2270a04d95a8bba2fdfa8428364ffe579f389c962dc9e3a736b872e142dbae" />
+        <property name="url" value="jdbc:postgresql://ec2-3-219-52-220.compute-1.amazonaws.com/dcspfpbaiajlrc" />
+        <property name="username" value="qvcwjgijxuxpch" />
+        <property name="password" value="c82267d270f9b234e1567595beb5b9b9b5f5f0b83b1f57d66d6cee5aabd1995b" />
     </bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
@@ -45,7 +45,7 @@
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
-				<property name="generateDdl" value="false" />
+				<property name="generateDdl" value="true" />
 				<property name="showSql" value="false" />
 			</bean>
 		</property>

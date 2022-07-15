@@ -70,7 +70,6 @@ public class Jugadores implements Serializable {
 	@Column(name = "equipo_real")
 	private String equipoReal;
 
-	@Basic(optional = false)
     @Column(name = "fecha")
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
