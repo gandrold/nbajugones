@@ -11,6 +11,7 @@ import es.nbajugones.dto.LogDTO;
 import es.nbajugones.dto.entities.Jugadores;
 import es.nbajugones.dto.entities.Log;
 import es.nbajugones.exception.dbdao.DaoException;
+import org.springframework.transaction.annotation.Transactional;
 
 public class LogDAO extends GenericDAOImpl<Log> {
 
@@ -32,6 +33,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 	@Autowired
 	EquipoDAO equipoDAO;
 
+	@Transactional
 	public Log fa(String destino, int jugador, String salario, String anos)
 			throws DaoException {
 		String mensaje = String.format(FA, sdf.format(Calendar.getInstance()

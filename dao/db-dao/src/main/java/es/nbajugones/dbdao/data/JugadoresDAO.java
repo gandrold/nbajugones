@@ -20,6 +20,8 @@ import es.nbajugones.dto.entities.pk.PlantillaPK;
 import es.nbajugones.dto.search.SearchCriteria;
 import es.nbajugones.dto.search.SearchCriteria.FilterCriterion.FilterType;
 import es.nbajugones.exception.dbdao.DaoException;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.text.ParseException;
 import java.util.Date;
 
@@ -85,6 +87,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		return (List<Jugadores>) query.list();
 	}
 
+	@Transactional
 	public void ficharFA(String destino, int jugador, String salario, String anos, String fecha) throws DaoException {
 		double s = Double.parseDouble(salario);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
