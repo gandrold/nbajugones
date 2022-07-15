@@ -19,7 +19,7 @@
 	default-autowire="byName">
 
     <context:annotation-config/>
-
+	<context:property-placeholder/>
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
