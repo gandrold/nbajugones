@@ -220,8 +220,8 @@ public class ExporterService {
 
 		ftp = new FTPClient();
 		try {
-			ftp.connect("home344607320.1and1-data.host");
-			ftp.login("u60560404", "Clander123");
+			ftp.connect(System.getenv("FTP_HOST"));
+			ftp.login(System.getenv("FTP_USER"), System.getenv("FTP_PWD"));
 			int reply = ftp.getReplyCode();
 			if (!FTPReply.isPositiveCompletion(reply)) {
 				ftp.disconnect();
