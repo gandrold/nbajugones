@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import es.nbajugones.dbdao.data.DerechosDAO;
@@ -38,7 +39,6 @@ import es.nbajugones.exception.service.ServiceException;
  *
  * @author Ignacio Blanco
  */
-@Transactional
 public class JugadorService {
 
 	@Autowired
@@ -65,6 +65,7 @@ public class JugadorService {
 	@Autowired
 	PlayersDAO jugadoresDAO;
 
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void ficharFA(String destino, int jugador, String salario,
 			String anos, String fecha) throws ServiceException {
 		try {
@@ -84,6 +85,7 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public Jugadores crearJugador(String nombre, String posicion)
 			throws ServiceException {
 		try {
@@ -93,6 +95,7 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public void cut(String destino, int player, double factor)
 			throws ServiceException {
 		try {
@@ -103,6 +106,7 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public void injured(String idEquipo, int player, boolean injured)
 			throws ServiceException {
 		Equipo e = equipoDAO.getById(idEquipo);
@@ -121,6 +125,7 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public void activar(int jugador, String equipo) throws ServiceException {
 		try {
 			Jugadores j = derechosDAO.activarJugador(jugador);
@@ -142,22 +147,27 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public List<JugadorDTO> getAll() throws ServiceException {
 		return convert(jugadorDAO.getAll());
 	}
 
+	@Transactional
 	public List<JugadorDTO> getAllFA() throws ServiceException {
 		return convert(jugadorDAO.getAllFA());
 	}
 
+	@Transactional
 	public List<JugadorDTO> getFA(String query) throws ServiceException {
 		return convert(jugadorDAO.getFA(query));
 	}
 
+	@Transactional
 	public JugadorDTO getJugador(int id) {
 		return new JugadorDTO(jugadorDAO.getById(id));
 	}
 
+	@Transactional
 	public JugadorDTO getByPlayerId(int id) throws DaoException {
 		Jugadores j = jugadorDAO.getByPlayerId(id);
 		if (j == null) {
@@ -170,10 +180,12 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public List<JugadorDTO> getTop5FA(String pos) throws ServiceException {
 		return convert(jugadorDAO.getTop5FA(pos));
 	}
 
+	@Transactional
 	public List<DerechoDTO> getDerechos() throws ServiceException {
 		try {
 			List<Derecho> all = derechosDAO.getAll();
@@ -203,6 +215,7 @@ public class JugadorService {
 		return result;
 	}
 
+	@Transactional
 	public ExportDTO updateScores(File f) throws ServiceException {
 		try {
 			InputStream is = new FileInputStream(f);
