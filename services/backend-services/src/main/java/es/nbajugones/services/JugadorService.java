@@ -95,7 +95,7 @@ public class JugadorService {
 		}
 	}
 
-	@Transactional
+	@Transactional(propagation = Propagation.NESTED)
 	public void cut(String destino, int player, double factor)
 			throws ServiceException {
 		try {
