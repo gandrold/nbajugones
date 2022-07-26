@@ -55,6 +55,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 		return log;
 	}
 
+	@Transactional
 	public Log cut(String equipo, int player) throws DaoException {
 		Jugadores j = jugadoresDAO.getById(player);
 		String mensaje = String.format(CORTA, sdf.format(Calendar.getInstance()

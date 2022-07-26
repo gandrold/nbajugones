@@ -20,6 +20,8 @@ import es.nbajugones.dto.entities.pk.PlantillaPK;
 import es.nbajugones.dto.search.SearchCriteria;
 import es.nbajugones.dto.search.SearchCriteria.FilterCriterion.FilterType;
 import es.nbajugones.exception.dbdao.DaoException;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.text.ParseException;
 import java.util.Date;
 
@@ -154,6 +156,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		return j;
 	}
 
+	@Transactional
 	public void cut(String destino, int player, double factor) throws DaoException {
 		Jugadores j = getById(player);
 		Equipo e = equipoDAO.getById(destino);
