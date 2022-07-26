@@ -9,37 +9,31 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import es.nbajugones.dbdao.data.*;
+import es.nbajugones.dto.*;
+import es.nbajugones.dto.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.nbajugones.dbdao.data.DerechosDAO;
-import es.nbajugones.dbdao.data.EquipoDAO;
-import es.nbajugones.dbdao.data.JugadoresDAO;
-import es.nbajugones.dbdao.data.LogDAO;
-import es.nbajugones.dbdao.data.PlayersDAO;
-import es.nbajugones.dbdao.data.RenovacionesDAO;
-import es.nbajugones.dto.DerechoDTO;
-import es.nbajugones.dto.ExportDTO;
-import es.nbajugones.dto.JugadorDTO;
-import es.nbajugones.dto.PlayerStatsDTO;
-import es.nbajugones.dto.SeasonStatsDTO;
-import es.nbajugones.dto.entities.Derecho;
-import es.nbajugones.dto.entities.Equipo;
-import es.nbajugones.dto.entities.Jugadores;
-import es.nbajugones.dto.entities.Players;
 import es.nbajugones.exception.dbdao.DaoException;
 import es.nbajugones.exception.service.ServiceException;
+
+import static es.nbajugones.dbdao.data.LogDAO.CORTA;
 
 /**
  *
  * @author Ignacio Blanco
  */
 public class JugadorService {
+
+	private SimpleDateFormat sdf = new SimpleDateFormat(LogDTO.DATE_FORMATS[0]);
 
 	@Autowired
 	JugadoresDAO jugadorDAO;
@@ -64,6 +58,9 @@ public class JugadorService {
 
 	@Autowired
 	PlayersDAO jugadoresDAO;
+
+	@Autowired
+	PlantillaDAO plantillaDAO;
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void ficharFA(String destino, int jugador, String salario,
@@ -95,11 +92,53 @@ public class JugadorService {
 		}
 	}
 
+	@Transactional
 	public void cut(String destino, int player, double factor)
 			throws ServiceException {
 		try {
-			logDAO.cut(destino, player);
-			jugadorDAO.cut(destino, player, factor);
+			Jugadores j = jugadorDAO.getById(player);
+			String mensaje = String.format(CORTA, sdf.format(Calendar.getInstance()
+					.getTime()), equipoDAO.getById(destino).getNombre(), j
+					.getJugador(), j.getSalario().doubleValue(), j.getYears());
+			Log log = new Log();
+			log.setIdEquipo(destino);
+			log.setTexto(mensaje);
+			logDAO.saveOrUpdateEntity(log, null);
+			Equipo e = equipoDAO.getById(destino);
+			Plantilla cut = null;
+			for (Plantilla p : e.getPlantilla()) {
+				if (p.getId().getIdJugador() == player) {
+					cut = p;
+				}
+			}
+
+			double s = j.getSalario();
+			j.setSalario((double) 0);
+			j.setYears("-");
+			j.setStatus(0);
+			String cortadoPor = j.getCortadopor();
+			j.setCortadopor(cortadoPor + ("".equals(cortadoPor) || cortadoPor == null ? "" : ", ") + e.getNombre());
+			jugadorDAO.saveOrUpdateEntity(j, player);
+			double penalizacion = 0;
+			if (factor > 0) {
+				//Se introduce un factor de corte distinto (25% o gratis)
+				if (factor != 1) {
+					penalizacion = Math.round((s * 0.25) * 100.0) / 100.0;
+				}
+			} else {
+				if (s >= 2) {
+					penalizacion = Math.round((s * 0.5) * 100.0) / 100.0;
+				}
+			}
+			if (penalizacion != 0) {
+				double cortes = (e.getCortes() == null ? 0 : e.getCortes()) + penalizacion;
+				e.setCortes(cortes);
+			}
+			equipoDAO.saveOrUpdateEntity(e, destino);
+			plantillaDAO.removeEntity(cut.getId());
+			List<Plantilla> p = e.getPlantilla();
+			p.remove(cut);
+			equipoDAO.saveOrUpdateEntity(e, destino);
 		} catch (DaoException e) {
 			throw new ServiceException(e.getFullMessage());
 		}

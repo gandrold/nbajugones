@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class LogDAO extends GenericDAOImpl<Log> {
 
 	private static final String FA = "%s - %s ficha a %s por %s en %s años ";
-	private static final String CORTA = "%s - %s corta a %s (%,.2f-%s) ";
+	public static final String CORTA = "%s - %s corta a %s (%,.2f-%s) ";
 	private static final String RENUEVA = "%s - %s renueva a %s por %s en %s años ";
 	private static final String NO_RENUEVA = "%s - %s no renueva a %s";
 	private static final String NO_RENUEVA_FA = "%s - %s no renueva a %s y pasa a ser FA";
