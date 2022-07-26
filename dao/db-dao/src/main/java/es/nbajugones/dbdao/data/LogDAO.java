@@ -55,19 +55,6 @@ public class LogDAO extends GenericDAOImpl<Log> {
 		return log;
 	}
 
-	@Transactional
-	public Log cut(String equipo, int player) throws DaoException {
-		Jugadores j = jugadoresDAO.getById(player);
-		String mensaje = String.format(CORTA, sdf.format(Calendar.getInstance()
-				.getTime()), equipoDAO.getById(equipo).getNombre(), j
-				.getJugador(), j.getSalario().doubleValue(), j.getYears());
-		Log log = new Log();
-		log.setIdEquipo(equipo);
-		log.setTexto(mensaje);
-		saveOrUpdateEntity(log, null);
-		return log;
-	}
-
 	public Log activar(int jugador, String equipo) throws DaoException {
 		Jugadores j = jugadoresDAO.getById(jugador);
 		String mensaje = String.format(ACTIVA, sdf.format(Calendar

@@ -154,45 +154,6 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		return j;
 	}
 
-	public void cut(String destino, int player, double factor) throws DaoException {
-		Jugadores j = getById(player);
-		Equipo e = equipoDAO.getById(destino);
-		Plantilla cut = null;
-		for (Plantilla p : e.getPlantilla()) {
-			if (p.getId().getIdJugador() == player) {
-				cut = p;
-			}
-		}
-
-		double s = j.getSalario();
-		j.setSalario((double) 0);
-		j.setYears("-");
-		j.setStatus(0);
-		String cortadoPor = j.getCortadopor();
-		j.setCortadopor(cortadoPor + ("".equals(cortadoPor) || cortadoPor == null ? "" : ", ") + e.getNombre());
-		saveOrUpdateEntity(j, player);
-		double penalizacion = 0;
-		if (factor > 0) {
-			//Se introduce un factor de corte distinto (25% o gratis)
-			if (factor != 1) {
-				penalizacion = Math.round((s * 0.25) * 100.0) / 100.0;
-			}
-		} else {
-			if (s >= 2) {
-				penalizacion = Math.round((s * 0.5) * 100.0) / 100.0;
-			}
-		}
-		if (penalizacion != 0) {
-			double cortes = (e.getCortes() == null ? 0 : e.getCortes()) + penalizacion;
-			e.setCortes(cortes);
-		}
-		equipoDAO.saveOrUpdateEntity(e, destino);
-		plantillaDAO.removeEntity(cut.getId());
-		List<Plantilla> p = e.getPlantilla();
-		p.remove(cut);
-		equipoDAO.saveOrUpdateEntity(e, destino);
-	}
-
 	public Jugadores get(int playerId, String jugador) throws DaoException {
 		Jugadores j = getByPlayerId(playerId);
 		if (j == null) {

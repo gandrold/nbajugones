@@ -21,9 +21,6 @@ public class DerechosDAO extends GenericDAOImpl<Derecho> {
 	@Autowired
 	PlantillaDAO plantillaDAO;
 
-	@Autowired
-	LogDAO logDAO;
-
 	public Jugadores activarJugador(int name) throws DaoException {
 		Derecho d = getById(name);
 		Jugadores j = new Jugadores();
