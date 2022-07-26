@@ -30,14 +30,7 @@ public class LogDAOTest {
 	LogDAO logDAO;
 
 
-
-	@Test
-	public void testCut() throws DaoException{
-		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
-		int id = j.getIdjugador();
-		jugadoresDAO.ficharFA("BRO", id, "0.7", "3", "2016-07-31");
-		Assert.assertTrue(logDAO.cut("BRO", id).getIdAccion()>0);
-	}
+	
 
 	@Test
 	public void testFicharRenovaciones() throws DaoException{

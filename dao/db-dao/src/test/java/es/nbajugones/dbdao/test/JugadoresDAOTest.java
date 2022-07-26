@@ -75,10 +75,6 @@ public class JugadoresDAOTest {
 		e = equipoDAO.getById("CLE");
 		Assert.assertTrue(e.checkPlayer(id));
 		Assert.assertTrue(!equipoDAO.getById("BRO").checkPlayer(id));
-		jugadoresDAO.cut("CLE", id, 0);
-		j = jugadoresDAO.getById(id);
-		Assert.assertTrue(j.getYears().equals("-"));
-		Assert.assertTrue(!equipoDAO.getById("CLE").checkPlayer(id));
 	}
 
 	@Test
