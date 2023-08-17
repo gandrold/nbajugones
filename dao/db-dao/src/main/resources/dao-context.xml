@@ -23,9 +23,9 @@
 	<bean id="dataSource" destroy-method="close"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/bd1?autoReconnect=true" />
+		<property name="url" value="jdbc:mysql://nbajugonesdb.mysql.database.azure.com/bd1?autoReconnect=true" />
 		<property name="username" value="jugones" />
-		<property name="password" value="jugones" />
+		<property name="password" value="Kevingarnett0" />
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
