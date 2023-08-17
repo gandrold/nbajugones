@@ -11,83 +11,83 @@ package es.nbajugones.dto;
  */
 public class EvaluacionDTO {
 
-    private String equipo;
-    private String nombre;
-    private String logo;
+	private String equipo;
+	private String nombre;
+	private String logo;
 	private String propietario;
-    private Double concontrato;
-    private Double sanciones;
-    private Double bonusact;
+	private Double conContrato;
+	private Double sanciones;
+	private Double bonusAct;
 
-	private Double bonusant;
+	private Double bonusAnt;
 
 	private Double cortes;
 	private Double lesionados;
-    private double salarios;
-    private double limite;
-    private int jugadores;
-    private int fa;
-   
-    public EvaluacionDTO() {
+	private double salarios;
+	private double limite;
+	private int jugadores;
+	private int fa;
+
+	public EvaluacionDTO() {
 		super();
 	}
 
 	public String getEquipo() {
-        return equipo;
-    }
+		return equipo;
+	}
 
-    public void setEquipo(String equipo) {
-        this.equipo = equipo;
-    }
+	public void setEquipo(String equipo) {
+		this.equipo = equipo;
+	}
 
-    public int getFa() {
-        return fa;
-    }
+	public int getFa() {
+		return fa;
+	}
 
-    public void setFa(int fa) {
-        this.fa = fa;
-    }
+	public void setFa(int fa) {
+		this.fa = fa;
+	}
 
-    public int getJugadores() {
-        return jugadores;
-    }
+	public int getJugadores() {
+		return jugadores;
+	}
 
-    public void setJugadores(int jugadores) {
-        this.jugadores = jugadores;
-    }
+	public void setJugadores(int jugadores) {
+		this.jugadores = jugadores;
+	}
 
-    public double getLimite() {
-    	if (limite == 0){
-    		limite=61-(sanciones!=null?sanciones:0)+(bonusant !=null? bonusant :0)+
-    				(bonusact !=null? bonusact :0);
-    	}
-        return Math.round((limite) * 100.0) / 100.0;
-    }
+	public double getLimite() {
+		if (limite == 0){
+			limite=61-(sanciones!=null?sanciones:0)+(bonusAnt!=null?bonusAnt:0)+
+					(bonusAct!=null?bonusAct:0);
+		}
+		return Math.round((limite) * 100.0) / 100.0;
+	}
 
-    public void setLimite(double limite) {
-        this.limite = limite;
-    }
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
 
-    public double getSalarios() {
-        return Math.round((salarios) * 100.0) / 100.0;
-    }
-    
-    public double getSalaryCap(){
-    	double cap=salarios-(lesionados!=null?lesionados:0)+(cortes!=null?cortes:0);
-        return Math.round((cap) * 100.0) / 100.0;
-    }
+	public double getSalarios() {
+		return Math.round((salarios) * 100.0) / 100.0;
+	}
 
-    public void setSalarios(double salarios) {
-        this.salarios = salarios;
-    }
+	public double getSalaryCap(){
+		double cap=salarios-(lesionados!=null?lesionados:0)+(cortes!=null?cortes:0);
+		return Math.round((cap) * 100.0) / 100.0;
+	}
 
-    public String getLogo() {
-        return logo;
-    }
+	public void setSalarios(double salarios) {
+		this.salarios = salarios;
+	}
 
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
 
 	public double getSanciones() {
 		return sanciones;
@@ -97,23 +97,23 @@ public class EvaluacionDTO {
 		this.sanciones = sanciones;
 	}
 
-	public Double getBonusact() {
-		return bonusact;
+	public double getBonusAct() {
+		return bonusAct;
 	}
 
-	public void setBonusact(Double bonusact) {
-		this.bonusact = bonusact;
+	public void setBonusAct(Double bonusAct) {
+		this.bonusAct = bonusAct;
 	}
 
-	public Double getBonusant() {
-		return bonusant;
+	public double getBonusAnt() {
+		return bonusAnt;
 	}
 
-	public void setBonusant(Double bonusant) {
-		this.bonusant = bonusant;
+	public void setBonusAnt(Double bonusAnt) {
+		this.bonusAnt = bonusAnt;
 	}
 
-	public Double getCortes() {
+	public double getCortes() {
 		return cortes;
 	}
 
@@ -121,7 +121,7 @@ public class EvaluacionDTO {
 		this.cortes = cortes;
 	}
 
-	public Double getLesionados() {
+	public double getLesionados() {
 		return lesionados;
 	}
 
@@ -129,22 +129,22 @@ public class EvaluacionDTO {
 		this.lesionados = lesionados;
 	}
 
-	public Double getConcontrato() {
-		return concontrato;
+	public Double getConContrato() {
+		return conContrato;
 	}
 
-	public void setConcontrato(Double concontrato) {
-		this.concontrato = concontrato;
+	public void setConContrato(Double conContrato) {
+		this.conContrato = conContrato;
 	}
 
 	public double getDisponible(){
 		return Math.round((getLimite() - getSalaryCap()) * 100.0) / 100.0;
 	}
-	
+
 	public int getTotalJugadores(){
 		return jugadores-fa;
 	}
-	
+
 	public boolean getWarning(){
 		if (getDisponible()<0){
 			return true;

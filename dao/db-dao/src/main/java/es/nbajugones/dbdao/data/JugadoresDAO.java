@@ -1,6 +1,7 @@
 package es.nbajugones.dbdao.data;
 
 import java.io.UnsupportedEncodingException;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -54,9 +55,9 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 
 	@SuppressWarnings("unchecked")
 	public List<Jugadores> getAllFA() {
-		String sqlQuery = "SELECT j.id_jugador as idjugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
-				+ "j.jugados,j.minutos,j.posicion,j.puntos, j.player_id as playerid FROM jugadores j WHERE activo=1 "
-				+ " and id_jugador not in (select id_jugador from plantillas) order by puntos DESC NULLS LAST, jugados desc NULLS LAST";
+		String sqlQuery = "SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
+				+ "j.jugados,j.minutos,j.posicion,j.puntos, j.player_id as playerId FROM jugadores j WHERE activo=1 "
+				+ " and id_jugador not in (select id_jugador from plantillas) order by Puntos DESC, jugados desc";
 		SQLQuery query = getSQLQuery(sqlQuery);
 		query.setResultTransformer(Transformers.aliasToBean(Jugadores.class));
 		return (List<Jugadores>) query.list();
@@ -67,7 +68,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		String sqlQuery = "SELECT j.id_jugador as idJugador, j.CORTADO_POR as cortadoPor, j.jugador, j.promedio,"
 				+ "j.jugados,j.minutos,j.posicion,j.puntos, j.player_id as playerId FROM jugadores j WHERE "
 				+ " id_jugador not in (select id_jugador from plantillas) "
-				+ "and lower(j.jugador) like :nombre order by puntos DESC NULLS LAST, jugados desc NULLS LAST";
+				+ "and lower(j.jugador) like :nombre order by Puntos DESC, jugados desc";
 		SQLQuery query = getSQLQuery(sqlQuery);
 		query.setParameter("nombre", "%" + name.toLowerCase() + "%");
 		query.setResultTransformer(Transformers.aliasToBean(Jugadores.class));
@@ -79,7 +80,7 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		String sqlQuery = "SELECT j.id_jugador as idJugador, j.AÑOS as years, j.CORTADO_POR as cortadoPor, j.jugador, "
 				+ "j.jugados,j.minutos,j.posicion,j.puntos,j.salario, j.promedio, j.player_id as playerId, e.nombre as equipo FROM jugadores j"
 				+ " left join (select p.id_jugador, e1.nombre from plantillas p inner join equipos e1 on p.id_equipo=e1.id_equipo) e "
-				+ "on j.id_jugador=e.id_jugador WHERE activo=1 order by Puntos DESC NULLS LAST, jugados desc NULLS LAST";
+				+ "on j.id_jugador=e.id_jugador WHERE activo=1 order by Puntos DESC, jugados desc";
 		SQLQuery query = getSQLQuery(sqlQuery);
 		query.setResultTransformer(Transformers.aliasToBean(Jugadores.class));
 		return (List<Jugadores>) query.list();
@@ -152,6 +153,45 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		j.setActivo(1);
 		saveOrUpdateEntity(j, null);
 		return j;
+	}
+
+	public void cut(String destino, int player, double factor) throws DaoException {
+		Jugadores j = getById(player);
+		Equipo e = equipoDAO.getById(destino);
+		Plantilla cut = null;
+		for (Plantilla p : e.getPlantilla()) {
+			if (p.getId().getIdJugador() == player) {
+				cut = p;
+			}
+		}
+
+		double s = j.getSalario();
+		j.setSalario((double) 0);
+		j.setYears("-");
+		j.setStatus(0);
+		String cortadoPor = j.getCortadoPor();
+		j.setCortadoPor(cortadoPor + ("".equals(cortadoPor) || cortadoPor == null ? "" : ", ") + e.getNombre());
+		saveOrUpdateEntity(j, player);
+		double penalizacion = 0;
+		if (factor > 0) {
+			//Se introduce un factor de corte distinto (25% o gratis)
+			if (factor != 1) {
+				penalizacion = Math.round((s * 0.25) * 100.0) / 100.0;
+			}
+		} else {
+			if (s >= 2) {
+				penalizacion = Math.round((s * 0.5) * 100.0) / 100.0;
+			}
+		}
+		if (penalizacion != 0) {
+			double cortes = (e.getCortes() == null ? 0 : e.getCortes()) + penalizacion;
+			e.setCortes(cortes);
+		}
+		equipoDAO.saveOrUpdateEntity(e, destino);
+		plantillaDAO.removeEntity(cut.getId());
+		List<Plantilla> p = e.getPlantilla();
+		p.remove(cut);
+		equipoDAO.saveOrUpdateEntity(e, destino);
 	}
 
 	public Jugadores get(int playerId, String jugador) throws DaoException {
@@ -259,4 +299,3 @@ public class JugadoresDAO extends GenericDAOImpl<Jugadores> {
 		return true;
 	}
 }
-

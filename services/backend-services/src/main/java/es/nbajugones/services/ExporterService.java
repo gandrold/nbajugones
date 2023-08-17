@@ -220,40 +220,39 @@ public class ExporterService {
 
 		ftp = new FTPClient();
 		try {
-			ftp.connect(System.getenv("FTP_HOST"));
-			ftp.login(System.getenv("FTP_USER"), System.getenv("FTP_PWD"));
-			int reply = ftp.getReplyCode();
-			if (!FTPReply.isPositiveCompletion(reply)) {
-				ftp.disconnect();
-				throw new ServiceException("Error connecting to FTP file ");
-			} else {
-				ftp.enterLocalPassiveMode();
-				ftp.setFileType(FTP.BINARY_FILE_TYPE);
-				for (String fileName : files.keySet()) {
-					String content = files.get(fileName);
-					logger.info("Uploading " + fileName);
-					File f = File.createTempFile(fileName, "html");
-					Writer writer = new BufferedWriter(new OutputStreamWriter(
-						new FileOutputStream(f), "ISO-8859-1"));
-					writer.write(content);
-					writer.close();
-					InputStream stream = new ByteArrayInputStream(content.getBytes("ISO-8859-1"));
-					OutputStream outputStream =  ftp.storeFileStream(fileName + ".html");
-					byte[] bytesIn = new byte[4096];
-					int read = 0;
-					while ((read = stream.read(bytesIn)) != -1) {
-						outputStream.write(bytesIn, 0, read);
-					}
-					stream.close();
-					outputStream.close();
-					boolean completed = ftp.completePendingCommand();
-					if (completed) {
-						logger.info("File is uploaded successfully.");
-					} else {
-						logger.info("Error.");
-					}
-				}
+			//ftp.connect("home344607320.1and1-data.host");
+			//ftp.login("u60560404", "Clander123");
+			//int reply = ftp.getReplyCode();
+			//if (!FTPReply.isPositiveCompletion(reply)) {
+			//	ftp.disconnect();
+			//	throw new ServiceException("Error connecting to FTP file ");
+			//} else {
+			//ftp.enterLocalPassiveMode();
+			//ftp.setFileType(FTP.BINARY_FILE_TYPE);
+			for (String fileName : files.keySet()) {
+				String content = files.get(fileName);
+				logger.info("Uploading " + fileName);
+				Writer writer = new BufferedWriter(new OutputStreamWriter(
+						new FileOutputStream("C:\\temp\\Rosters\\"+fileName+".html"), "ISO-8859-1"));
+				writer.write(content);
+				writer.close();
+				//InputStream stream = new ByteArrayInputStream(content.getBytes("ISO-8859-1"));
+				//OutputStream outputStream =  ftp.storeFileStream(fileName + ".html");
+				//byte[] bytesIn = new byte[4096];
+				//int read = 0;
+				//while ((read = stream.read(bytesIn)) != -1) {
+				//	outputStream.write(bytesIn, 0, read);
+				//}
+				//stream.close();
+				//outputStream.close();
+				//boolean completed = ftp.completePendingCommand();
+				//if (completed) {
+				//	logger.info("File is uploaded successfully.");
+				//} else {
+				//	logger.info("Error.");
+				//}
 			}
+			//}
 
 		} catch (Exception e) {
 			e.printStackTrace();

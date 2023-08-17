@@ -35,34 +35,7 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals><goal>copy</goal></goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.heroku</groupId>
-									<artifactId>webapp-runner</artifactId>
-									<version>9.0.52.1</version>
-									<destFileName>webapp-runner.jar</destFileName>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.heroku.sdk</groupId>
-				<artifactId>heroku-maven-plugin</artifactId>
-				<version>3.0.3</version>
-				<configuration>
-					<appName>jugones</appName>
-				</configuration>
-			</plugin>
+
 
         </plugins>
     </build>
@@ -178,7 +151,7 @@
 				<artifactId>spring-jms</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!-- Various Application Context utilities, including EhCache, JavaMail, 
+			<!-- Various Application Context utilities, including EhCache, JavaMail,
 				Quartz, and Freemarker integration Define this if you need any of these integrations -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -223,9 +196,9 @@
 
 
 			<dependency>
-				<groupId>org.postgresql</groupId>
-				<artifactId>postgresql</artifactId>
-				<version>42.4.0</version>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.9</version>
 			</dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

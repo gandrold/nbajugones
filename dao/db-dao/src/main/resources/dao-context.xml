@@ -20,13 +20,13 @@
 
     <context:annotation-config/>
 	<context:property-placeholder/>
-    <bean id="dataSource" destroy-method="close"
-          class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="${HEROKU_POSTGRESQL_URL}" />
-        <property name="username" value="${HEROKU_POSTGRESQL_USER}" />
-        <property name="password" value="${HEROKU_POSTGRESQL_PWD}" />
-    </bean>
+	<bean id="dataSource" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/bd1?autoReconnect=true" />
+		<property name="username" value="jugones" />
+		<property name="password" value="jugones" />
+	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
@@ -44,7 +44,7 @@
 		<property name="persistenceUnitName" value="persistence" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
 				<property name="generateDdl" value="true" />
 				<property name="showSql" value="false" />
 			</bean>

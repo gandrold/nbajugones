@@ -64,8 +64,8 @@ public class JugadoresDAOTest {
 	@Test
 	public void testOperaciones() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
-		Assert.assertTrue(j.getIdjugador()>0);
-		int id = j.getIdjugador();
+		Assert.assertTrue(j.getIdJugador()>0);
+		int id = j.getIdJugador();
 		jugadoresDAO.ficharFA("BRO", id, "0.7", "3", "2016-07-31");
 		j = jugadoresDAO.getById(id);
 		Equipo e = equipoDAO.getById("BRO");
@@ -75,6 +75,10 @@ public class JugadoresDAOTest {
 		e = equipoDAO.getById("CLE");
 		Assert.assertTrue(e.checkPlayer(id));
 		Assert.assertTrue(!equipoDAO.getById("BRO").checkPlayer(id));
+		jugadoresDAO.cut("CLE", id, 0);
+		j = jugadoresDAO.getById(id);
+		Assert.assertTrue(j.getYears().equals("-"));
+		Assert.assertTrue(!equipoDAO.getById("CLE").checkPlayer(id));
 	}
 
 	@Test
@@ -89,7 +93,7 @@ public class JugadoresDAOTest {
 		derechosDAO.saveOrUpdateEntity(d, null);
 		Jugadores j = derechosDAO.activarJugador(d.getId());
 		Assert.assertTrue(j!=null);
-		Assert.assertTrue(j.getIdjugador()>0);
+		Assert.assertTrue(j.getIdJugador()>0);
 	}
 
 }

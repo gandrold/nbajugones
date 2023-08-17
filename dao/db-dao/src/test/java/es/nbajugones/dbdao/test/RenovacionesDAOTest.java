@@ -44,7 +44,7 @@ public class RenovacionesDAOTest {
 	@Test
 	public void testRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
-		int id = j.getIdjugador();
+		int id = j.getIdJugador();
 		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();
@@ -65,7 +65,7 @@ public class RenovacionesDAOTest {
 	@Test
 	public void testRenovarFichar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
-		int id = j.getIdjugador();
+		int id = j.getIdJugador();
 		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();
@@ -86,7 +86,7 @@ public class RenovacionesDAOTest {
 	@Test
 	public void testNoRenovar() throws DaoException{
 		Jugadores j = jugadoresDAO.crearJugador("Perico de los palotes", "FC");
-		int id = j.getIdjugador();
+		int id = j.getIdJugador();
 		jugadoresDAO.ficharFA("BRO", id, "0.7", "-", "2016-07-31");
 		Renovacione r = new Renovacione();
 		RenovacionePK pk = new RenovacionePK();

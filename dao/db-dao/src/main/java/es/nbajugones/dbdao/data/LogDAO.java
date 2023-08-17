@@ -11,12 +11,11 @@ import es.nbajugones.dto.LogDTO;
 import es.nbajugones.dto.entities.Jugadores;
 import es.nbajugones.dto.entities.Log;
 import es.nbajugones.exception.dbdao.DaoException;
-import org.springframework.transaction.annotation.Transactional;
 
 public class LogDAO extends GenericDAOImpl<Log> {
 
 	private static final String FA = "%s - %s ficha a %s por %s en %s años ";
-	public static final String CORTA = "%s - %s corta a %s (%,.2f-%s) ";
+	private static final String CORTA = "%s - %s corta a %s (%,.2f-%s) ";
 	private static final String RENUEVA = "%s - %s renueva a %s por %s en %s años ";
 	private static final String NO_RENUEVA = "%s - %s no renueva a %s";
 	private static final String NO_RENUEVA_FA = "%s - %s no renueva a %s y pasa a ser FA";
@@ -36,7 +35,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 	public Log fa(String destino, int jugador, String salario, String anos)
 			throws DaoException {
 		String mensaje = String.format(FA, sdf.format(Calendar.getInstance()
-				.getTime()), equipoDAO.getById(destino).getNombre(),
+						.getTime()), equipoDAO.getById(destino).getNombre(),
 				jugadoresDAO.getById(jugador).getJugador(), salario, anos);
 		Log log = new Log();
 		log.setIdEquipo(destino);
@@ -48,6 +47,18 @@ public class LogDAO extends GenericDAOImpl<Log> {
 	public Log draft(String equipo, int pick, int y, String jugador, String posicion) throws DaoException{
 		String mensaje = String.format(DRAFT, sdf.format(Calendar.getInstance()
 				.getTime()), equipoDAO.getById(equipo).getNombre(), pick, y, jugador, posicion);
+		Log log = new Log();
+		log.setIdEquipo(equipo);
+		log.setTexto(mensaje);
+		saveOrUpdateEntity(log, null);
+		return log;
+	}
+
+	public Log cut(String equipo, int player) throws DaoException {
+		Jugadores j = jugadoresDAO.getById(player);
+		String mensaje = String.format(CORTA, sdf.format(Calendar.getInstance()
+				.getTime()), equipoDAO.getById(equipo).getNombre(), j
+				.getJugador(), j.getSalario().doubleValue(), j.getYears());
 		Log log = new Log();
 		log.setIdEquipo(equipo);
 		log.setTexto(mensaje);
@@ -123,7 +134,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 			List<String> derechos2, String equipo1, String equipo2)
 			throws DaoException {
 		String mensaje = String.format(TRADE, sdf.format(Calendar.getInstance()
-				.getTime()), equipoDAO.getById(equipo1).getNombre(),
+						.getTime()), equipoDAO.getById(equipo1).getNombre(),
 				generarTradeLog(equipo1, players1, rondas1, derechos1),
 				equipoDAO.getById(equipo2).getNombre(),
 				generarTradeLog(equipo2, players2, rondas2, derechos2));
@@ -144,7 +155,7 @@ public class LogDAO extends GenericDAOImpl<Log> {
 			for (String id : jugadores) {
 				msg = msg
 						+ jugadoresDAO.getById(Integer.parseInt(id))
-								.getJugador() + ", ";
+						.getJugador() + ", ";
 			}
 		}
 		if (rondas != null) {
